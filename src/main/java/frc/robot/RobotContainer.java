@@ -118,63 +118,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-  
-    // Trajectory
-    TrajectoryConfig drivetrainTrajectoryConfig = 
-      new TrajectoryConfig(
-        DrivetrainAutonomousConstants.DRIVETRAIN_MAX_SPEED_PER_SECOND_METERS, 
-        DrivetrainAutonomousConstants.DRIVETRAIN_MAX_ACCELERATION_PER_SECOND_SQUARED_METERS
-        ).setKinematics(DrivetrainAutonomousConstants.DRIVETRAIN_MECANUM_KINEMATICS);
-
-    Trajectory exampleTrajectory = 
-      TrajectoryGenerator.generateTrajectory(
-        // Start at the origin facing the +X direction
-        new Pose2d(0, 0, new Rotation2d(0)), 
-        // Pass through these two interior waypoints, making an 's' curve path
-        // test-to-try: List.of(new Translation2d(4, 0), new Translation2d(1, 1), new Translation2d(2, -1), new Translation2d(4, 0)), 
-        List.of(new Translation2d(4, 0), 
-        new Translation2d(1, 1), 
-        new Translation2d(2, -1), 
-        new Translation2d(4, 0)),
-        // End 3 meters straight ahead of where we started, facing forward
-        new Pose2d(3, 0, new Rotation2d(0)), 
-        drivetrainTrajectoryConfig);
-
-    MecanumControllerCommand drivetrainMecanumControllerCommand =
-      new MecanumControllerCommand(
-        exampleTrajectory, 
-        m_DriveTrain::getPose, 
-        EncoderConstants.DRIVETRAIN_ENCODER_FEED_FORWARD, 
-        DrivetrainAutonomousConstants.DRIVETRAIN_MECANUM_KINEMATICS, 
-        
-        // Position contollers
-        new PIDController(DrivetrainAutonomousConstants.DRIVETRAIN_CONTROLLER_PX, 0, 0), 
-        new PIDController(DrivetrainAutonomousConstants.DRIVETRAIN_CONTROLLER_PY, 0, 0), 
-        new ProfiledPIDController(DrivetrainAutonomousConstants.DRIVETRAIN_CONTROLLER_PTHETA, 0, 0, DrivetrainAutonomousConstants.DRIVETRAIN_THETA_CONTROLLER_CONSTRAINTS), 
-        
-        // Needed for normalizing wheel speeds
-        DrivetrainAutonomousConstants.DRIVETRAIN_MAX_SPEED_PER_SECOND_METERS, 
-        
-        // Velocity PID's
-        new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_FRONT_LEFT_VELOCITY_PERCENT, 0, 0),
-        new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_BACK_LEFT_VELOCITY_PERCENT, 0, 0),
-        new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_FRONT_RIGHT_VELOCITY_PERCENT, 0, 0),
-        new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_BACK_RIGHT_VELOCITY_PERCENT, 0, 0),
-
-        m_DriveTrain::getCurrentDrivetrainWheelSpeeds, 
-        m_DriveTrain::setDriveMotorControllersVolts, 
-        m_DriveTrain
-      );
-
-    // Reset odometry to the starting pose of the trajectory.
-    m_DriveTrain.resetOdometry(exampleTrajectory.getInitialPose());
-
-    // Run path following command, then stop at the end.
-    // test-to-try: return drivetrainMecanumControllerCommand.andThen(() -> sysDriveTrain.cartesianDrive(0, 0, 0, false)).andThen(drivetrainMecanumControllerCommand.andThen(() -> sysDriveTrain.cartesianDrive(0, 0, 0, false)));
-    return drivetrainMecanumControllerCommand.andThen(() -> m_DriveTrain.cartesianDrive(0, 0, 0, false));
-
     
- 
   }
+  
 
 }
