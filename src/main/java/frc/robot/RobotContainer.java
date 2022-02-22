@@ -24,6 +24,7 @@ import frc.robot.Constants.DrivetrainAutonomousConstants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.EncoderConstants;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.FeedCargo;
@@ -76,6 +77,9 @@ public class RobotContainer {
   //Defining Feeder Command
   private final FeedCargo cmdFeedCargo = new FeedCargo();
 
+  //Autonomous Commands
+  private final DriveAuto cmdDriveAuto = new DriveAuto();
+
   //Defining Xboxcontroller
   public static final XboxController driverController = new XboxController(ControllerConstants.DRIVER_CONTROLLER);
   private final JoystickButton driverMainButtonX = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_X);
@@ -118,7 +122,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return cmdIntakeDeploy;
+//    return cmdDriveAuto;
+    return null;
   }
   
 
