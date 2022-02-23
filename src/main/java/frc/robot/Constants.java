@@ -143,7 +143,9 @@ public static final class FeederConstants {
     //Feeder Motor
     public static final int MAIN_FEEDER_MOTOR = 21;
 }
- 
-   
+
+public static final class LEDConstants {
+    public static final int LED_SETTING_ONE = 30;
+    }
     
 }

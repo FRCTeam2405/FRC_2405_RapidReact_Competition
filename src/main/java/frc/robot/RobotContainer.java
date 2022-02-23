@@ -112,7 +112,7 @@ public class RobotContainer {
    driverMainButtonX.whenPressed(cmdIntakeDeploy);
    driverMainButtonB.whenPressed(cmdIntakeRetract);
    driverMainButtonY.whenPressed(cmdShootHigh);
-   driverMainButtonA.whenPressed(cmdShootLow);
+   driverMainButtonA.toggleWhenPressed(cmdShootLow.andThen(cmdFeedCargo));
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
   }
 

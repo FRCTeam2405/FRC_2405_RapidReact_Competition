@@ -93,7 +93,7 @@ public class DriveAuto extends CommandBase {
 
   // Run path following command, then stop at the end.
   // test-to-try: return drivetrainMecanumControllerCommand.andThen(() -> sysDriveTrain.cartesianDrive(0, 0, 0, false)).andThen(drivetrainMecanumControllerCommand.andThen(() -> sysDriveTrain.cartesianDrive(0, 0, 0, false)));
-  return drivetrainMecanumControllerCommand.andThen(() -> RobotContainer.m_DriveTrain.cartesianDrive(0, 0, 0, false));
+  //return drivetrainMecanumControllerCommand.andThen(() -> RobotContainer.m_DriveTrain.cartesianDrive(0, 0, 0, false));
 
   }
 

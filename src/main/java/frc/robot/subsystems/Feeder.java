@@ -18,11 +18,11 @@ public class Feeder extends SubsystemBase {
 
 mainfeederMotor = new CANSparkMax(FeederConstants.MAIN_FEEDER_MOTOR, MotorType.kBrushless);
   }
+
 public void feedCargo(double inputAmount) {
-
 mainfeederMotor.set(inputAmount);
-
 }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
