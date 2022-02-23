@@ -36,6 +36,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
@@ -65,6 +66,9 @@ public class RobotContainer {
 
   //Adding Feeder to RobotContainer
   public static final Feeder m_feedermotor = new Feeder();
+
+  //Adding LED's ro RobotContainer
+  public static final LEDLights m_LEDsetting = new LEDLights();
 
   //Defining Intake Commands
   private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy();
@@ -125,6 +129,8 @@ public class RobotContainer {
 //    return cmdDriveAuto;
     return null;
   }
+
+
   
 
 }

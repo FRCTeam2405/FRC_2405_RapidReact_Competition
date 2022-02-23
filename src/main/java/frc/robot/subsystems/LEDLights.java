@@ -4,11 +4,24 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.LEDConstants;
 
 public class LEDLights extends SubsystemBase {
+  CANSparkMax LEDSetting = null;
+
   /** Creates a new LEDLights. */
-  public LEDLights() {}
+  public LEDLights() {
+    LEDSetting = new CANSparkMax(LEDConstants.LED_SETTING_ONE, MotorType.kBrushless);
+   
+  }
+
+  public void setLEDValue(double setColor) {
+    LEDSetting.set(setColor);
+}
 
   @Override
   public void periodic() {
