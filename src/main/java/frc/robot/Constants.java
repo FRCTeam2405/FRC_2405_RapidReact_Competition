@@ -124,6 +124,7 @@ public static final class ControllerConstants {
     public static final int DRIVER_CONTROLLER_BUTTON_Y = 4;
     public static final int DRIVER_CONTROLLER_BUTTON_A = 1;
     public static final int DRIVER_CONTROLLER_BUMPER_RIGHT = 6;
+    public static final int DRIVER_CONTROLLER_BUMPER_LEFT = 5;
 }
 	
 public static final class ShooterConstants {
@@ -145,7 +146,7 @@ public static final class FeederConstants {
 }
 
 public static final class LEDConstants {
-    public static final int LED_SETTING_ONE = 30;
+    public static final int LED_SETTING_ONE = 0;
     }
     
 }

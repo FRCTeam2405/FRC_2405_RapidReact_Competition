@@ -22,12 +22,14 @@ public class LEDDeclare extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_LEDsetting.setLEDValue(-0.57);
+    RobotContainer.m_LEDsetting.setLEDValue(-0.89);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    RobotContainer.m_LEDsetting.setLEDValue(0);
+  }
 
   // Returns true when the command should end.
   @Override

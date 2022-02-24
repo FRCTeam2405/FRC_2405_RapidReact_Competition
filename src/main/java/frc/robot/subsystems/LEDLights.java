@@ -7,15 +7,16 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.LEDConstants;
 
 public class LEDLights extends SubsystemBase {
-  CANSparkMax LEDSetting = null;
+  PWMSparkMax LEDSetting = null;
 
   /** Creates a new LEDLights. */
   public LEDLights() {
-    LEDSetting = new CANSparkMax(LEDConstants.LED_SETTING_ONE, MotorType.kBrushless);
+    LEDSetting = new PWMSparkMax(LEDConstants.LED_SETTING_ONE);
    
   }
 

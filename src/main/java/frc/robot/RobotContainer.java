@@ -30,6 +30,7 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.FeedCargo;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeRetract;
+import frc.robot.commands.LEDDeclare;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
 import frc.robot.subsystems.DriveTrain;
@@ -71,18 +72,21 @@ public class RobotContainer {
   public static final LEDLights m_LEDsetting = new LEDLights();
 
   //Defining Intake Commands
-  private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy();
-  private final IntakeRetract cmdIntakeRetract = new IntakeRetract();
+  private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy(m_Intake);
+  private final IntakeRetract cmdIntakeRetract = new IntakeRetract(m_Intake);
   
   //Defining Shoot Commands
-  private final ShootHigh cmdShootHigh = new ShootHigh();
-  private final ShootLow cmdShootLow = new ShootLow();
+  private final ShootHigh cmdShootHigh = new ShootHigh(m_Shooter);
+  private final ShootLow cmdShootLow = new ShootLow(m_Shooter);
 
   //Defining Feeder Command
-  private final FeedCargo cmdFeedCargo = new FeedCargo();
+  private final FeedCargo cmdFeedCargo = new FeedCargo(m_feedermotor);
 
   //Autonomous Commands
   private final DriveAuto cmdDriveAuto = new DriveAuto();
+
+  //LED Commands
+  private final LEDDeclare cmdLEDLights = new LEDDeclare();
 
   //Defining Xboxcontroller
   public static final XboxController driverController = new XboxController(ControllerConstants.DRIVER_CONTROLLER);
@@ -91,6 +95,7 @@ public class RobotContainer {
   private final JoystickButton driverMainButtonY = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_Y);
   private final JoystickButton driverMainButtonA = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_A);
   private final JoystickButton driverMainBumperRight = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUMPER_RIGHT);
+  private final JoystickButton driverMainBumperLeft = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUMPER_LEFT);
 
   //Defining PCM
   private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH);
@@ -118,6 +123,7 @@ public class RobotContainer {
    driverMainButtonY.whenPressed(cmdShootHigh);
    driverMainButtonA.toggleWhenPressed(cmdShootLow.andThen(cmdFeedCargo));
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
+   driverMainBumperLeft.toggleWhenPressed(cmdLEDLights, true);
   }
 
   /**

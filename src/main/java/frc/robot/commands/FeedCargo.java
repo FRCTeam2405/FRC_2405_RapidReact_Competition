@@ -6,10 +6,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Feeder;
 
 public class FeedCargo extends CommandBase {
+
+  private final Feeder sysFeeder;
+  
   /** Creates a new feedCargo. */
-  public FeedCargo() {
+  public FeedCargo(Feeder inSysFeeder) {
+    sysFeeder = inSysFeeder;
     // Use addRequirements() here to declare subsystem dependencies.
 
     addRequirements(RobotContainer.m_feedermotor);

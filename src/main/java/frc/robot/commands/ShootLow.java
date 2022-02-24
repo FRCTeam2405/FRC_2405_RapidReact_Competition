@@ -8,10 +8,14 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Shooter;
 
 public class ShootLow extends CommandBase {
+  
+  private final Shooter sysShooter;
   /** Creates a new ShootLow. */
-  public ShootLow() {
+  public ShootLow(Shooter inSysShooter) {
+    sysShooter = inSysShooter;
     // Use addRequirements() here to declare subsystem dependencies.
   addRequirements(RobotContainer.m_Shooter);
   }

@@ -6,10 +6,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Intake;
 
 public class IntakeRetract extends CommandBase {
+
+  private final Intake sysIntake;
+  
   /** Creates a new IntakeRetract. */
-  public IntakeRetract() {
+  public IntakeRetract(Intake inSysIntake) {
+    sysIntake = inSysIntake;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_Intake);
   }
