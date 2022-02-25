@@ -24,6 +24,7 @@ import frc.robot.Constants.DrivetrainAutonomousConstants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.EncoderConstants;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.commands.ClimberSolenoid;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.ExampleCommand;
@@ -33,6 +34,7 @@ import frc.robot.commands.IntakeRetract;
 import frc.robot.commands.LEDDeclare;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
+import frc.robot.subsystems.DoritoClimber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Feeder;
@@ -71,6 +73,9 @@ public class RobotContainer {
   //Adding LED's ro RobotContainer
   public static final LEDLights m_LEDsetting = new LEDLights();
 
+  //Climber subsystem
+  public static final DoritoClimber m_doritoclimber = new  DoritoClimber();
+
   //Defining Intake Commands
   private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy(m_Intake);
   private final IntakeRetract cmdIntakeRetract = new IntakeRetract(m_Intake);
@@ -88,6 +93,11 @@ public class RobotContainer {
   //LED Commands
   private final LEDDeclare cmdLEDLights = new LEDDeclare();
 
+  //Climber commands
+  private final ClimberSolenoid clampOne = new ClimberSolenoid(m_doritoclimber, 1, true);
+  private final ClimberSolenoid clampTwo = new ClimberSolenoid(m_doritoclimber, 2, true);
+  private final ClimberSolenoid clampThree = new ClimberSolenoid(m_doritoclimber, 3, true);
+
   //Defining Xboxcontroller
   public static final XboxController driverController = new XboxController(ControllerConstants.DRIVER_CONTROLLER);
   private final JoystickButton driverMainButtonX = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_X);
@@ -96,6 +106,13 @@ public class RobotContainer {
   private final JoystickButton driverMainButtonA = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_A);
   private final JoystickButton driverMainBumperRight = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUMPER_RIGHT);
   private final JoystickButton driverMainBumperLeft = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUMPER_LEFT);
+
+  //Defining Arcade Controller
+  public static final Joystick secondarycontroller = new Joystick(1);
+  public static final JoystickButton driversecondarybuttonX = new JoystickButton(secondarycontroller, 3);
+  public static final JoystickButton driversecondarybuttonA = new JoystickButton(secondarycontroller, 1);
+  public static final JoystickButton driversecondarybuttonB = new JoystickButton(secondarycontroller, 2);
+
 
   //Defining PCM
   private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH);
@@ -124,7 +141,13 @@ public class RobotContainer {
    driverMainButtonA.toggleWhenPressed(cmdShootLow.andThen(cmdFeedCargo));
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
    driverMainBumperLeft.toggleWhenPressed(cmdLEDLights, true);
+  
+   //Secondary Button Mappings
+   driversecondarybuttonX.toggleWhenPressed(clampOne);
+   driversecondarybuttonA.toggleWhenPressed(clampTwo);
+   driversecondarybuttonB.toggleWhenPressed(clampThree);
   }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
