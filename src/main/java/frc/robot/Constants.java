@@ -149,4 +149,11 @@ public static final class LEDConstants {
     public static final int LED_SETTING_ONE = 0;
     }
     
+public static final class ClimberConstants {
+    public static final int DORITO_SOLENOID_ONE = 0;
+    public static final int DORITO_SOLENOID_TWO = 0;
+    public static final int DORITO_SOLENOID_THREE = 0;
+}
+
+
 }

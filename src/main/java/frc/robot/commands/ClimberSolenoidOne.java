@@ -5,34 +5,38 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.DoritoClimber;
 
-public class IntakeDeploy extends CommandBase {
+public class ClimberSolenoidOne extends CommandBase {
+  private final DoritoClimber sysDoritoClimber;
+  /** Creates a new ClimberSolenoidOne. */
 
-  private final Intake sysIntake;
-  
-  /** Creates a new IntakeDeploy. */
-  public IntakeDeploy(Intake inSysIntake) {
-    sysIntake = inSysIntake;
+  public ClimberSolenoidOne(DoritoClimber inSysDoritoClimber) {
+
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(sysIntake);
+    sysDoritoClimber = inSysDoritoClimber;
+    addRequirements(inSysDoritoClimber);
+
   }
 
   // Called when the command is initially scheduled.
-  @Override 
+  @Override
   public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  
   public void execute() {
-    sysIntake.ToggleIntake(-.75, true);
+    sysDoritoClimber.toggleClimberOne(true);
+    sysDoritoClimber.toggleClimberTwo(true);
+    sysDoritoClimber.toggleClimberThree(true);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sysIntake.ToggleIntake(0, false);
+    sysDoritoClimber.toggleClimberOne(false);
+    sysDoritoClimber.toggleClimberTwo(false);
+    sysDoritoClimber.toggleClimberThree(false);
   }
 
   // Returns true when the command should end.
