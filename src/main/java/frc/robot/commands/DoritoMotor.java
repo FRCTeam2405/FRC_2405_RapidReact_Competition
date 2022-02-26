@@ -5,35 +5,35 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.IntakeConstants;
-import frc.robot.subsystems.Intake;
+import frc.robot.Constants.ClimberConstants;
+import frc.robot.subsystems.DoritoClimber;
 
-public class IntakeDeploy extends CommandBase {
+public class DoritoMotor extends CommandBase {
 
-  private final Intake sysIntake;
-  
-  /** Creates a new IntakeDeploy. */
-  public IntakeDeploy(Intake inSysIntake) {
-    sysIntake = inSysIntake;
+  private final DoritoClimber sysClimber;
+
+  /** Creates a new ClimberStage1. */
+  public DoritoMotor(DoritoClimber inSysClimber)  {
+    sysClimber = inSysClimber;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(sysIntake);
+    addRequirements(sysClimber);
+
   }
 
   // Called when the command is initially scheduled.
-  @Override 
+  @Override
   public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  
   public void execute() {
-    sysIntake.ToggleIntake(IntakeConstants.INTAKE_DEFAULT_SPEED, true);
+    sysClimber.DoritoClimber(ClimberConstants.DORITO_DEFAULT_SPEED);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sysIntake.ToggleIntake(0, false);
+    sysClimber.DoritoClimber(0);
   }
 
   // Returns true when the command should end.

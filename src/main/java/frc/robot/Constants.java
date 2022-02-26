@@ -134,9 +134,11 @@ public static final class ControllerConstants {
     public static final class SecondaryDriver {
         //Button Mapping
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_X = 3;
-        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_Y = 0;
+        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_Y = 4;
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_A = 1;
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_B = 2;
+        
+        public static final int SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER = 5;
 
     }
    
@@ -151,10 +153,14 @@ public static final class ShooterConstants {
 public static final class IntakeConstants {
     //Intake Main SparkMax
     public static final int INTAKE_MAIN_SPARKMAX = 22;  
+    //Default Intake Speed
+    public static final double INTAKE_DEFAULT_SPEED = -.75;
+    
     //Adding CAN Ports to Solenoid
     public static final int PORT_PCM_MAIN = 2;
     //Solenoid Ports on PCM
     public static final int INTAKE_SOLENOIDS_PORT = 4;
+
 }
 
 public static final class FeederConstants {
@@ -167,11 +173,15 @@ public static final class LEDConstants {
     }
     
 public static final class ClimberConstants {
+    //Clamp Solenoid Ports
     public static final int DORITO_SOLENOID_PORT_ONE = 1;
     public static final int DORITO_SOLENOID_PORT_TWO = 2;
     public static final int DORITO_SOLENOID_PORT_THREE = 3;
+    //Lifter Solenoid Port
     public static final int DORITO_LIFTER_SOLENOID_PORT = 0;
 
+    //Dorito Default Speed
+    public static final double DORITO_DEFAULT_SPEED = .50;
     //Sparkmax CAN port
     public static final int MAIN_DORITO_SPARKMAX = 23;
 }

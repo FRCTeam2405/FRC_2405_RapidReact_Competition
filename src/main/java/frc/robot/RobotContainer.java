@@ -28,6 +28,7 @@ import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
 import frc.robot.commands.DoritoLifter;
+import frc.robot.commands.DoritoMotor;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.ExampleCommand;
@@ -61,6 +62,10 @@ public class RobotContainer {
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  //------------
+  // Subsystems
+  //------------
+
   //Adding DriveTrain subsystem to RobotContainer
   public static final DriveTrain m_DriveTrain = new DriveTrain();
 
@@ -73,11 +78,17 @@ public class RobotContainer {
   //Adding Feeder to RobotContainer
   public static final Feeder m_feedermotor = new Feeder();
 
-  //Adding LED's ro RobotContainer
+  //Adding LED's to RobotContainer
   public static final LEDLights m_LEDsetting = new LEDLights();
 
   //Climber subsystem
   public static final DoritoClimber m_doritoclimber = new  DoritoClimber();
+
+//-----------------------------------------------------------------------------
+
+  //----------
+  // Commands
+  //----------
 
   //Defining Intake Commands
   private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy(m_Intake);
@@ -96,13 +107,20 @@ public class RobotContainer {
   //LED Commands
   private final LEDDeclare cmdLEDLights = new LEDDeclare();
 
-  //Climber commands
+  //Dorito Clamp commands
   private final ClimberStage1 clampOne = new ClimberStage1(m_doritoclimber);
   private final ClimberStage2 clampTwo = new ClimberStage2(m_doritoclimber);
   private final ClimberStage3 clampThree = new ClimberStage3(m_doritoclimber);
-
   //Dorito Lifter Command
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber);
+  //Dorito Motor Command
+  private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
+
+  //---------------------------------------------------------------------------------------
+
+  //-----------------
+  // Xboxcontroller
+  //-----------------
 
   //Defining Xboxcontroller
   public static final XboxController driverController = new XboxController(ControllerConstants.Driver.DRIVER_CONTROLLER);
@@ -115,9 +133,13 @@ public class RobotContainer {
 
   //Defining Arcade Controller
   public static final Joystick secondarycontroller = new Joystick(1);
-  public static final JoystickButton driversecondarybuttonX = new JoystickButton(secondarycontroller, 3);
-  public static final JoystickButton driversecondarybuttonA = new JoystickButton(secondarycontroller, 1);
-  public static final JoystickButton driversecondarybuttonB = new JoystickButton(secondarycontroller, 2);
+  public static final JoystickButton driversecondarybuttonX = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_X);
+  public static final JoystickButton driversecondarybuttonA = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_A);
+  public static final JoystickButton driversecondarybuttonB = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_B);
+  public static final JoystickButton driverSecondaryButtonY = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_Y);
+  public static final JoystickButton driverSecondaryLeftBumper = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER);
+
+  //------------------------------------------------------------------------------------------
 
 
   //Defining PCM
@@ -138,6 +160,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
+
+  //----------------------------
+  //Configuring Button Bindings
+  //----------------------------
+
   private void configureButtonBindings() {
     
    //Button Mappings
@@ -152,8 +179,10 @@ public class RobotContainer {
    driversecondarybuttonX.toggleWhenPressed(clampOne);
    driversecondarybuttonA.toggleWhenPressed(clampTwo);
    driversecondarybuttonB.toggleWhenPressed(clampThree);
+   driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage);
+   driverSecondaryLeftBumper.toggleWhenPressed(cmdDoritoMotorEngage);
   }
-
+  //----------------------------------------------------------------------
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
