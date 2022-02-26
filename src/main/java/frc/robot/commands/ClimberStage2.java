@@ -5,19 +5,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.DoritoClimber;
 
-public class DriveMecanum extends CommandBase {
-  private final DriveTrain sysDriveTrain;
-  /** Creates a new DriveMecanam. */
-  public DriveMecanum(DriveTrain inSysDriveTrain) {
+public class ClimberStage2 extends CommandBase {
 
-    sysDriveTrain = inSysDriveTrain;
+  private final DoritoClimber sysClimber;
 
+  /** Creates a new ClimberStage1. */
+  public ClimberStage2(DoritoClimber inSysClimber)  {
+    sysClimber = inSysClimber;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(sysDriveTrain);
+    addRequirements(sysClimber);
+
   }
 
   // Called when the command is initially scheduled.
@@ -27,19 +26,14 @@ public class DriveMecanum extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double moveSpeedX = RobotContainer.driverController.getLeftX();
-    double rotateSpeedZ = RobotContainer.driverController.getRightX();
-    double moveSpeedY = RobotContainer.driverController.getLeftY();
-    boolean gyroIsUsed = false;
-
-  //Call cartesianDrive
-  sysDriveTrain.cartesianDrive(moveSpeedY, moveSpeedX, rotateSpeedZ, gyroIsUsed);
+    
+    sysClimber.toggleClimberTwo(true);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sysDriveTrain.cartesianDrive(0, 0, 0, false);
+    sysClimber.toggleClimberTwo(false);
   }
 
   // Returns true when the command should end.

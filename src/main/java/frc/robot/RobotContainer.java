@@ -25,6 +25,9 @@ import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.EncoderConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.commands.ClimberSolenoid;
+import frc.robot.commands.ClimberStage1;
+import frc.robot.commands.ClimberStage2;
+import frc.robot.commands.ClimberStage3;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.ExampleCommand;
@@ -94,9 +97,9 @@ public class RobotContainer {
   private final LEDDeclare cmdLEDLights = new LEDDeclare();
 
   //Climber commands
-  private final ClimberSolenoid clampOne = new ClimberSolenoid(m_doritoclimber, 1, true);
-  private final ClimberSolenoid clampTwo = new ClimberSolenoid(m_doritoclimber, 2, true);
-  private final ClimberSolenoid clampThree = new ClimberSolenoid(m_doritoclimber, 3, true);
+  private final ClimberStage1 clampOne = new ClimberStage1(m_doritoclimber);
+  private final ClimberStage2 clampTwo = new ClimberStage2(m_doritoclimber);
+  private final ClimberStage3 clampThree = new ClimberStage3(m_doritoclimber);
 
   //Defining Xboxcontroller
   public static final XboxController driverController = new XboxController(ControllerConstants.DRIVER_CONTROLLER);
@@ -123,7 +126,7 @@ public class RobotContainer {
     configureButtonBindings();
    
    //Declaring commands in Robot Container
-   m_DriveTrain.setDefaultCommand(new DriveMecanum());
+   m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
 
   }
   /**

@@ -4,21 +4,31 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimberConstants;
+import frc.robot.Constants.IntakeConstants;
 
 public class DoritoClimber extends SubsystemBase {
   /** Creates a new DoritoClimber. */
   Solenoid doritoSolenoidOne = null;
-  Solenoid doritoSulenoidTwo = null;
+  Solenoid doritoSolenoidTwo = null;
   Solenoid doritoSolenoidThree = null;
 
+  CANSparkMax mainDoritoSparkMax = null; 
+
   public DoritoClimber() {
-    doritoSolenoidOne = new Solenoid(PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_ONE);
-    doritoSulenoidTwo = new Solenoid(PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_TWO);
-    doritoSolenoidThree = new Solenoid(PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_THREE);
+    //Defining Solenoid
+    doritoSolenoidOne = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_PORT_ONE);
+    doritoSolenoidTwo = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_PORT_TWO);
+    doritoSolenoidThree = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_PORT_THREE);
+
+    //Defining SparkMax
+    mainDoritoSparkMax = new CANSparkMax(ClimberConstants.MAIN_DORITO_SPARKMAX, MotorType.kBrushless);
 
   }
 
@@ -26,10 +36,14 @@ public class DoritoClimber extends SubsystemBase {
     doritoSolenoidOne.set(climberOneActive);
   }
   public void toggleClimberTwo(boolean climberTwoActive) {
-    doritoSulenoidTwo.set(climberTwoActive);
+    doritoSolenoidTwo.set(climberTwoActive);
   }
   public void toggleClimberThree(boolean climberThreeActive) {
     doritoSolenoidThree.set(climberThreeActive);
+  }
+
+  public void DoritoClimber(double inputAmount) {
+    mainDoritoSparkMax.set(inputAmount);
   }
 
   @Override

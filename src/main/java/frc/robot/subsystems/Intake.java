@@ -26,7 +26,7 @@ public class Intake extends SubsystemBase {
    intakeMainSparkMax = new CANSparkMax(IntakeConstants.INTAKE_MAIN_SPARKMAX, MotorType.kBrushless);
 
    //Intializing Solenoid
-   intakeMainSolenoids = new Solenoid(PneumaticsModuleType.REVPH, IntakeConstants.PORT_PCM_MAIN);
+   intakeMainSolenoids = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, IntakeConstants.INTAKE_SOLENOIDS_PORT);
 
   }
 

@@ -138,6 +138,8 @@ public static final class IntakeConstants {
     public static final int INTAKE_MAIN_SPARKMAX = 22;  
     //Adding CAN Ports to Solenoid
     public static final int PORT_PCM_MAIN = 2;
+    //Solenoid Ports on PCM
+    public static final int INTAKE_SOLENOIDS_PORT = 4;
 }
 
 public static final class FeederConstants {
@@ -150,9 +152,12 @@ public static final class LEDConstants {
     }
     
 public static final class ClimberConstants {
-    public static final int DORITO_SOLENOID_ONE = 0;
-    public static final int DORITO_SOLENOID_TWO = 0;
-    public static final int DORITO_SOLENOID_THREE = 0;
+    public static final int DORITO_SOLENOID_PORT_ONE = 1;
+    public static final int DORITO_SOLENOID_PORT_TWO = 2;
+    public static final int DORITO_SOLENOID_PORT_THREE = 3;
+
+    //Sparkmax CAN port
+    public static final int MAIN_DORITO_SPARKMAX = 23;
 }
 
 
