@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ControllerConstants;
 import frc.robot.subsystems.DriveTrain;
 
 public class DriveMecanum extends CommandBase {
@@ -32,8 +33,21 @@ public class DriveMecanum extends CommandBase {
     double moveSpeedY = RobotContainer.driverController.getLeftY();
     boolean gyroIsUsed = false;
 
+  //Controllor Deadband
+  if (moveSpeedY <= ControllerConstants.DRIVER_CONTROLLER_DEADBAND && moveSpeedY >= (-1 * ControllerConstants.DRIVER_CONTROLLER_DEADBAND)) {
+  moveSpeedY = 0;
+}
+  if (moveSpeedX <= ControllerConstants.DRIVER_CONTROLLER_DEADBAND && moveSpeedX >= (-1 * ControllerConstants.DRIVER_CONTROLLER_DEADBAND)) {
+  moveSpeedX = 0;
+}
+  if (rotateSpeedZ <= ControllerConstants.DRIVER_CONTROLLER_DEADBAND && rotateSpeedZ >= (-1 * ControllerConstants.DRIVER_CONTROLLER_DEADBAND)) {
+  rotateSpeedZ = 0;
+}  
+
   //Call cartesianDrive
   sysDriveTrain.cartesianDrive(moveSpeedY, moveSpeedX, rotateSpeedZ, gyroIsUsed);
+
+ 
   }
 
   // Called once the command ends or is interrupted.

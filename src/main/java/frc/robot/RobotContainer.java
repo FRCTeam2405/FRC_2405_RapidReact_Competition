@@ -24,10 +24,10 @@ import frc.robot.Constants.DrivetrainAutonomousConstants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.EncoderConstants;
 import frc.robot.Constants.IntakeConstants;
-import frc.robot.commands.ClimberSolenoid;
 import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
+import frc.robot.commands.DoritoLifter;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.ExampleCommand;
@@ -101,14 +101,17 @@ public class RobotContainer {
   private final ClimberStage2 clampTwo = new ClimberStage2(m_doritoclimber);
   private final ClimberStage3 clampThree = new ClimberStage3(m_doritoclimber);
 
+  //Dorito Lifter Command
+  private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber);
+
   //Defining Xboxcontroller
-  public static final XboxController driverController = new XboxController(ControllerConstants.DRIVER_CONTROLLER);
-  private final JoystickButton driverMainButtonX = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_X);
-  private final JoystickButton driverMainButtonB = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_B);
-  private final JoystickButton driverMainButtonY = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_Y);
-  private final JoystickButton driverMainButtonA = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUTTON_A);
-  private final JoystickButton driverMainBumperRight = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUMPER_RIGHT);
-  private final JoystickButton driverMainBumperLeft = new JoystickButton(driverController, ControllerConstants.DRIVER_CONTROLLER_BUMPER_LEFT);
+  public static final XboxController driverController = new XboxController(ControllerConstants.Driver.DRIVER_CONTROLLER);
+  private final JoystickButton driverMainButtonX = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUTTON_X);
+  private final JoystickButton driverMainButtonB = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUTTON_B);
+  private final JoystickButton driverMainButtonY = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUTTON_Y);
+  private final JoystickButton driverMainButtonA = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUTTON_A);
+  private final JoystickButton driverMainBumperRight = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUMPER_RIGHT);
+  private final JoystickButton driverMainBumperLeft = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUMPER_LEFT);
 
   //Defining Arcade Controller
   public static final Joystick secondarycontroller = new Joystick(1);

@@ -15,17 +15,21 @@ import frc.robot.Constants.IntakeConstants;
 
 public class DoritoClimber extends SubsystemBase {
   /** Creates a new DoritoClimber. */
+  //Defining Solenoids
   Solenoid doritoSolenoidOne = null;
   Solenoid doritoSolenoidTwo = null;
   Solenoid doritoSolenoidThree = null;
+  Solenoid doritoLifterSolenoid = null;
 
+  //Defining SparkMax
   CANSparkMax mainDoritoSparkMax = null; 
 
   public DoritoClimber() {
-    //Defining Solenoid
+    //Defining Solenoids
     doritoSolenoidOne = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_PORT_ONE);
     doritoSolenoidTwo = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_PORT_TWO);
     doritoSolenoidThree = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, ClimberConstants.DORITO_SOLENOID_PORT_THREE);
+    doritoLifterSolenoid = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, ClimberConstants.DORITO_LIFTER_SOLENOID_PORT);
 
     //Defining SparkMax
     mainDoritoSparkMax = new CANSparkMax(ClimberConstants.MAIN_DORITO_SPARKMAX, MotorType.kBrushless);
@@ -44,6 +48,10 @@ public class DoritoClimber extends SubsystemBase {
 
   public void DoritoClimber(double inputAmount) {
     mainDoritoSparkMax.set(inputAmount);
+  }
+
+  public void toggleDoritoLifterSolenoid(boolean isEngaged) {
+    doritoLifterSolenoid.set(isEngaged);
   }
 
   @Override
