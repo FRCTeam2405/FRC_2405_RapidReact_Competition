@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsystems.Intake;
@@ -28,6 +29,9 @@ public class IntakeDeploy extends CommandBase {
   
   public void execute() {
     sysIntake.ToggleIntake(IntakeConstants.INTAKE_DEFAULT_SPEED, true);
+  
+    double feederPercentCargo = SmartDashboard.getNumber("IntakePercentOutput", -0.75);  
+  
   }
 
   // Called once the command ends or is interrupted.

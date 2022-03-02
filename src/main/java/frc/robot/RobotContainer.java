@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.DrivetrainAutonomousConstants;
 import frc.robot.Constants.DrivetrainConstants;
@@ -153,6 +154,12 @@ public class RobotContainer {
    
    //Declaring commands in Robot Container
    m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
+
+   //Testing feeder otor speed on the dashbord 
+   SmartDashboard.putNumber("IntakePercentOutput", -0.75);
+   SmartDashboard.putNumber("FeederPercentOutput", -0.50);
+   SmartDashboard.putNumber("ShooterPercentOutput", 0.35);
+
 
   }
   /**
