@@ -66,7 +66,7 @@ public class DriveAuto extends CommandBase {
    new MecanumControllerCommand(
      exampleTrajectory, 
      RobotContainer.m_DriveTrain::getPose, 
-     EncoderConstants.DRIVETRAIN_ENCODER_FEED_FORWARD, 
+     EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_FEED_FORWARD, 
      DrivetrainAutonomousConstants.DRIVETRAIN_MECANUM_KINEMATICS, 
      
      // Position contollers
@@ -78,10 +78,10 @@ public class DriveAuto extends CommandBase {
      DrivetrainAutonomousConstants.DRIVETRAIN_MAX_SPEED_PER_SECOND_METERS, 
      
      // Velocity PID's
-     new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_FRONT_LEFT_VELOCITY_PERCENT, 0, 0),
-     new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_BACK_LEFT_VELOCITY_PERCENT, 0, 0),
-     new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_FRONT_RIGHT_VELOCITY_PERCENT, 0, 0),
-     new PIDController(EncoderConstants.DRIVETRAIN_ENCODER_BACK_RIGHT_VELOCITY_PERCENT, 0, 0),
+     new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_FRONT_LEFT_VELOCITY_PERCENT, 0, 0),
+     new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_BACK_LEFT_VELOCITY_PERCENT, 0, 0),
+     new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_FRONT_RIGHT_VELOCITY_PERCENT, 0, 0),
+     new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_BACK_RIGHT_VELOCITY_PERCENT, 0, 0),
 
      RobotContainer.m_DriveTrain::getCurrentDrivetrainWheelSpeeds, 
      RobotContainer.m_DriveTrain::setDriveMotorControllersVolts, 

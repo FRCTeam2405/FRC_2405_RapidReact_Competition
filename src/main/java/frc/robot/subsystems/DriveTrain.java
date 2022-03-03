@@ -70,27 +70,27 @@ public class DriveTrain extends SubsystemBase {
 
     //Initalizing Drivetrain Encoders
     drivetrainLeftFrontEncoder = new Encoder(
-      EncoderConstants.DRIVETRAIN_LEFTFRONT_ENCODER_01,
-      EncoderConstants.DRIVETRAIN_LEFTFRONT_ENCODER_02,
-      EncoderConstants.DRIVETRAIN_LEFTFRONT_ENCODER_ISREVERSED
+      EncoderConstants.Drivetrain.DRIVETRAIN_LEFTFRONT_ENCODER_01,
+      EncoderConstants.Drivetrain.DRIVETRAIN_LEFTFRONT_ENCODER_02,
+      EncoderConstants.Drivetrain.DRIVETRAIN_LEFTFRONT_ENCODER_ISREVERSED
     );
 
     drivetrainLeftBackEncoder = new Encoder(
-      EncoderConstants.DRIVETRAIN_LEFTBACK_ENCODER_01,
-      EncoderConstants.DRIVETRAIN_LEFTBACK_ENCODER_02,
-      EncoderConstants.DRIVETRAIN_LEFTBACK_ENCODER_ISREVERSED
+      EncoderConstants.Drivetrain.DRIVETRAIN_LEFTBACK_ENCODER_01,
+      EncoderConstants.Drivetrain.DRIVETRAIN_LEFTBACK_ENCODER_02,
+      EncoderConstants.Drivetrain.DRIVETRAIN_LEFTBACK_ENCODER_ISREVERSED
     );
 
     drivetrainRightFrontEncoder = new Encoder(
-      EncoderConstants.DRIVETRAIN_RIGHTFRONT_ENCODER_01,
-      EncoderConstants.DRIVETRAIN_RIGHTFRONT_ENCODER_02,
-      EncoderConstants.DRIVETRAIN_RIGHTFRONT_ENCODER_ISREVERSED
+      EncoderConstants.Drivetrain.DRIVETRAIN_RIGHTFRONT_ENCODER_01,
+      EncoderConstants.Drivetrain.DRIVETRAIN_RIGHTFRONT_ENCODER_02,
+      EncoderConstants.Drivetrain.DRIVETRAIN_RIGHTFRONT_ENCODER_ISREVERSED
     );
 
     drivetrainRightBackEncoder = new Encoder(
-      EncoderConstants.DRIVETRAIN_RIGHTBACK_ENCODER_01,
-      EncoderConstants.DRIVETRAIN_RIGHTBACK_ENCODER_02,
-      EncoderConstants.DRIVETRAIN_RIGHTBACK_ENCODER_ISREVERSED
+      EncoderConstants.Drivetrain.DRIVETRAIN_RIGHTBACK_ENCODER_01,
+      EncoderConstants.Drivetrain.DRIVETRAIN_RIGHTBACK_ENCODER_02,
+      EncoderConstants.Drivetrain.DRIVETRAIN_RIGHTBACK_ENCODER_ISREVERSED
     );
 
     //Initalizing Drivetrain Gyro
@@ -100,10 +100,10 @@ public class DriveTrain extends SubsystemBase {
     drivetrainMecanumOdometry = new MecanumDriveOdometry(DrivetrainAutonomousConstants.DRIVETRAIN_MECANUM_KINEMATICS, drivetrainGyro.getRotation2d());
 
     // Set Encoder Distance per Pulse
-    drivetrainLeftFrontEncoder.setDistancePerPulse(EncoderConstants.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
-    drivetrainLeftBackEncoder.setDistancePerPulse(EncoderConstants.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
-    drivetrainRightFrontEncoder.setDistancePerPulse(EncoderConstants.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
-    drivetrainRightBackEncoder.setDistancePerPulse(EncoderConstants.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
+    drivetrainLeftFrontEncoder.setDistancePerPulse(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
+    drivetrainLeftBackEncoder.setDistancePerPulse(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
+    drivetrainRightFrontEncoder.setDistancePerPulse(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
+    drivetrainRightBackEncoder.setDistancePerPulse(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE);
 
   }
   

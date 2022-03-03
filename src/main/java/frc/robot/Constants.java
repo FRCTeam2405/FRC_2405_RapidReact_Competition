@@ -78,25 +78,27 @@ new MecanumDriveKinematics(
 }
 
 public static final class EncoderConstants {
-    //Encoder is Reversed
+
+public static final class Drivetrain {
+    //Drivetrain Encoder is Reversed
     public static final boolean DRIVETRAIN_LEFTFRONT_ENCODER_ISREVERSED = true;
     public static final boolean DRIVETRAIN_LEFTBACK_ENCODER_ISREVERSED = true;
     public static final boolean DRIVETRAIN_RIGHTFRONT_ENCODER_ISREVERSED = false;
     public static final boolean DRIVETRAIN_RIGHTBACK_ENCODER_ISREVERSED = false;
 
-    //Encoder distance per pulse
+    //Drivetrain Encoder distance per pulse
     public static final double DRIVETRAIN_ENCODER_DISTANCE_PER_PULSE = 
-    (DrivetrainAutonomousConstants.DRIVETRAIN_WHEEL_DIAMETER_METERS * Math.PI) / (double) EncoderConstants.DRIVETRAIN_ENCODER_CYCLES_PER_ROTATION;
-
+    (DrivetrainAutonomousConstants.DRIVETRAIN_WHEEL_DIAMETER_METERS * Math.PI) / (double) EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_CYCLES_PER_ROTATION;
+ 
     //Encoder Cycles per Rotation
     public static final int DRIVETRAIN_ENCODER_CYCLES_PER_ROTATION = 2048;
-
+ 
     //Encoder Velocity Percent
     public static final double DRIVETRAIN_ENCODER_FRONT_LEFT_VELOCITY_PERCENT = .5;
     public static final double DRIVETRAIN_ENCODER_BACK_LEFT_VELOCITY_PERCENT = .5;
     public static final double DRIVETRAIN_ENCODER_FRONT_RIGHT_VELOCITY_PERCENT = .5;
     public static final double DRIVETRAIN_ENCODER_BACK_RIGHT_VELOCITY_PERCENT = .5;
-
+ 
     //Encoder Channels
     public static final int DRIVETRAIN_LEFTFRONT_ENCODER_01 = 0;
     public static final int DRIVETRAIN_LEFTFRONT_ENCODER_02 = 1;
@@ -106,9 +108,25 @@ public static final class EncoderConstants {
     public static final int DRIVETRAIN_RIGHTFRONT_ENCODER_02 = 5;
     public static final int DRIVETRAIN_RIGHTBACK_ENCODER_01 = 6;
     public static final int DRIVETRAIN_RIGHTBACK_ENCODER_02 = 7;
-
+ 
     public static final SimpleMotorFeedforward DRIVETRAIN_ENCODER_FEED_FORWARD =
     new SimpleMotorFeedforward(1, 0.8, 0.15); // NEED TO CHANGE
+}
+
+public static final class Dorito {
+    //Dorito Encoder is Reversed
+    public static final boolean DORITO_MOTOR_ENCODER_ISREVERSED = false;
+
+    //Dorito Encoder Distance Per Pulse
+    public static final double DORITOMOTOR_DISTANCE_PER_PULSE = 0; //NEED TO CHANGE
+
+    //Cycles Per Revolution
+    public static final 
+}
+  
+  
+
+   
 }
 
 public static final class ControllerConstants {
