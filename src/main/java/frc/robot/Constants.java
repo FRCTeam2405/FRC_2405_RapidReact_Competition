@@ -121,7 +121,14 @@ public static final class Dorito {
     public static final double DORITOMOTOR_DISTANCE_PER_PULSE = 0; //NEED TO CHANGE
 
     //Cycles Per Revolution
-    public static final 
+    public static final int DORITOMOTOR_CYCLES_PER_REVOLUTION = 42;
+
+    //Velocity Percent
+    public static final double DORITOMOTOR_ENCODER_VELOCITY_PERCENT = .5; //NEED TO CHANGE
+
+    //Dorito Encoder Channels
+    public static final int DORITOMOTOR_ENCODER_CHANNEL_01 = 0;
+    public static final int DORITOMOTOR_ENCODER_CHANNEL_02 = 0;
 }
   
   
