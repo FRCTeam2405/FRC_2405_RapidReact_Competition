@@ -42,7 +42,9 @@ public class ShootHigh extends CommandBase {
      // RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, 0);
     // }
     
-    double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", 0.35);  
+    double feederPercentCargo = SmartDashboard.getNumber("ShooterPercentOutput", 0.35);  
+    sysShooter.Shoot(ControlMode.PercentOutput, feederPercentCargo);
+    
   }
 
   // Called once the command ends or is interrupted.

@@ -6,13 +6,20 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.LEDLights;
 
 public class LEDDeclare extends CommandBase {
+  private final LEDLights sysLEDLights;
+  private final double LEDsetting;
+
   /** Creates a new LEDDeclare. */
-  public LEDDeclare() {
-    // Use addRequirements() here to declare subsystem dependencies.
-  
-    addRequirements(RobotContainer.m_LEDsetting);
+  public LEDDeclare(LEDLights insysLEDLights, double inLEDsetting) {
+
+    sysLEDLights = insysLEDLights;
+    LEDsetting = inLEDsetting;
+
+    // Use addRequirements() here to declare subsystem dependencies.  
+    addRequirements(sysLEDLights);
   }
 
   // Called when the command is initially scheduled.
@@ -22,7 +29,7 @@ public class LEDDeclare extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_LEDsetting.setLEDValue(-0.89);
+    RobotContainer.m_LEDsetting.setLEDValue(LEDsetting);
   }
 
   // Called once the command ends or is interrupted.

@@ -106,7 +106,10 @@ public class RobotContainer {
   private final DriveAuto cmdDriveAuto = new DriveAuto();
 
   //LED Commands
-  private final LEDDeclare cmdLEDLights = new LEDDeclare();
+  private final LEDDeclare cmdLEDLightsIntake = new LEDDeclare(m_LEDsetting, -.87);
+  private final LEDDeclare cmdLEDLightsShootLow = new LEDDeclare(m_LEDsetting, -.87);
+  private final LEDDeclare cmdLEDLightsShootHigh = new LEDDeclare(m_LEDsetting, -.87);
+  private final LEDDeclare cmdLEDLightsLEDs = new LEDDeclare(m_LEDsetting, SmartDashboard.getNumber("LEDSet", -.69));
 
   //Dorito Clamp commands
   private final ClimberStage1 clampOne = new ClimberStage1(m_doritoclimber);
@@ -159,7 +162,7 @@ public class RobotContainer {
    SmartDashboard.putNumber("IntakePercentOutput", -0.75);
    SmartDashboard.putNumber("FeederPercentOutput", -0.50);
    SmartDashboard.putNumber("ShooterPercentOutput", 0.35);
-
+   SmartDashboard.putNumber("LEDSet", -.69);
 
   }
   /**
@@ -176,12 +179,12 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
    //Button Mappings
-   driverMainButtonX.whenPressed(cmdIntakeDeploy);
+   driverMainButtonX.whenPressed(cmdIntakeDeploy.andThen(cmdLEDLightsIntake));
    driverMainButtonB.whenPressed(cmdIntakeRetract);
    driverMainButtonY.whenPressed(cmdShootHigh);
    driverMainButtonA.toggleWhenPressed(cmdShootLow.andThen(cmdFeedCargo));
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
-   driverMainBumperLeft.toggleWhenPressed(cmdLEDLights, true);
+   driverMainBumperLeft.toggleWhenPressed(cmdLEDLightsLEDs, true);
   
    //Secondary Button Mappings
    driversecondarybuttonX.toggleWhenPressed(clampOne);
