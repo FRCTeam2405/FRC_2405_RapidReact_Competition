@@ -17,7 +17,7 @@ public class ShootLow extends CommandBase {
   public ShootLow(Shooter inSysShooter) {
     sysShooter = inSysShooter;
     // Use addRequirements() here to declare subsystem dependencies.
-  addRequirements(RobotContainer.m_Shooter);
+  addRequirements(sysShooter);
   }
 
   // Called when the command is initially scheduled.
@@ -32,10 +32,10 @@ public class ShootLow extends CommandBase {
   
    if (shootLow){
     //Setting percent output if A pressed 
-   RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, .20);
+    sysShooter.Shoot(ControlMode.PercentOutput, .20);
        
      } else{
-      RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, 0);
+      sysShooter.Shoot(ControlMode.PercentOutput, 0);
      }
   }
 

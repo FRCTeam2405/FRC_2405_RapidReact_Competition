@@ -181,8 +181,8 @@ public class RobotContainer {
    //Button Mappings
    driverMainButtonX.whenPressed(cmdIntakeDeploy.andThen(cmdLEDLightsIntake));
    driverMainButtonB.whenPressed(cmdIntakeRetract);
-   driverMainButtonY.whenPressed(cmdShootHigh);
-   driverMainButtonA.toggleWhenPressed(cmdShootLow.andThen(cmdFeedCargo));
+   driverMainButtonY.whenPressed(cmdShootHigh.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootHigh));
+   driverMainButtonA.toggleWhenPressed(cmdShootLow.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow));
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
    driverMainBumperLeft.toggleWhenPressed(cmdLEDLightsLEDs, true);
   

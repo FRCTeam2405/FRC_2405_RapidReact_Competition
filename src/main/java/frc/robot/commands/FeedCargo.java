@@ -18,7 +18,7 @@ public class FeedCargo extends CommandBase {
     sysFeeder = inSysFeeder;
     // Use addRequirements() here to declare subsystem dependencies.
 
-    addRequirements(RobotContainer.m_feedermotor);
+    addRequirements(sysFeeder);
 
   }
 
@@ -31,13 +31,13 @@ public class FeedCargo extends CommandBase {
   public void execute() {
 
     double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", -0.50);  
-    RobotContainer.m_feedermotor.feedCargo(feederPercentCargo);
+    sysFeeder.feedCargo(feederPercentCargo);
     }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_feedermotor.feedCargo(0);
+    sysFeeder.feedCargo(0);
   }
 
   // Returns true when the command should end.

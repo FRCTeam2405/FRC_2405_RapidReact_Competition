@@ -30,8 +30,8 @@ public class ShootHigh extends CommandBase {
   @Override
   public void execute() {
      //Defining shootHigh 
-   boolean shootHigh = RobotContainer.driverController.getYButton();
-  
+
+     
    // if (shootHigh){
     //Setting percent output if Y pressed 
    // RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, .25);
@@ -50,7 +50,7 @@ public class ShootHigh extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, 0);
+    sysShooter.Shoot(ControlMode.PercentOutput, 0);
   }
 
   // Returns true when the command should end.
