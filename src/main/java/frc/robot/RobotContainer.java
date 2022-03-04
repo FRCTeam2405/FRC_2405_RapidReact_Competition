@@ -183,7 +183,7 @@ public class RobotContainer {
    driverMainButtonX.whenPressed(cmdIntakeDeploy.andThen(cmdLEDLightsIntake));
    driverMainButtonB.whenPressed(cmdIntakeRetract);
    driverMainButtonY.whenPressed(cmdShootHigh.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootHigh));
-   driverMainButtonA.toggleWhenPressed(cmdShootLow.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow));
+   driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
    driverMainBumperLeft.toggleWhenPressed(cmdLEDLightsLEDs, true);
   

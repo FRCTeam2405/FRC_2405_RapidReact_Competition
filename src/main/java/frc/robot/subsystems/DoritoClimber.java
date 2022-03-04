@@ -46,7 +46,7 @@ public class DoritoClimber extends SubsystemBase {
     doritoSolenoidThree.set(climberThreeActive);
   }
 
-  public void DoritoClimber(double inputAmount) {
+  public void DoritoClimberMotor(double inputAmount) {
     mainDoritoSparkMax.set(inputAmount);
   }
 

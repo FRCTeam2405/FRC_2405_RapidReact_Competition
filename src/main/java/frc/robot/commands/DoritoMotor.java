@@ -28,7 +28,7 @@ public class DoritoMotor extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.DoritoClimber(ClimberConstants.DORITO_DEFAULT_SPEED);
+    sysClimber.DoritoClimberMotor(ClimberConstants.DORITO_DEFAULT_SPEED);
   
     double doritoSpinningPercent = SmartDashboard.getNumber("doritoSpinner", 0.5);   
   }
@@ -36,7 +36,7 @@ public class DoritoMotor extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sysClimber.DoritoClimber(0);
+    sysClimber.DoritoClimberMotor(0);
   }
 
   // Returns true when the command should end.
