@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.subsystems.DoritoClimber;
@@ -28,6 +29,8 @@ public class DoritoMotor extends CommandBase {
   @Override
   public void execute() {
     sysClimber.DoritoClimber(ClimberConstants.DORITO_DEFAULT_SPEED);
+  
+    double doritoSpinningPercent = SmartDashboard.getNumber("doritoSpinner", 0.5);   
   }
 
   // Called once the command ends or is interrupted.

@@ -163,6 +163,7 @@ public class RobotContainer {
    SmartDashboard.putNumber("FeederPercentOutput", -0.50);
    SmartDashboard.putNumber("ShooterPercentOutput", 0.35);
    SmartDashboard.putNumber("LEDSet", -.69);
+   SmartDashboard.putNumber("doritoSpinner", -.69);
 
   }
   /**
