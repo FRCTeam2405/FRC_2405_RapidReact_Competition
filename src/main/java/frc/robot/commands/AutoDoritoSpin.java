@@ -7,12 +7,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DoritoClimber;
 
-public class DoritoSpinAuto extends CommandBase {
+public class AutoDoritoSpin extends CommandBase {
 
   private final DoritoClimber sysClimber;
 
   /** Creates a new ClimberStage1. */
-  public DoritoSpinAuto(DoritoClimber inSysClimber)  {
+  public AutoDoritoSpin(DoritoClimber inSysClimber)  {
     sysClimber = inSysClimber;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysClimber);
