@@ -7,17 +7,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DoritoClimber;
 
-public class ClimberStage1 extends CommandBase {
+public class ClimberStageTwoRelease extends CommandBase {
 
   private final DoritoClimber sysClimber;
-  
 
-  /** Creates a new ClimberStage1. */
-  public ClimberStage1(DoritoClimber inSysClimber)  {
+  /** Creates a new ClimberStageTwoRelease. */
+  public ClimberStageTwoRelease(DoritoClimber inSysClimber)  {
     sysClimber = inSysClimber;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysClimber);
+
   }
+
 
   // Called when the command is initially scheduled.
   @Override
@@ -26,14 +27,13 @@ public class ClimberStage1 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.toggleClimberStageOne(true);
+    sysClimber.climberClampStageTwoRetract();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
-    sysClimber.toggleClimberStageOne(false);
+    sysClimber.climberClampStageTwoRetract();
   }
 
   // Returns true when the command should end.

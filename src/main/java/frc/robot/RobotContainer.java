@@ -17,6 +17,7 @@ import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
 import frc.robot.commands.DoritoLifter;
 import frc.robot.commands.DoritoMotor;
+import frc.robot.commands.AutoDoritoClimb;
 import frc.robot.commands.AutoDoritoSpin;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
@@ -92,6 +93,10 @@ public class RobotContainer {
   private final LEDDeclare cmdLEDLightsShootHigh = new LEDDeclare(m_LEDsetting, -.87);
   private final LEDDeclare cmdLEDLightsLEDs = new LEDDeclare(m_LEDsetting, SmartDashboard.getNumber("LEDSet", -.69));
 
+  //-----------------
+  // Dorito Commands
+  //-----------------
+
   //Dorito Clamp commands
   private final ClimberStage1 clampOne = new ClimberStage1(m_doritoclimber);
   private final ClimberStage2 clampTwo = new ClimberStage2(m_doritoclimber);
@@ -102,6 +107,8 @@ public class RobotContainer {
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
   //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
+  //AutoDoritoClimb
+  private final AutoDoritoClimb cAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber);
   
 
   //---------------------------------------------------------------------------------------
@@ -122,10 +129,10 @@ public class RobotContainer {
 
   //Defining Arcade Controller
   public static final Joystick secondarycontroller = new Joystick(1);
-  public static final JoystickButton driversecondarybuttonX = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_X);
-  public static final JoystickButton driversecondarybuttonA = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_A);
-  public static final JoystickButton driversecondarybuttonB = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_B);
-  public static final JoystickButton driverSecondaryButtonY = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_Y);
+  public static final JoystickButton driversecondarybuttonX = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_RED);
+  public static final JoystickButton driversecondarybuttonA = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_YELLOW);
+  public static final JoystickButton driversecondarybuttonB = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_GREEN);
+  public static final JoystickButton driverSecondaryButtonY = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE);
   public static final JoystickButton driverSecondaryLeftBumper = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER);
   public static final JoystickButton driverSecondaryRightBumper = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_RIGHT_BUMPER);
 

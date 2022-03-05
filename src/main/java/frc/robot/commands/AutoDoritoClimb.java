@@ -4,7 +4,6 @@
 
 package frc.robot.commands;
 
-import org.ejml.data.CMatrixD1;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DoritoClimber;
@@ -26,12 +25,13 @@ new AutoDoritoSpin(m_doritoclimber),
 //Activate clamp 2
 new ClimberStage2(m_doritoclimber),
 //Release clamp 1
-
+new ClimberStageOneRelease(m_doritoclimber),
 //Spin to bar 4
 new AutoDoritoSpin(m_doritoclimber),
 //Activate clamp 3
-new ClimberStage3(m_doritoclimber)
+new ClimberStage3(m_doritoclimber),
 //Release clamp 2
+new ClimberStageTwoRelease(m_doritoclimber)
 
 
     );
