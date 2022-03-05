@@ -4,16 +4,6 @@
 
 package frc.robot;
 
-import java.util.List;
-
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryConfig;
-import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
@@ -21,9 +11,6 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ControllerConstants;
-import frc.robot.Constants.DrivetrainAutonomousConstants;
-import frc.robot.Constants.DrivetrainConstants;
-import frc.robot.Constants.EncoderConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
@@ -33,7 +20,6 @@ import frc.robot.commands.DoritoMotor;
 import frc.robot.commands.AutoDoritoSpin;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.FeedCargo;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeRetract;
@@ -42,14 +28,11 @@ import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
 import frc.robot.subsystems.DoritoClimber;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -60,10 +43,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
+  
   //------------
   // Subsystems
   //------------
@@ -120,8 +100,9 @@ public class RobotContainer {
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber);
   //Dorito Motor Command
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
-  //Dorito Auto Motor Command
+  //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
+  
 
   //---------------------------------------------------------------------------------------
 
@@ -197,7 +178,7 @@ public class RobotContainer {
    driversecondarybuttonB.toggleWhenPressed(clampThree);
    driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage);
    driverSecondaryLeftBumper.toggleWhenPressed(cmdDoritoMotorEngage);
-   
+
   }
   //----------------------------------------------------------------------
 
