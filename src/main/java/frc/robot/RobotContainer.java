@@ -30,6 +30,7 @@ import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
 import frc.robot.commands.DoritoLifter;
 import frc.robot.commands.DoritoMotor;
+import frc.robot.commands.AutoDoritoSpin;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.ExampleCommand;
@@ -119,6 +120,8 @@ public class RobotContainer {
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber);
   //Dorito Motor Command
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
+  //Dorito Auto Motor Command
+  private final AutoDoritoSpin cmdDoritoSpinAuto = new AutoDoritoSpin(m_doritoclimber);
 
   //---------------------------------------------------------------------------------------
 
@@ -143,6 +146,7 @@ public class RobotContainer {
   public static final JoystickButton driversecondarybuttonB = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_B);
   public static final JoystickButton driverSecondaryButtonY = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_Y);
   public static final JoystickButton driverSecondaryLeftBumper = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER);
+  public static final JoystickButton driverSecondaryRightBumper = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_RIGHT_BUMPER);
 
   //------------------------------------------------------------------------------------------
 
@@ -180,9 +184,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
    //Button Mappings
-   driverMainButtonX.whenPressed(cmdIntakeDeploy.andThen(cmdLEDLightsIntake));
+   driverMainButtonX.whenPressed(cmdIntakeDeploy);//.andThen(cmdLEDLightsIntake));
    driverMainButtonB.whenPressed(cmdIntakeRetract);
-   driverMainButtonY.whenPressed(cmdShootHigh.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootHigh));
+   driverMainButtonY.whenPressed(cmdShootHigh.andThen(cmdFeedCargo));//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
    driverMainBumperLeft.toggleWhenPressed(cmdLEDLightsLEDs, true);

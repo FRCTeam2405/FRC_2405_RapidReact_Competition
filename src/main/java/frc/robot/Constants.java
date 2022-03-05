@@ -165,6 +165,7 @@ public static final class ControllerConstants {
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_B = 2;
         
         public static final int SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER = 5;
+        public static final int SECONDARYDRIVER_CONTROLLER_RIGHT_BUMPER = 6;
 
     }
    

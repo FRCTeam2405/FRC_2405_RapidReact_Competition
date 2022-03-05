@@ -40,10 +40,10 @@ public class DoritoClimber extends SubsystemBase {
     mainDoritoSparkMax = new CANSparkMax(ClimberConstants.MAIN_DORITO_SPARKMAX, MotorType.kBrushless);
 
   //Initalizing Drivetrain Encoders
-  doritoSpinnerEncoder = new Encoder(
-    Dorito.DORITOMOTOR_ENCODER_CHANNEL_01,
-    Dorito.DORITOMOTOR_ENCODER_CHANNEL_02
-);
+ // doritoSpinnerEncoder = new Encoder(
+ //   Dorito.DORITOMOTOR_ENCODER_CHANNEL_01,
+ //   Dorito.DORITOMOTOR_ENCODER_CHANNEL_02
+//);
 
   }
 
