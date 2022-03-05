@@ -7,33 +7,32 @@ package frc.robot.commands;
 import org.ejml.data.CMatrixD1;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.DoritoClimber;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class AutoDoritoClimb extends SequentialCommandGroup {
   /** Creates a new DoritoAutoClimb. */
-  public AutoDoritoClimb() {
+  public AutoDoritoClimb(DoritoClimber m_doritoclimber) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-//Set dorito spinner to ◬ (clamp 1 up)
-
-//lift dorito
 
 //Activate clamp 1
-
+new ClimberStage1(m_doritoclimber),
 //Spin to bar 3
-
-//Actiate clamp 2
-
-//Relese clamp 1
+new AutoDoritoSpin(m_doritoclimber),
+//Activate clamp 2
+new ClimberStage2(m_doritoclimber),
+//Release clamp 1
 
 //Spin to bar 4
-
+new AutoDoritoSpin(m_doritoclimber),
 //Activate clamp 3
+new ClimberStage3(m_doritoclimber)
+//Release clamp 2
 
-//Relese clamp 2
 
     );
   }

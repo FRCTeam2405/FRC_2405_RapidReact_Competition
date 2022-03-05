@@ -121,7 +121,7 @@ public class RobotContainer {
   //Dorito Motor Command
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
   //Dorito Auto Motor Command
-  private final AutoDoritoSpin cmdDoritoSpinAuto = new AutoDoritoSpin(m_doritoclimber);
+  private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
 
   //---------------------------------------------------------------------------------------
 
@@ -197,6 +197,7 @@ public class RobotContainer {
    driversecondarybuttonB.toggleWhenPressed(clampThree);
    driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage);
    driverSecondaryLeftBumper.toggleWhenPressed(cmdDoritoMotorEngage);
+   
   }
   //----------------------------------------------------------------------
 

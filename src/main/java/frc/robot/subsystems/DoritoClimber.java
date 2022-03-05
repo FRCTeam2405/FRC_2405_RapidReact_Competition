@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimberConstants;
+import frc.robot.Constants.EncoderConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.EncoderConstants.Dorito;
 
@@ -39,10 +40,11 @@ public class DoritoClimber extends SubsystemBase {
     //Defining SparkMax
     mainDoritoSparkMax = new CANSparkMax(ClimberConstants.MAIN_DORITO_SPARKMAX, MotorType.kBrushless);
 
-  //Initalizing Drivetrain Encoders
- // doritoSpinnerEncoder = new Encoder(
- //   Dorito.DORITOMOTOR_ENCODER_CHANNEL_01,
- //   Dorito.DORITOMOTOR_ENCODER_CHANNEL_02
+  //Initalizing Dorito Spinner Encoders
+   //doritoSpinnerEncoder = new Encoder(
+    //Dorito.DORITOMOTOR_ENCODER_CHANNEL_01,
+    //Dorito.DORITOMOTOR_ENCODER_CHANNEL_02,
+    //Dorito.DORITO_MOTOR_ENCODER_ISREVERSED
 //);
 
   }
