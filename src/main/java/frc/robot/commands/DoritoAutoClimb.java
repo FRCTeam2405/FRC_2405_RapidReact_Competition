@@ -14,6 +14,25 @@ public class DoritoAutoClimb extends SequentialCommandGroup {
   public DoritoAutoClimb() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands();
+    addCommands(
+//Set dorito spinner to ◬ (clamp 1 up)
+
+//lift dorito
+
+//Activate clamp 1
+
+//Spin to bar 3
+
+//Actiate clamp 2
+
+//Relese clamp 1
+
+//Spin to bar 4
+
+//Activate clamp 3
+
+//Relese clamp 2
+
+    );
   }
 }
