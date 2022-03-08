@@ -26,14 +26,13 @@ new AutoDoritoSpin(m_doritoclimber),
 //Activate clamp 2
 new ClimberStage2(m_doritoclimber),
 //Release clamp 1
-
+new ClimberStage1(m_doritoclimber),
 //Spin to bar 4
 new AutoDoritoSpin(m_doritoclimber),
 //Activate clamp 3
-new ClimberStage3(m_doritoclimber)
+new ClimberStage3(m_doritoclimber),
 //Release clamp 2
-
-
+new ClimberStage2(m_doritoclimber)
     );
   }
 }
