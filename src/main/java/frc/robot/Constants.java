@@ -8,7 +8,6 @@ import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -159,10 +158,10 @@ public static final class ControllerConstants {
 
     public static final class SecondaryDriver {
         //Button Mapping
-        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_X = 3;
-        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_Y = 4;
-        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_A = 1;
-        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_B = 2;
+        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_RED = 3;
+        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_YELLOW = 4;
+        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_GREEN = 1;
+        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE = 2;
         
         public static final int SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER = 5;
         public static final int SECONDARYDRIVER_CONTROLLER_RIGHT_BUMPER = 6;
@@ -208,7 +207,7 @@ public static final class ClimberConstants {
     public static final int DORITO_LIFTER_SOLENOID_PORT = 0;
 
     //Dorito Default Speed
-    public static final double DORITO_DEFAULT_SPEED = .50;
+    public static final double DORITO_DEFAULT_SPEED = .05;
     //Sparkmax CAN port
     public static final int MAIN_DORITO_SPARKMAX = 23;
 }

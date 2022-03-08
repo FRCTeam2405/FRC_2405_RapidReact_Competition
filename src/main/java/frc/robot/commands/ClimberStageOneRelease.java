@@ -4,20 +4,18 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Feeder;
+import frc.robot.subsystems.DoritoClimber;
 
-public class FeedCargo extends CommandBase {
+public class ClimberStageOneRelease extends CommandBase {
 
-  private final Feeder sysFeeder;
-  
-  /** Creates a new feedCargo. */
-  public FeedCargo(Feeder inSysFeeder) {
-    sysFeeder = inSysFeeder;
+  private final DoritoClimber sysClimber;
+
+  /** Creates a new ClimberStageOneRelease. */
+  public ClimberStageOneRelease(DoritoClimber inSysClimber)  {
+    sysClimber = inSysClimber;
     // Use addRequirements() here to declare subsystem dependencies.
-
-    addRequirements(sysFeeder);
+    addRequirements(sysClimber);
 
   }
 
@@ -28,15 +26,13 @@ public class FeedCargo extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", -0.50);  
-    sysFeeder.feedCargo(feederPercentCargo);
-    }
+    sysClimber.climberClampStageOneRetract();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sysFeeder.feedCargo(0);
+    sysClimber.climberClampStageOneRetract();
   }
 
   // Returns true when the command should end.

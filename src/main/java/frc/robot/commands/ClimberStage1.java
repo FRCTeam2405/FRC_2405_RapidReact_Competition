@@ -26,14 +26,14 @@ public class ClimberStage1 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.toggleClimberOne(true);
+    sysClimber.toggleClimberStageOne(true);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     
-    sysClimber.toggleClimberOne(false);
+    sysClimber.toggleClimberStageOne(false);
   }
 
   // Returns true when the command should end.
