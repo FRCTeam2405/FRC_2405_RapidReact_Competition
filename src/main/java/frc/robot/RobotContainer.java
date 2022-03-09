@@ -25,6 +25,7 @@ import frc.robot.commands.FeedCargo;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeRetract;
 import frc.robot.commands.LEDDeclare;
+import frc.robot.commands.ShootCargo;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
 import frc.robot.subsystems.DoritoClimber;
@@ -92,6 +93,9 @@ public class RobotContainer {
   private final LEDDeclare cmdLEDLightsShootLow = new LEDDeclare(m_LEDsetting, -.87);
   private final LEDDeclare cmdLEDLightsShootHigh = new LEDDeclare(m_LEDsetting, -.87);
   private final LEDDeclare cmdLEDLightsLEDs = new LEDDeclare(m_LEDsetting, SmartDashboard.getNumber("LEDSet", -.69));
+
+  //Adding "ShootCargo"
+  private final ShootCargo cmdShootCargo = new ShootCargo(m_Shooter, m_feedermotor, m_LEDsetting);
 
   //-----------------
   // Dorito Commands
@@ -174,7 +178,7 @@ public class RobotContainer {
    //Button Mappings
    driverMainButtonX.whenPressed(cmdIntakeDeploy);//.andThen(cmdLEDLightsIntake));
    driverMainButtonB.whenPressed(cmdIntakeRetract);
-   driverMainButtonY.whenPressed(cmdShootHigh.andThen(cmdFeedCargo));//.andThen(cmdLEDLightsShootHigh));
+   driverMainButtonY.whenPressed(cmdShootCargo);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
    driverMainBumperLeft.toggleWhenPressed(cmdLEDLightsLEDs, true);
