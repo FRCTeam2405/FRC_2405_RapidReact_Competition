@@ -170,8 +170,8 @@ public class RobotContainer {
    m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
 
    //Testing feeder otor speed on the dashbord 
-   SmartDashboard.putNumber("IntakePercentOutput", -0.75);
-   SmartDashboard.putNumber("FeederPercentOutput", -0.50);
+   SmartDashboard.putNumber("IntakePercentOutput", 0.75);
+   SmartDashboard.putNumber("FeederPercentOutput", 0.50);
    SmartDashboard.putNumber("ShooterPercentOutput", 0.35);
    SmartDashboard.putNumber("LEDSet", -.69);
    SmartDashboard.putNumber("doritoSpinner", -.69);
