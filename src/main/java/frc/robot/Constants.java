@@ -158,10 +158,10 @@ public static final class ControllerConstants {
 
     public static final class SecondaryDriver {
         //Button Mapping
-        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_RED = 3;
+        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_RED = 2;
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_YELLOW = 4;
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_GREEN = 1;
-        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE = 2;
+        public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE = 3;
         
         public static final int SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER = 5;
         public static final int SECONDARYDRIVER_CONTROLLER_RIGHT_BUMPER = 6;
@@ -173,6 +173,9 @@ public static final class ControllerConstants {
 public static final class ShooterConstants {
     //Main Shooter TalonFX
     public static final int SHOOTER_MAIN_TALONFX = 20;
+    public static final int SHOOTER_HOOD_TALONSRX = 24;
+    public static final int SHOOT_HIGH_HOOD_LIMIT = 0;
+    public static final int SHOOT_LOW_HOOD_LIMIT = 0;
    
 }
   

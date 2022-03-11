@@ -171,11 +171,12 @@ public class RobotContainer {
 
    //Testing feeder otor speed on the dashbord 
    SmartDashboard.putNumber("IntakePercentOutput", 0.75);
-   SmartDashboard.putNumber("FeederPercentOutput", 0.50);
+   SmartDashboard.putNumber("FeederPercentOutput", 0.75);
    SmartDashboard.putNumber("ShooterPercentOutput", 0.35);
    SmartDashboard.putNumber("LEDSet", -.69);
-   SmartDashboard.putNumber("doritoSpinner", -.69);
-
+   SmartDashboard.putNumber("doritoSpinner", .25);
+   SmartDashboard.putNumber("ShooterHood", .1);
+   SmartDashboard.putNumber("ShooterHoodLower", -.1);
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
