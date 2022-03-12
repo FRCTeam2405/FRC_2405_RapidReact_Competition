@@ -29,9 +29,9 @@ public class lowHood extends CommandBase {
   @Override
   public void execute() {
     
-   if(!sysShooter.LimitSwitchHigh()) {
-     sysShooter.Hood(SmartDashboard.getNumber("ShooterHoodLower", -.1));
-    }
+   //if(!sysShooter.LimitSwitchLow()) {
+    // sysShooter.Hood(SmartDashboard.getNumber("ShooterHoodLower", -.1));
+   // }
   }
 
   // Called once the command ends or is interrupted.

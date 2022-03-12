@@ -129,7 +129,7 @@ public class RobotContainer {
   //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
   //AutoDoritoClimb
-  private final AutoDoritoClimb cAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber);
+  private final AutoDoritoClimb cmdAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber);
   
   //---------------------------------------------------------------------------------------
 
@@ -205,9 +205,10 @@ public class RobotContainer {
    driversecondarybuttonB.toggleWhenPressed(clampThree); //Button B Activated DoritoLifter
    driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage); // Button Y Activated Clamp 2
    driverSecondaryLeftBumper.toggleWhenPressed(cmdDoritoMotorEngage);
+   driverSecondaryRightBumper.whenPressed(cmdAutoDoritoClimb);
 
   }
-  //----------------------------------------------------------------------
+  //---------------------------------------------------------------------
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

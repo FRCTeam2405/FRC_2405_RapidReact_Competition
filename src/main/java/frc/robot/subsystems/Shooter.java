@@ -34,22 +34,22 @@ public class Shooter extends SubsystemBase {
   shooterMainTalonFX.set(motorMode, outPutValue);
 }
 
-public void Hood(double outPutValue){
-  shooterHoodTalonSRX.set(ControlMode.PercentOutput, outPutValue);
-}
+//public void Hood(double outPutValue){
+ // shooterHoodTalonSRX.set(ControlMode.PercentOutput, outPutValue);
+//}
 
-public boolean LimitSwitchHigh(){
-  return shooterLimitSwitchHigh.get();
-}
+//public boolean LimitSwitchHigh(){
+ // return shooterLimitSwitchHigh.get();
+//}
 
-public boolean LimitSwitchLow(){
-  return shooterLimitSwitchLow.get();
-}
+//public boolean LimitSwitchLow(){
+  //return shooterLimitSwitchLow.get();
+//}
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-  //SmartDashboard.putNumber("ShooterPercentOutput", shooterMainTalonFX.getSelectedSensorVelocity());
+ // SmartDashboard.putNumber("ShooterPercentOutput", shooterMainTalonFX.getSelectedSensorVelocity());
 
   }
 }
