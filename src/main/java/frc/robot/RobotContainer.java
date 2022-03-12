@@ -181,7 +181,7 @@ public class RobotContainer {
   
    //Secondary Button Mappings
    driversecondarybuttonX.toggleWhenPressed(clampOne);
-   driversecondarybuttonA.toggleWhenPressed(clampTwo);
+   driversecondarybuttonA.toggleWhenPressed(clampTwo); //Bug Found to be Ethan's code
    driversecondarybuttonB.toggleWhenPressed(clampThree);
    driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage);
    driverSecondaryLeftBumper.toggleWhenPressed(cmdDoritoMotorEngage);
