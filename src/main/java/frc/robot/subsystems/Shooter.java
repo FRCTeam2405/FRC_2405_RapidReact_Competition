@@ -18,32 +18,34 @@ public class Shooter extends SubsystemBase {
   //Defining Main Shooter 
  WPI_TalonFX shooterMainTalonFX = null;
  WPI_TalonSRX shooterHoodTalonSRX = null;
- DigitalInput shooterLimitSwitchHigh = null;
- DigitalInput shooterLimitSwitchLow = null;
+ //DigitalInput shooterLimitSwitchHigh = null;
+ //DigitalInput shooterLimitSwitchLow = null;
+ //DigitalInput test = new DigitalInput(1);
+
 
   public Shooter() {
     //Initalizing Main Shooter Motor
   shooterMainTalonFX = new WPI_TalonFX(ShooterConstants.SHOOTER_MAIN_TALONFX);
   shooterHoodTalonSRX = new WPI_TalonSRX(ShooterConstants.SHOOTER_HOOD_TALONSRX); 
-  shooterLimitSwitchHigh = new DigitalInput(ShooterConstants.SHOOT_HIGH_HOOD_LIMIT);
-  shooterLimitSwitchLow = new DigitalInput(ShooterConstants.SHOOT_LOW_HOOD_LIMIT);
+  //shooterLimitSwitchHigh = new DigitalInput(ShooterConstants.SHOOT_HIGH_HOOD_LIMIT);
+  //shooterLimitSwitchLow = new DigitalInput(ShooterConstants.SHOOT_LOW_HOOD_LIMIT);
 }
   
   
   public void Shoot(ControlMode motorMode, double outPutValue){
-  shooterMainTalonFX.set(motorMode, outPutValue);
+    shooterMainTalonFX.set(motorMode, outPutValue);
 }
 
-//public void Hood(double outPutValue){
- // shooterHoodTalonSRX.set(ControlMode.PercentOutput, outPutValue);
+  public void Hood(double outPutValue){
+    shooterHoodTalonSRX.set(ControlMode.PercentOutput, outPutValue);
+  }
+
+  //public boolean LimitSwitchHigh(){
+ //   return shooterLimitSwitchHigh.get();
 //}
 
-//public boolean LimitSwitchHigh(){
- // return shooterLimitSwitchHigh.get();
-//}
-
-//public boolean LimitSwitchLow(){
-  //return shooterLimitSwitchLow.get();
+  //public boolean LimitSwitchLow(){
+    //return shooterLimitSwitchLow.get();
 //}
 
   @Override

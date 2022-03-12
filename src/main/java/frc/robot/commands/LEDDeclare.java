@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.LEDConstants;
 import frc.robot.subsystems.LEDLights;
 
 public class LEDDeclare extends CommandBase {
@@ -30,7 +31,7 @@ public class LEDDeclare extends CommandBase {
   @Override
   public void execute() {
 
-    sysLEDLights.setLEDValue(SmartDashboard.getNumber("LEDSet", -.69));
+    sysLEDLights.setLEDValue(SmartDashboard.getNumber("LEDSet", LEDConstants.LED_SETTING_DEFAULT));
   }
 
   // Called once the command ends or is interrupted.

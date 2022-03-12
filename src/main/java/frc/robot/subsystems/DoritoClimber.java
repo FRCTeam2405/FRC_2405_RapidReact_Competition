@@ -47,15 +47,15 @@ public class DoritoClimber extends SubsystemBase {
 */
   }
 
- // public void toggleClimberStageOne(boolean climberOneActive) {
-//    doritoSolenoidOne.set(climberOneActive);
-  //}
-//  public void toggleClimberTwo(boolean climberTwoActive) {
-//    doritoSolenoidTwo.set(climberTwoActive);
- // }
-//  public void toggleClimberThree(boolean climberThreeActive) {
-  //  doritoSolenoidThree.set(climberThreeActive);
- // }
+  public void toggleClimberStageOne(boolean climberOneActive) {
+    doritoSolenoidOne.set(climberOneActive);
+  }
+  public void toggleClimberTwo(boolean climberTwoActive) {
+    doritoSolenoidTwo.set(climberTwoActive);
+  }
+  public void toggleClimberThree(boolean climberThreeActive) {
+    doritoSolenoidThree.set(climberThreeActive);
+  }
 
   public void DoritoClimberMotor(double inputAmount) {
     mainDoritoSparkMax.set(inputAmount);

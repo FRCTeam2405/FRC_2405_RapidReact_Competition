@@ -10,8 +10,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.ControllerConstants;
+import frc.robot.Constants.FeederConstants;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.LEDConstants;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
@@ -170,13 +174,14 @@ public class RobotContainer {
    m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
 
    //Testing feeder otor speed on the dashbord 
-   SmartDashboard.putNumber("IntakePercentOutput", 0.75);
-   SmartDashboard.putNumber("FeederPercentOutput", 0.75);
-   SmartDashboard.putNumber("ShooterPercentOutput", 0.35);
-   SmartDashboard.putNumber("LEDSet", -.69);
-   SmartDashboard.putNumber("doritoSpinner", .25);
-   SmartDashboard.putNumber("ShooterHood", .1);
-   SmartDashboard.putNumber("ShooterHoodLower", -.1);
+   SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
+   SmartDashboard.putNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);
+   SmartDashboard.putNumber("ShootHighPercentOutput", ShooterConstants.SHOOTHIGH_DEFAULT_OUTPUT);
+   SmartDashboard.putNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);
+   SmartDashboard.putNumber("LEDSet", LEDConstants.LED_SETTING_DEFAULT);
+   SmartDashboard.putNumber("doritoSpinner", ClimberConstants.DORITO_DEFAULT_SPEED);
+   SmartDashboard.putNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
+   SmartDashboard.putNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by

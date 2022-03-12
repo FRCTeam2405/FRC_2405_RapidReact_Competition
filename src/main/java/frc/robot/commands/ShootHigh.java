@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Shooter;
 
 public class ShootHigh extends CommandBase {
@@ -41,7 +42,7 @@ public class ShootHigh extends CommandBase {
      // RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, 0);
     // }
     
-    double feederPercentCargo = SmartDashboard.getNumber("ShooterPercentOutput", 0.35);  
+    double feederPercentCargo = SmartDashboard.getNumber("ShootHighPercentOutput", ShooterConstants.SHOOTHIGH_DEFAULT_OUTPUT);  
     sysShooter.Shoot(ControlMode.PercentOutput, feederPercentCargo);
     
   }

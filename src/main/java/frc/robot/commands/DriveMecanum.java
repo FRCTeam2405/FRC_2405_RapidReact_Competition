@@ -43,11 +43,20 @@ public class DriveMecanum extends CommandBase {
   rotateSpeedZ = 0;
 }  
 
+ // Override moveSpeedX [strafe] - Left
+ if (RobotContainer.driverController.getLeftTriggerAxis() != 0) {
+  moveSpeedX = -1 * RobotContainer.driverController.getLeftTriggerAxis();
+}
+
+// Override moveSpeedX [strafe] - Right
+if (RobotContainer.driverController.getRightTriggerAxis() != 0) {
+  moveSpeedX = RobotContainer.driverController.getRightTriggerAxis();
+}
+
   //Call cartesianDrive
   sysDriveTrain.cartesianDrive(moveSpeedY, moveSpeedX, rotateSpeedZ, gyroIsUsed);
 
- 
-  }
+}
 
   // Called once the command ends or is interrupted.
   @Override
