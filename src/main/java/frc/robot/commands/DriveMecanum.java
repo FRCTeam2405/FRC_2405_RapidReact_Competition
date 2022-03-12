@@ -27,8 +27,8 @@ public class DriveMecanum extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double moveSpeedX = RobotContainer.driverController.getLeftX();
-    double rotateSpeedZ = RobotContainer.driverController.getRightX();
+    double moveSpeedX = RobotContainer.driverController.getRightX();
+    double rotateSpeedZ = RobotContainer.driverController.getLeftX();
     double moveSpeedY = RobotContainer.driverController.getLeftY();
     boolean gyroIsUsed = false;
 

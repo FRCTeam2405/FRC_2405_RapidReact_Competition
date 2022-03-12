@@ -16,10 +16,12 @@ import frc.robot.Constants.FeederConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.LEDConstants;
 import frc.robot.Constants.ShooterConstants;
+import frc.robot.Constants.ControllerConstants.SecondaryDriver;
 import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
 import frc.robot.commands.DoritoLifter;
+import frc.robot.commands.DoritoLower;
 import frc.robot.commands.DoritoMotor;
 import frc.robot.commands.AutoDoritoClimb;
 import frc.robot.commands.AutoDoritoSpin;
@@ -128,6 +130,8 @@ public class RobotContainer {
   private final ClimberStage3 clampThree = new ClimberStage3(m_doritoclimber);
   //Dorito Lifter Command
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber);
+  //Dorito Lower Command
+  private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber);
   //Dorito Motor Command
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
   //AutoDoritoSpin Command
@@ -152,15 +156,16 @@ public class RobotContainer {
 
   //Defining Arcade Controller
   public static final Joystick secondarycontroller = new Joystick(1);
-  public static final JoystickButton driversecondarybuttonX = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_RED);
-  public static final JoystickButton driversecondarybuttonA = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_YELLOW);
-  public static final JoystickButton driversecondarybuttonB = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_GREEN);
-  public static final JoystickButton driverSecondaryButtonY = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE);
-  public static final JoystickButton driverSecondaryLeftBumper = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER);
-  public static final JoystickButton driverSecondaryRightBumper = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_RIGHT_BUMPER);
+  public static final JoystickButton driversecondarybuttonBlue = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE);
+  public static final JoystickButton driversecondarybuttonGreen= new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_GREEN);
+  public static final JoystickButton driversecondarybuttonRed = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_RED);
+  public static final JoystickButton driverSecondaryButtonYellow = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_YELLOW);
+  public static final JoystickButton driverSecondarySwitchZero = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_0);
+  public static final JoystickButton driverSecondarySwitchOne = new JoystickButton(secondarycontroller, SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_1);
+  public static final JoystickButton driverSecondarySwitchTwo = new JoystickButton(secondarycontroller, SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_2);
+  public static final JoystickButton driverSecondarySwitchThree = new JoystickButton(secondarycontroller, SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_3);
 
   //------------------------------------------------------------------------------------------
-
 
   //Defining PCM
   private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH);
@@ -199,18 +204,25 @@ public class RobotContainer {
    //Button Mappings
    driverMainButtonX.whenPressed(cmdIntakeDeploy);//.andThen(cmdLEDLightsIntake));
    driverMainButtonB.whenPressed(cmdIntakeRetract);
-   driverMainButtonY.toggleWhenPressed(cmdShootCargoHigh, true);//.andThen(cmdLEDLightsShootHigh));
-   driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
-   driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
-   driverMainBumperLeft.toggleWhenPressed(cmdLEDLightsLEDs, true);
+   driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
+   driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
+   //driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
+   driverMainBumperLeft.toggleWhenPressed(cmdFeedCargo, true);
   
    //Secondary Button Mappings
-   driversecondarybuttonX.toggleWhenPressed(clampOne);
-   driversecondarybuttonA.toggleWhenPressed(clampTwo);
-   driversecondarybuttonB.toggleWhenPressed(clampThree); //Button B Activated DoritoLifter
-   driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage); // Button Y Activated Clamp 2
-   driverSecondaryLeftBumper.toggleWhenPressed(cmdDoritoMotorEngage);
-   driverSecondaryRightBumper.whenPressed(cmdAutoDoritoClimb);
+   //driversecondarybuttonBlue.toggleWhenPressed(cmdAutoDoritoClimb);
+   driversecondarybuttonGreen.toggleWhenPressed(cmdDoritoMotorEngage);
+   //driversecondarybuttonRed.toggleWhenPressed(); //Button B Activated DoritoLifter
+   //driverSecondaryButtonYellow.toggleWhenPressed(); // Button Y Activated Clamp 2
+   driverSecondarySwitchZero.whenActive(cmdDoritoLifterEngage);
+   driverSecondarySwitchZero.whenInactive(cmdDoritoLowerEngage);
+   driverSecondarySwitchOne.whenActive(clampOne);
+   driverSecondarySwitchOne.whenInactive(clampOne);
+   driverSecondarySwitchTwo.whenActive(clampTwo);
+   driverSecondarySwitchTwo.whenInactive(clampTwo);
+   driverSecondarySwitchThree.whenActive(clampThree);
+   driverSecondarySwitchThree.whenInactive(clampThree);
+
 
   }
   //---------------------------------------------------------------------

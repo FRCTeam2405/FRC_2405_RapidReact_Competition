@@ -33,7 +33,7 @@ public class ClimberStageThreeRelease extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sysClimber.toggleClimberThree(false);
+  //  sysClimber.toggleClimberThree(false);
   }
 
   // Returns true when the command should end.

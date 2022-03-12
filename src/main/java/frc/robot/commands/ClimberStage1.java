@@ -33,7 +33,7 @@ public class ClimberStage1 extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     
-    sysClimber.toggleClimberStageOne(false);
+   // sysClimber.toggleClimberStageOne(false);
   }
 
   // Returns true when the command should end.
