@@ -27,7 +27,7 @@ public class ClimberStage2 extends CommandBase {
   @Override
   public void execute() {
     
-    sysClimber.toggleClimberTwo(true);
+    sysClimber.toggleClimberTwo(false);
   }
 
   // Called once the command ends or is interrupted.
