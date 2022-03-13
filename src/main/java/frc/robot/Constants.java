@@ -165,25 +165,40 @@ public static final class ControllerConstants {
         
         public static final int SECONDARYDRIVER_CONTROLLER_LEFT_BUMPER = 5;
         public static final int SECONDARYDRIVER_CONTROLLER_RIGHT_BUMPER = 6;
+        public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_0 = 5;
+        public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_1 = 6;
+        public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_2 = 7;
+        public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_3 = 8;
+       
 
     }
    
 }
 	
 public static final class ShooterConstants {
-    //Main Shooter TalonFX
+    //CAN Port: Main Shooter TalonFX
     public static final int SHOOTER_MAIN_TALONFX = 20;
+    //CAN Port: Hood Motor
     public static final int SHOOTER_HOOD_TALONSRX = 24;
+    //CAN Port: Hood Limit Switches
     public static final int SHOOT_HIGH_HOOD_LIMIT = 0;
     public static final int SHOOT_LOW_HOOD_LIMIT = 0;
+    //Shooter Default Output
+    public static final double SHOOTER_DEFAULT_OUTPUT = 0;
+    //ShootHigh Default Output
+    public static final double SHOOTHIGH_DEFAULT_OUTPUT = 0.35;
+    //ShootLow Default Output
+    public static final double SHOOTLOW_DEFAULT_OUTPUT = 0.25;
+    //Shooter Hood Default Output
+    public static final double SHOOTER_HOOD_DEFAULT_OUTPUT = 0.10;
    
 }
   
 public static final class IntakeConstants {
-    //Intake Main SparkMax
+    //CAN Port: Intake Main SparkMax
     public static final int INTAKE_MAIN_SPARKMAX = 22;  
     //Default Intake Speed
-    public static final double INTAKE_DEFAULT_SPEED = -.75;
+    public static final double INTAKE_DEFAULT_SPEED = .75;
     
     //Adding CAN Ports to Solenoid
     public static final int PORT_PCM_MAIN = 2;
@@ -193,13 +208,18 @@ public static final class IntakeConstants {
 }
 
 public static final class FeederConstants {
-    //Feeder Motor
+    //CAN Port: Feeder Motor
     public static final int MAIN_FEEDER_MOTOR = 21;
+    //Default Feeder Output
+    public static final double FEEDER_DEFAULT_OUTPUT = .75;
 }
 
 public static final class LEDConstants {
-    public static final int LED_SETTING_ONE = 0;
-    }
+    //LED Default Setting
+    public static final double LED_SETTING_DEFAULT = -0.69;
+    //PWM Port: LED
+    public static final int LED_PWM_PORT = 0;
+}
     
 public static final class ClimberConstants {
     //Clamp Solenoid Ports

@@ -13,8 +13,8 @@ public class LEDLights extends SubsystemBase {
 
   /** Creates a new LEDLights. */
   public LEDLights() {
-    LEDSetting = new PWMSparkMax(LEDConstants.LED_SETTING_ONE);
-   
+    LEDSetting = new PWMSparkMax(LEDConstants.LED_PWM_PORT);
+    
   }
 
   public void setLEDValue(double setColor) {

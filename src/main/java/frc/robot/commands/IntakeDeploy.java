@@ -26,11 +26,8 @@ public class IntakeDeploy extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  
   public void execute() {
-    sysIntake.ToggleIntake(IntakeConstants.INTAKE_DEFAULT_SPEED, true);
-  
-    double feederPercentCargo = SmartDashboard.getNumber("IntakePercentOutput", -0.75);  
+    sysIntake.ToggleIntake(SmartDashboard.getNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED), true);
   
   }
 

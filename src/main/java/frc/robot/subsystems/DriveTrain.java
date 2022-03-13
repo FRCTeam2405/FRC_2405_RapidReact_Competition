@@ -57,9 +57,9 @@ public class DriveTrain extends SubsystemBase {
     rightFrontTalonFX.configNeutralDeadband(.06);
 
     //Inverting Motors
-    leftFrontTalonFX.setInverted(true);
+    rightFrontTalonFX.setInverted(true);
 
-    leftBackTalonFX.setInverted(true);
+    rightBackTalonFX.setInverted(true);
 
     //Initalizing mecanum drive
   mecanumDrive = new MecanumDrive(leftFrontTalonFX, leftBackTalonFX, rightFrontTalonFX, rightBackTalonFX);
@@ -104,6 +104,7 @@ public class DriveTrain extends SubsystemBase {
   }
   
   public void cartesianDrive(double moveSpeedY, double moveSpeedX, double rotationSpeedZ, boolean gyroIsUsed) {
+    moveSpeedY = -1 * moveSpeedY;
     
 
     if (gyroIsUsed) {

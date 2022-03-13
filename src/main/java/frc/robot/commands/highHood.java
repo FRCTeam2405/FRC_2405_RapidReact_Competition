@@ -30,8 +30,8 @@ public class highHood extends CommandBase {
   public void execute() {
     
   // if(!sysShooter.LimitSwitchHigh()) {
-  //   sysShooter.Hood(SmartDashboard.getNumber("ShooterHood", .1));
-   // }
+    // sysShooter.Hood(SmartDashboard.getNumber("ShooterHighHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT));
+//}
   }
 
   // Called once the command ends or is interrupted.

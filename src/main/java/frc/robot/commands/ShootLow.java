@@ -6,8 +6,10 @@ package frc.robot.commands;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Shooter;
 
 public class ShootLow extends CommandBase {
@@ -28,15 +30,19 @@ public class ShootLow extends CommandBase {
   @Override
   public void execute() {
      //Defining shootLow 
-   boolean shootLow = RobotContainer.driverController.getAButton();
+   //boolean shootLow = RobotContainer.driverController.getAButton();
   
-   if (shootLow){
+   //if (shootLow){
     //Setting percent output if A pressed 
-    sysShooter.Shoot(ControlMode.PercentOutput, .20);
+   // sysShooter.Shoot(ControlMode.PercentOutput, .20);
        
-     } else{
-      sysShooter.Shoot(ControlMode.PercentOutput, 0);
-     }
+    // } else{
+    //  sysShooter.Shoot(ControlMode.PercentOutput, 0);
+   //  }
+
+   double feederPercentCargo = SmartDashboard.getNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);  
+    sysShooter.Shoot(ControlMode.PercentOutput, feederPercentCargo);
+    
   }
 
   // Called once the command ends or is interrupted.

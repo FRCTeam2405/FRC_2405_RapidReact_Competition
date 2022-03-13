@@ -30,7 +30,7 @@ public class lowHood extends CommandBase {
   public void execute() {
     
    //if(!sysShooter.LimitSwitchLow()) {
-    // sysShooter.Hood(SmartDashboard.getNumber("ShooterHoodLower", -.1));
+    // sysShooter.Hood(SmartDashboard.getNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT));
    // }
   }
 

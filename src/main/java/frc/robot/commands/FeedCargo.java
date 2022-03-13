@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.FeederConstants;
 import frc.robot.subsystems.Feeder;
 
 public class FeedCargo extends CommandBase {
@@ -29,7 +30,7 @@ public class FeedCargo extends CommandBase {
   @Override
   public void execute() {
 
-    double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", -0.50);  
+    double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);  
     sysFeeder.feedCargo(feederPercentCargo);
     }
 
