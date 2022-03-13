@@ -20,6 +20,9 @@ import frc.robot.Constants.ControllerConstants.SecondaryDriver;
 import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
+import frc.robot.commands.ClimberStageOneRelease;
+import frc.robot.commands.ClimberStageThreeRelease;
+import frc.robot.commands.ClimberStageTwoRelease;
 import frc.robot.commands.DoritoLifter;
 import frc.robot.commands.DoritoLower;
 import frc.robot.commands.DoritoMotor;
@@ -128,6 +131,10 @@ public class RobotContainer {
   private final ClimberStage1 clampOne = new ClimberStage1(m_doritoclimber);
   private final ClimberStage2 clampTwo = new ClimberStage2(m_doritoclimber);
   private final ClimberStage3 clampThree = new ClimberStage3(m_doritoclimber);
+  //Dorito Unclamp Commands
+  private final ClimberStageOneRelease cmdReleaseClampOne = new ClimberStageOneRelease(m_doritoclimber);
+  private final ClimberStageTwoRelease cmdReleaseClampTwo = new ClimberStageTwoRelease(m_doritoclimber);
+  private final ClimberStageThreeRelease cmdReleaseClampThree = new ClimberStageThreeRelease(m_doritoclimber);
   //Dorito Lifter Command
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber);
   //Dorito Lower Command
@@ -217,14 +224,14 @@ public class RobotContainer {
    driverSecondarySwitchZero.whenActive(cmdDoritoLifterEngage);
    driverSecondarySwitchZero.whenInactive(cmdDoritoLowerEngage);
    driverSecondarySwitchOne.whenActive(clampOne);
-   driverSecondarySwitchOne.whenInactive(clampOne);
+   driverSecondarySwitchOne.whenInactive(cmdReleaseClampOne);
    driverSecondarySwitchTwo.whenActive(clampTwo);
-   driverSecondarySwitchTwo.whenInactive(clampTwo);
+   driverSecondarySwitchTwo.whenInactive(cmdReleaseClampTwo);
    driverSecondarySwitchThree.whenActive(clampThree);
-   driverSecondarySwitchThree.whenInactive(clampThree);
-
+   driverSecondarySwitchThree.whenInactive(cmdReleaseClampThree);
 
   }
+  
   //---------------------------------------------------------------------
 
   /**
