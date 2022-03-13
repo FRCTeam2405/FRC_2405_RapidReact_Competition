@@ -25,6 +25,8 @@ import frc.robot.commands.FeedCargo;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeRetract;
 import frc.robot.commands.LEDDeclare;
+import frc.robot.commands.ShootCargoHigh;
+import frc.robot.commands.ShootCargoLow;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
 import frc.robot.subsystems.DoritoClimber;
@@ -77,21 +79,40 @@ public class RobotContainer {
   private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy(m_Intake);
   private final IntakeRetract cmdIntakeRetract = new IntakeRetract(m_Intake);
   
-  //Defining Shoot Commands
-  private final ShootHigh cmdShootHigh = new ShootHigh(m_Shooter);
-  private final ShootLow cmdShootLow = new ShootLow(m_Shooter);
-
+  
   //Defining Feeder Command
   private final FeedCargo cmdFeedCargo = new FeedCargo(m_feedermotor);
 
   //Autonomous Commands
   private final DriveAuto cmdDriveAuto = new DriveAuto();
 
+  //-------------------
+  // LED Commands
+  //-------------------
+
   //LED Commands
   private final LEDDeclare cmdLEDLightsIntake = new LEDDeclare(m_LEDsetting, -.87);
   private final LEDDeclare cmdLEDLightsShootLow = new LEDDeclare(m_LEDsetting, -.87);
   private final LEDDeclare cmdLEDLightsShootHigh = new LEDDeclare(m_LEDsetting, -.87);
   private final LEDDeclare cmdLEDLightsLEDs = new LEDDeclare(m_LEDsetting, SmartDashboard.getNumber("LEDSet", -.69));
+
+  //------------------------------------------------------------------------
+
+  //------------------
+  // Shooter Commands
+  //------------------
+
+  //Adding "ShootCargoHigh"
+  private final ShootCargoHigh cmdShootCargoHigh = new ShootCargoHigh(m_Shooter, m_feedermotor, m_LEDsetting);
+
+  //Adding "ShootCargoLow"
+  private final ShootCargoLow cmdShootCargoLow = new ShootCargoLow(m_Shooter, m_feedermotor, m_LEDsetting);
+
+  //Defining Shoot Commands
+  private final ShootHigh cmdShootHigh = new ShootHigh(m_Shooter);
+  private final ShootLow cmdShootLow = new ShootLow(m_Shooter);
+
+  //------------------------------------------------------------------------
 
   //-----------------
   // Dorito Commands
@@ -108,14 +129,12 @@ public class RobotContainer {
   //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
   //AutoDoritoClimb
-  private final AutoDoritoClimb cAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber);
+  private final AutoDoritoClimb cmdAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber);
   
-
   //---------------------------------------------------------------------------------------
 
   //-----------------
   // Xboxcontroller
-  
   //-----------------
 
   //Defining Xboxcontroller
@@ -151,12 +170,13 @@ public class RobotContainer {
    m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
 
    //Testing feeder otor speed on the dashbord 
-   SmartDashboard.putNumber("IntakePercentOutput", -0.75);
-   SmartDashboard.putNumber("FeederPercentOutput", -0.50);
+   SmartDashboard.putNumber("IntakePercentOutput", 0.75);
+   SmartDashboard.putNumber("FeederPercentOutput", 0.75);
    SmartDashboard.putNumber("ShooterPercentOutput", 0.35);
    SmartDashboard.putNumber("LEDSet", -.69);
-   SmartDashboard.putNumber("doritoSpinner", -.69);
-
+   SmartDashboard.putNumber("doritoSpinner", .25);
+   SmartDashboard.putNumber("ShooterHood", .1);
+   SmartDashboard.putNumber("ShooterHoodLower", -.1);
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -174,20 +194,21 @@ public class RobotContainer {
    //Button Mappings
    driverMainButtonX.whenPressed(cmdIntakeDeploy);//.andThen(cmdLEDLightsIntake));
    driverMainButtonB.whenPressed(cmdIntakeRetract);
-   driverMainButtonY.whenPressed(cmdShootHigh.andThen(cmdFeedCargo));//.andThen(cmdLEDLightsShootHigh));
-   driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
+   driverMainButtonY.toggleWhenPressed(cmdShootCargoHigh, true);//.andThen(cmdLEDLightsShootHigh));
+   driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
    driverMainBumperLeft.toggleWhenPressed(cmdLEDLightsLEDs, true);
   
    //Secondary Button Mappings
    driversecondarybuttonX.toggleWhenPressed(clampOne);
-   driversecondarybuttonA.toggleWhenPressed(clampTwo); //Bug Found to be Ethan's code
-   driversecondarybuttonB.toggleWhenPressed(clampThree);
-   driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage);
+   driversecondarybuttonA.toggleWhenPressed(clampTwo);
+   driversecondarybuttonB.toggleWhenPressed(clampThree); //Button B Activated DoritoLifter
+   driverSecondaryButtonY.toggleWhenPressed(cmdDoritoLifterEngage); // Button Y Activated Clamp 2
    driverSecondaryLeftBumper.toggleWhenPressed(cmdDoritoMotorEngage);
+   driverSecondaryRightBumper.whenPressed(cmdAutoDoritoClimb);
 
   }
-  //----------------------------------------------------------------------
+  //---------------------------------------------------------------------
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

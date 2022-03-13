@@ -4,20 +4,22 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.Shooter;
 
-public class ClimberStage1 extends CommandBase {
+public class lowHood extends CommandBase {
+  public final Shooter sysShooter;
+  /** Creates a new hood. */
 
-  private final DoritoClimber sysClimber;
-  
+  public lowHood(Shooter inSysShooter) {
+    sysShooter = inSysShooter;
 
-  /** Creates a new ClimberStage1. */
-  public ClimberStage1(DoritoClimber inSysClimber)  {
-    sysClimber = inSysClimber;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(sysClimber);
+  addRequirements(sysShooter);
   }
+
 
   // Called when the command is initially scheduled.
   @Override
@@ -26,15 +28,15 @@ public class ClimberStage1 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  //  sysClimber.toggleClimberStageOne(true);
+    
+   //if(!sysShooter.LimitSwitchLow()) {
+    // sysShooter.Hood(SmartDashboard.getNumber("ShooterHoodLower", -.1));
+   // }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    
-  //  sysClimber.toggleClimberStageOne(false);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

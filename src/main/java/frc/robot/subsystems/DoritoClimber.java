@@ -47,15 +47,15 @@ public class DoritoClimber extends SubsystemBase {
 */
   }
 
-  public void toggleClimberStageOne(boolean climberOneActive) {
-    doritoSolenoidOne.set(climberOneActive);
-  }
-  public void toggleClimberTwo(boolean climberTwoActive) {
-    doritoSolenoidTwo.set(climberTwoActive);
-  }
-  public void toggleClimberThree(boolean climberThreeActive) {
-    doritoSolenoidThree.set(climberThreeActive);
-  }
+ // public void toggleClimberStageOne(boolean climberOneActive) {
+//    doritoSolenoidOne.set(climberOneActive);
+  //}
+//  public void toggleClimberTwo(boolean climberTwoActive) {
+//    doritoSolenoidTwo.set(climberTwoActive);
+ // }
+//  public void toggleClimberThree(boolean climberThreeActive) {
+  //  doritoSolenoidThree.set(climberThreeActive);
+ // }
 
   public void DoritoClimberMotor(double inputAmount) {
     mainDoritoSparkMax.set(inputAmount);
@@ -63,105 +63,6 @@ public class DoritoClimber extends SubsystemBase {
 
   public void toggleDoritoLifterSolenoid(boolean isEngaged) {
     doritoLifterSolenoid.set(isEngaged);
-
-    
-  }
-
-  // ------------------------------------------
-  // Action(s) - Dorito Lifter - Solenoid Action(s)
-  // ------------------------------------------
-  
-  public void toggleDoritoLifterSolenoid() {
-
-    if (doritoLifterSolenoid.get()) {
-      this.doritoLifterRetract();
-    }
-    else {
-      this.doritoLifterDeploy();
-    }
-  }
-
-  public void doritoLifterDeploy() {
-
-    doritoLifterSolenoid.set(true);
-  }
-
-  public void doritoLifterRetract() {
-
-    doritoLifterSolenoid.set(false);
-  }
-
-  // ------------------------------------------
-  // Action(s) - Climber Clamp Stage One - Solenoid Action(s)
-  // ------------------------------------------
-
-  public void toggleClimberStageOne() {
-
-    if (doritoSolenoidOne.get()) {
-      this.climberClampStageOneRetract();
-    }
-    else {
-      this.climberClampStageOneDeploy();
-    }
-
-  }
-
-  public void climberClampStageOneDeploy() {
-
-    doritoSolenoidOne.set(true);
-  }
-
-  public void climberClampStageOneRetract() {
-
-    doritoSolenoidOne.set(false);
-  }
-
-  // ------------------------------------------
-  // Action(s) - Climber Clamp Stage Two - Solenoid Action(s)
-  // ------------------------------------------
-  public void toggleClimberClampStageTwo() {
-
-    if (doritoSolenoidTwo.get()) {
-      this.climberClampStageTwoRetract();
-    }
-    else {
-      this.climberClampStageTwoDeploy();
-    }
-
-  }
-
-  public void climberClampStageTwoDeploy() {
-
-    doritoSolenoidTwo.set(true);
-  }
-
-  public void climberClampStageTwoRetract() {
-
-    doritoSolenoidTwo.set(false);
-  }
-
-  // ------------------------------------------
-  // Action(s) - Climber Clamp Stage Three - Solenoid Action(s)
-  // ------------------------------------------
-  public void toggleClimberClampStageThree() {
-
-    if (doritoSolenoidThree.get()) {
-      this.climberClampStageThreeRetract();
-    }
-    else {
-      this.climberClampStageThreeDeploy();
-    }
-
-  }
-  
-  public void climberClampStageThreeDeploy() {
-
-    doritoSolenoidThree.set(true);
-  }
-
-  public void climberClampStageThreeRetract() {
-
-    doritoSolenoidThree.set(false);
   }
 
   @Override
