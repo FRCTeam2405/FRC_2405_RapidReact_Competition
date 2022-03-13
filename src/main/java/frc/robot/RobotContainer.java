@@ -215,8 +215,8 @@ public class RobotContainer {
    driverMainButtonB.whenPressed(cmdIntakeRetract);
    driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
-   //driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
-   driverMainBumperLeft.toggleWhenPressed(cmdFeedCargo, true);
+   driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
+   //driverMainBumperLeft.toggleWhenPressed(cmdFeedCargo, true);
   
    //Secondary Button Mappings
    //driversecondarybuttonBlue.toggleWhenPressed(cmdAutoDoritoClimb);
@@ -233,7 +233,7 @@ public class RobotContainer {
    driverSecondarySwitchThree.whenInactive(cmdReleaseClampThree);
 
   }
-  
+
   //---------------------------------------------------------------------
 
   /**

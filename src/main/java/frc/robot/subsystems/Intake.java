@@ -24,6 +24,9 @@ public class Intake extends SubsystemBase {
    //Intializing SparkMax
    intakeMainSparkMax = new CANSparkMax(IntakeConstants.INTAKE_MAIN_SPARKMAX, MotorType.kBrushless);
 
+   //Intake Reversal
+   intakeMainSparkMax.setInverted(true);
+
    //Intializing Solenoid
    intakeMainSolenoids = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, IntakeConstants.INTAKE_SOLENOIDS_PORT);
 

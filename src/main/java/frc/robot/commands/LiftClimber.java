@@ -15,6 +15,11 @@ public class LiftClimber extends SequentialCommandGroup {
   public LiftClimber(DoritoClimber inSysDoritoClimber) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands (new ClimberStageOneRelease(inSysDoritoClimber), new ClimberStageTwoRelease(inSysDoritoClimber), new ClimberStageThreeRelease(inSysDoritoClimber), new DoritoLifter(inSysDoritoClimber));
+    addCommands (
+      new DoritoLifter(inSysDoritoClimber), 
+      new ClimberStageOneRelease(inSysDoritoClimber), 
+      new ClimberStageTwoRelease(inSysDoritoClimber), 
+      new ClimberStageThreeRelease(inSysDoritoClimber)
+    );
   }
 }
