@@ -65,6 +65,16 @@ public class DoritoClimber extends SubsystemBase {
     doritoLifterSolenoid.set(isEngaged);
   }
 
+  public boolean getClimberStageOne() {
+    return doritoSolenoidOne.get();
+  }
+  public boolean getClimberTwo() {
+    return doritoSolenoidTwo.get();
+  }
+  public boolean getClimberThree() {
+    return doritoSolenoidThree.get();
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
