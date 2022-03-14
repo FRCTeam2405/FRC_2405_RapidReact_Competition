@@ -4,19 +4,22 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.ControllerConstants.SecondaryDriver;
 import frc.robot.subsystems.DoritoClimber;
 
-public class DoritoLifter extends CommandBase {
-
+public class JoystickDoritoSpinner extends CommandBase {
+  /** Creates a new JoystickDoritoSpinner. */
   private final DoritoClimber sysClimber;
+  private final GenericHID sysJoystick;
 
-  /** Creates a new ClimberStage1. */
-  public DoritoLifter(DoritoClimber inSysClimber)  {
+  public JoystickDoritoSpinner(DoritoClimber inSysClimber, GenericHID inJoystick) {
     sysClimber = inSysClimber;
+    sysJoystick = inJoystick;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysClimber);
-
   }
 
   // Called when the command is initially scheduled.
@@ -26,20 +29,16 @@ public class DoritoLifter extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.toggleDoritoLifterSolenoid(true);
+    sysClimber.DoritoClimberMotor(sysJoystick.getRawAxis(SecondaryDriver.SECONDARYDRIVER_CONTROLLER_MOVE_AXISY));
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  //  sysClimber.toggleDoritoLifterSolenoid(false);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysClimber.getDoritoLifterSulenoid() == true)
-    return true;
-  else return false;
+    return false;
   }
 }

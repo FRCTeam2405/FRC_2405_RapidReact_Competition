@@ -169,8 +169,7 @@ public static final class ControllerConstants {
         public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_1 = 6;
         public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_2 = 7;
         public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_3 = 8;
-       
-
+        public static final int SECONDARYDRIVER_CONTROLLER_MOVE_AXISY = 1;   
     }
    
 }

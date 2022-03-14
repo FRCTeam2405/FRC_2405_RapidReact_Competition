@@ -4,11 +4,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
+import edu.wpi.first.wpilibj.PS4Controller.Axis;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.ControllerConstants;
@@ -165,6 +168,7 @@ public class RobotContainer {
 
   //Defining Arcade Controller
   public static final Joystick secondarycontroller = new Joystick(1);
+  public static final GenericHID driverSecondaryYAxis = new GenericHID(1);
   public static final JoystickButton driversecondarybuttonBlue = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE);
   public static final JoystickButton driversecondarybuttonGreen= new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_GREEN);
   public static final JoystickButton driversecondarybuttonRed = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_RED);
@@ -177,7 +181,8 @@ public class RobotContainer {
   //------------------------------------------------------------------------------------------
 
   //Defining PCM
-  private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH);
+  private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM);
+  private final UsbCamera camera1 = new UsbCamera("camera1", 0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
