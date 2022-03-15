@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
@@ -36,6 +37,7 @@ import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.FeedCargo;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeRetract;
+import frc.robot.commands.JoystickDoritoSpinner;
 import frc.robot.commands.LEDDeclare;
 import frc.robot.commands.LiftClimber;
 import frc.robot.commands.ShootCargoHigh;
@@ -146,6 +148,7 @@ public class RobotContainer {
   private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber);
   //Dorito Motor Command
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
+  private final JoystickDoritoSpinner cmdJoystickDoritoSpinner = new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller);
   //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
   //AutoDoritoClimb
@@ -186,7 +189,10 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    // Configure the button bindings
+  // Configure the button bindings
+    CameraServer.addCamera(camera1);
+    camera1.setResolution(320, 240);
+
     configureButtonBindings();
    
    //Declaring commands in Robot Container
@@ -236,7 +242,10 @@ public class RobotContainer {
    driverSecondarySwitchTwo.whenInactive(cmdReleaseClampTwo);
    driverSecondarySwitchThree.whenActive(clampThree);
    driverSecondarySwitchThree.whenInactive(cmdReleaseClampThree);
-
+   //secondarycontroller.(cmdJoystickDoritoSpinner); <-- Makes the spinner spin
+   if (driverSecondaryYAxis.getRawAxis(1) != 0) {
+    new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller);
+   }
   }
 
   //---------------------------------------------------------------------
