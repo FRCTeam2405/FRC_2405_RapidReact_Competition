@@ -14,16 +14,21 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.DrivetrainAutonomousConstants;
 import frc.robot.Constants.EncoderConstants;
+import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import java.util.List;
 
 public class DriveAuto extends CommandBase {
-  /** Creates a new DriveAuto. */
-  public DriveAuto() {
+  private final DriveTrain sysDriveTrain;
+  /** Creates a new DriveMecanam. */
+  public DriveAuto(DriveTrain inSysDriveTrain) {
+
+    sysDriveTrain = inSysDriveTrain;
+
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_DriveTrain);
+    addRequirements(sysDriveTrain);
   }
 
   // Called when the command is initially scheduled.
@@ -88,7 +93,7 @@ public class DriveAuto extends CommandBase {
 
   // Run path following command, then stop at the end.
   // test-to-try: return drivetrainMecanumControllerCommand.andThen(() -> sysDriveTrain.cartesianDrive(0, 0, 0, false)).andThen(drivetrainMecanumControllerCommand.andThen(() -> sysDriveTrain.cartesianDrive(0, 0, 0, false)));
-  //return drivetrainMecanumControllerCommand.andThen(() -> RobotContainer.m_DriveTrain.cartesianDrive(0, 0, 0, false));
+  //return drivetrainMecanumControllerCommand;//.andThen(() -> sysDriveTrain.cartesianDrive(0, 0, 0, false));
 
   }
 

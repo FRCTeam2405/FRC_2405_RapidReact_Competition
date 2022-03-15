@@ -5,22 +5,26 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Feeder;
+import frc.robot.subsystems.Shooter;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class LiftClimber extends SequentialCommandGroup {
-  /** Creates a new LiftClimber. */
-  public LiftClimber(DoritoClimber inSysDoritoClimber) {
+public class AutoTestOne extends SequentialCommandGroup {
+  /** Creates a new AutoTestOne. */
+  public AutoTestOne(Shooter m_Shooter, Feeder m_Feeder, DriveTrain m_Drivetrain) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands (
-      new DoritoLifter(inSysDoritoClimber), 
+    addCommands(
+      new ShootLow(m_Shooter),
 
-      new ClimberStageOneRelease(inSysDoritoClimber),
-      new ClimberStageTwoRelease(inSysDoritoClimber), 
-      new ClimberStageThreeRelease(inSysDoritoClimber)
+      new FeedCargo(m_Feeder),
+      
+      new DriveAuto(m_Drivetrain)
+
+
     );
   }
 }
