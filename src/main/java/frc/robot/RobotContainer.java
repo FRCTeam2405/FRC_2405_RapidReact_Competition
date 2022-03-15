@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.PS4Controller.Axis;
@@ -103,7 +104,7 @@ public class RobotContainer {
   private final FeedCargo cmdFeedCargo = new FeedCargo(m_feedermotor);
 
   //Autonomous Commands
-  private final DriveAuto cmdDriveAuto = new DriveAuto();
+  private final DriveAuto cmdDriveAuto = new DriveAuto(m_DriveTrain);
 
   //-------------------
   // LED Commands
@@ -226,8 +227,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
    //Button Mappings
-   driverMainButtonX.whenPressed(cmdIntakeDeploy);//.andThen(cmdLEDLightsIntake));
-   driverMainButtonB.whenPressed(cmdIntakeRetract);
+   driverMainButtonX.whenHeld(cmdIntakeDeploy, true);//.andThen(cmdLEDLightsIntake));
+  // driverMainButtonB.whenPressed(cmdIntakeRetract);
    driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
@@ -260,8 +261,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-//    return cmdDriveAuto;
-    return null;
+    return cmdShootLow.alongWith(cmdFeedCargo);
   }
 
 
