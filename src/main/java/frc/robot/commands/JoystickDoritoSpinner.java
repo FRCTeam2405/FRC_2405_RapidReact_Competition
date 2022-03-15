@@ -15,7 +15,7 @@ public class JoystickDoritoSpinner extends CommandBase {
   private final DoritoClimber sysClimber;
   private final GenericHID sysJoystick;
 
-  public JoystickDoritoSpinner(DoritoClimber inSysClimber, GenericHID inJoystick) {
+  public JoystickDoritoSpinner(DoritoClimber inSysClimber, Joystick inJoystick) {
     sysClimber = inSysClimber;
     sysJoystick = inJoystick;
     // Use addRequirements() here to declare subsystem dependencies.
