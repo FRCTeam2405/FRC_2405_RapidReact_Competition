@@ -28,7 +28,7 @@ public class Intake extends SubsystemBase {
    intakeMainSparkMax.setInverted(true);
 
    //Intializing Solenoid
-   intakeMainSolenoids = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.REVPH, IntakeConstants.INTAKE_SOLENOIDS_PORT);
+   intakeMainSolenoids = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM, IntakeConstants.INTAKE_SOLENOIDS_PORT);
 
   }
 
