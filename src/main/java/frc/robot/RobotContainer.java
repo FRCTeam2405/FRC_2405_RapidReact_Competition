@@ -44,6 +44,7 @@ import frc.robot.commands.ShootCargoHigh;
 import frc.robot.commands.ShootCargoLow;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
+import frc.robot.subsystems.CameraSystem;
 import frc.robot.subsystems.DoritoClimber;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
@@ -83,6 +84,9 @@ public class RobotContainer {
 
   //Climber subsystem
   public static final DoritoClimber m_doritoclimber = new  DoritoClimber();
+
+  //Camera subsystem
+  public static final CameraSystem m_camerasystem = new CameraSystem();
 
 //-----------------------------------------------------------------------------
 
