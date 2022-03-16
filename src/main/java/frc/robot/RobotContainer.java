@@ -244,9 +244,11 @@ public class RobotContainer {
    driverSecondarySwitchThree.whenActive(clampThree);
    driverSecondarySwitchThree.whenInactive(cmdReleaseClampThree);
    //secondarycontroller.(cmdJoystickDoritoSpinner); <-- Makes the spinner spin
-   if (driverSecondaryYAxis.getRawAxis(1) != 0) {
-    new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller);
-   }
+   
+  // if (driverSecondaryYAxis.getRawAxis(1) != 0) {
+  // new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller);
+  // }
+  
   }
 
   //---------------------------------------------------------------------

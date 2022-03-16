@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 import frc.robot.Constants.ControllerConstants.SecondaryDriver;
 import frc.robot.subsystems.DoritoClimber;
 
@@ -29,7 +30,11 @@ public class JoystickDoritoSpinner extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.DoritoClimberMotor(sysJoystick.getRawAxis(SecondaryDriver.SECONDARYDRIVER_CONTROLLER_MOVE_AXISY));
+
+    double doritoRotateSpeed = RobotContainer.secondarycontroller.getY();
+
+    //sysClimber.DoritoClimberMotor(sysJoystick.getRawAxis(SecondaryDriver.SECONDARYDRIVER_CONTROLLER_MOVE_AXISY));
+    sysClimber.DoritoClimberMotor(doritoRotateSpeed);
   }
 
   // Called once the command ends or is interrupted.
