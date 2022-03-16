@@ -38,7 +38,7 @@ public class DoritoLifter extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysClimber.getDoritoLifterSulenoid() == true)
+    if (sysClimber.getDoritoLifterSolenoid() == true)
     return true; 
   else return false;
   }

@@ -31,7 +31,7 @@ public class JoystickDoritoSpinner extends CommandBase {
   @Override
   public void execute() {
 
-    double doritoRotateSpeed = RobotContainer.secondarycontroller.getY();
+    double doritoRotateSpeed = RobotContainer.secondarycontroller.getY()*.5;
 
     //sysClimber.DoritoClimberMotor(sysJoystick.getRawAxis(SecondaryDriver.SECONDARYDRIVER_CONTROLLER_MOVE_AXISY));
     sysClimber.DoritoClimberMotor(doritoRotateSpeed);

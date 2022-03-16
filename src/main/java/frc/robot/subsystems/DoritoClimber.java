@@ -74,7 +74,7 @@ public class DoritoClimber extends SubsystemBase {
   public boolean getClimberThree() {
     return doritoSolenoidThree.get();
   }
-  public boolean getDoritoLifterSulenoid() {
+  public boolean getDoritoLifterSolenoid() {
     return doritoLifterSolenoid.get();
   }
 

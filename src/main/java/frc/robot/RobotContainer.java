@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Compressor;
@@ -153,6 +155,7 @@ public class RobotContainer {
   private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber);
   //Dorito Motor Command
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
+
   private final JoystickDoritoSpinner cmdJoystickDoritoSpinner = new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller);
   //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
@@ -202,6 +205,7 @@ public class RobotContainer {
    
    //Declaring commands in Robot Container
    m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
+   m_doritoclimber.setDefaultCommand(new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller));
 
    //Testing feeder otor speed on the dashbord 
    SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
@@ -241,12 +245,12 @@ public class RobotContainer {
    //driverSecondaryButtonYellow.toggleWhenPressed(); // Button Y Activated Clamp 2
    driverSecondarySwitchZero.whenActive(cmdLiftClimber);
    driverSecondarySwitchZero.whenInactive(cmdDoritoLowerEngage);
-   driverSecondarySwitchOne.whenActive(clampOne);
-   driverSecondarySwitchOne.whenInactive(cmdReleaseClampOne);
-   driverSecondarySwitchTwo.whenActive(clampTwo);
-   driverSecondarySwitchTwo.whenInactive(cmdReleaseClampTwo);
-   driverSecondarySwitchThree.whenActive(clampThree);
-   driverSecondarySwitchThree.whenInactive(cmdReleaseClampThree);
+   driverSecondarySwitchOne.whenActive(cmdReleaseClampOne);
+   driverSecondarySwitchOne.whenInactive(clampOne);
+   driverSecondarySwitchTwo.whenActive(cmdReleaseClampTwo);
+   driverSecondarySwitchTwo.whenInactive(clampTwo);
+   driverSecondarySwitchThree.whenActive(cmdReleaseClampThree);
+   driverSecondarySwitchThree.whenInactive(clampThree);
    //secondarycontroller.(cmdJoystickDoritoSpinner); <-- Makes the spinner spin
    
   // if (driverSecondaryYAxis.getRawAxis(1) != 0) {
@@ -263,7 +267,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return cmdShootLow.alongWith(cmdFeedCargo);
+    return null;
   }
 
 
