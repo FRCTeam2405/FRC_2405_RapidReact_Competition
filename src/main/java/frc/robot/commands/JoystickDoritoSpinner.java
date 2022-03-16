@@ -10,13 +10,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ControllerConstants.SecondaryDriver;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.DoritoSpin;
 
 public class JoystickDoritoSpinner extends CommandBase {
   /** Creates a new JoystickDoritoSpinner. */
-  private final DoritoClimber sysClimber;
+  private final DoritoSpin sysClimber;
   private final GenericHID sysJoystick;
 
-  public JoystickDoritoSpinner(DoritoClimber inSysClimber, Joystick inJoystick) {
+  public JoystickDoritoSpinner(DoritoSpin inSysClimber, Joystick inJoystick) {
     sysClimber = inSysClimber;
     sysJoystick = inJoystick;
     // Use addRequirements() here to declare subsystem dependencies.

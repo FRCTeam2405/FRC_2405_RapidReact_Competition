@@ -8,13 +8,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.DoritoSpin;
 
 public class DoritoMotor extends CommandBase {
 
-  private final DoritoClimber sysClimber;
+  private final DoritoSpin sysClimber;
 
   /** Creates a new ClimberStage1. */
-  public DoritoMotor(DoritoClimber inSysClimber)  {
+  public DoritoMotor(DoritoSpin inSysClimber)  {
     sysClimber = inSysClimber;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysClimber);

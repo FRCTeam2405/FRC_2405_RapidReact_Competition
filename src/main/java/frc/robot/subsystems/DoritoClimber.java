@@ -22,11 +22,6 @@ public class DoritoClimber extends SubsystemBase {
   Solenoid doritoSolenoidThree = null;
   Solenoid doritoLifterSolenoid = null;
 
-  //defining encoder
-   Encoder doritoSpinnerEncoder = null;
-
-  //Defining SparkMax
-  CANSparkMax mainDoritoSparkMax = null; 
 
   public DoritoClimber() {
     //Defining Solenoids
@@ -35,16 +30,7 @@ public class DoritoClimber extends SubsystemBase {
     doritoSolenoidThree = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM, ClimberConstants.DORITO_SOLENOID_PORT_THREE);
     doritoLifterSolenoid = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM, ClimberConstants.DORITO_LIFTER_SOLENOID_PORT);
 
-    //Defining SparkMax
-    mainDoritoSparkMax = new CANSparkMax(ClimberConstants.MAIN_DORITO_SPARKMAX, MotorType.kBrushless);
-/*
-  //Initalizing Dorito Spinner Encoders
-    doritoSpinnerEncoder = new Encoder(
-    Dorito.DORITOMOTOR_ENCODER_CHANNEL_01,
-    Dorito.DORITOMOTOR_ENCODER_CHANNEL_02,
-    Dorito.DORITO_MOTOR_ENCODER_ISREVERSED
-);
-*/
+
   }
 
   public void toggleClimberStageOne(boolean climberOneActive) {
@@ -55,10 +41,6 @@ public class DoritoClimber extends SubsystemBase {
   }
   public void toggleClimberThree(boolean climberThreeActive) {
     doritoSolenoidThree.set(climberThreeActive);
-  }
-
-  public void DoritoClimberMotor(double inputAmount) {
-    mainDoritoSparkMax.set(inputAmount);
   }
 
   public void toggleDoritoLifterSolenoid(boolean isEngaged) {

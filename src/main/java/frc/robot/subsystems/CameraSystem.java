@@ -16,7 +16,7 @@ public class CameraSystem extends SubsystemBase {
   VideoSink cameraVideo = null;
   public CameraSystem() {
     camera1 = CameraServer.startAutomaticCapture(0);
-    camera1.setResolution(320, 240);
+    camera1.setResolution(640, 480);
     cameraVideo = CameraServer.getServer();
     camera1.setConnectionStrategy(ConnectionStrategy.kKeepOpen);
     cameraVideo.setSource(camera1);

@@ -49,6 +49,7 @@ import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
 import frc.robot.subsystems.CameraSystem;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.DoritoSpin;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
@@ -87,6 +88,8 @@ public class RobotContainer {
 
   //Climber subsystem
   public static final DoritoClimber m_doritoclimber = new  DoritoClimber();
+  //Dorito Motor subsystem
+  public static final DoritoSpin m_DoritoSpin = new DoritoSpin();
 
   //Camera subsystem
   public static final CameraSystem m_camerasystem = new CameraSystem();
@@ -154,9 +157,9 @@ public class RobotContainer {
   //Dorito Lower Command
   private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber);
   //Dorito Motor Command
-  private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_doritoclimber);
+  private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_DoritoSpin);
 
-  private final JoystickDoritoSpinner cmdJoystickDoritoSpinner = new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller);
+  private final JoystickDoritoSpinner cmdJoystickDoritoSpinner = new JoystickDoritoSpinner(m_DoritoSpin, secondarycontroller);
   //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
   //AutoDoritoClimb
@@ -193,19 +196,19 @@ public class RobotContainer {
 
   //Defining PCM
   private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM);
-  private final UsbCamera camera1 = new UsbCamera("camera1", 0);
+  //private final UsbCamera camera1 = new UsbCamera("camera1", 0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
   // Configure the button bindings
-    CameraServer.addCamera(camera1);
-    camera1.setResolution(320, 240);
+   // CameraServer.addCamera(camera1);
+    //camera1.setResolution(640, 480);
 
     configureButtonBindings();
    
    //Declaring commands in Robot Container
    m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
-   m_doritoclimber.setDefaultCommand(new JoystickDoritoSpinner(m_doritoclimber, secondarycontroller));
+   m_DoritoSpin.setDefaultCommand(new JoystickDoritoSpinner(m_DoritoSpin, secondarycontroller));
 
    //Testing feeder otor speed on the dashbord 
    SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
@@ -232,7 +235,7 @@ public class RobotContainer {
     
    //Button Mappings
    driverMainButtonX.whenHeld(cmdIntakeDeploy, true);//.andThen(cmdLEDLightsIntake));
-  // driverMainButtonB.whenPressed(cmdIntakeRetract);
+   driverMainButtonB.whenPressed(cmdIntakeRetract);
    driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
