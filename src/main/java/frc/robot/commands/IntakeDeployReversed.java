@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsystems.Intake;
 
-public class IntakeDeployReverced extends CommandBase {
+public class IntakeDeployReversed extends CommandBase {
 
   private final Intake sysIntake;
   
   /** Creates a new IntakeDeploy. */
-  public IntakeDeployReverced(Intake inSysIntake) {
+  public IntakeDeployReversed(Intake inSysIntake) {
     sysIntake = inSysIntake;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysIntake);
@@ -27,7 +27,7 @@ public class IntakeDeployReverced extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysIntake.ToggleIntake(SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERCED), true);
+    sysIntake.ToggleIntake(SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED), true);
   
   }
 
@@ -40,7 +40,7 @@ public class IntakeDeployReverced extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysIntake.getIntakeMotorValue() == SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERCED))
+    if (sysIntake.getIntakeMotorValue() == SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED))
       return true;
     else
       return false;

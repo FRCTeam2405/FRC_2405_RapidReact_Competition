@@ -36,10 +36,12 @@ import frc.robot.commands.DoritoLower;
 import frc.robot.commands.DoritoMotor;
 import frc.robot.commands.AutoDoritoClimb;
 import frc.robot.commands.AutoDoritoSpin;
+import frc.robot.commands.AutoTestOne;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.FeedCargo;
 import frc.robot.commands.IntakeDeploy;
+import frc.robot.commands.IntakeDeployReversed;
 import frc.robot.commands.IntakeRetract;
 import frc.robot.commands.JoystickDoritoSpinner;
 import frc.robot.commands.LEDDeclare;
@@ -82,7 +84,7 @@ public class RobotContainer {
   public static final Shooter m_Shooter = new Shooter();
 
   //Adding Feeder to RobotContainer
-  public static final Feeder m_feedermotor = new Feeder();
+  public static final Feeder m_Feeder = new Feeder();
 
   //Adding LED's to RobotContainer
   public static final LEDLights m_LEDsetting = new LEDLights();
@@ -107,10 +109,15 @@ public class RobotContainer {
   
   
   //Defining Feeder Command
-  private final FeedCargo cmdFeedCargo = new FeedCargo(m_feedermotor);
+  private final FeedCargo cmdFeedCargo = new FeedCargo(m_Feeder);
 
   //Autonomous Commands
   private final DriveAuto cmdDriveAuto = new DriveAuto(m_DriveTrain);
+
+  //AutoTestOne Command
+  private final AutoTestOne cmdAutoTestOne = new AutoTestOne(m_Shooter, m_Feeder, m_DriveTrain);
+
+  private final IntakeDeployReversed cmdIntakeDeployReversed = new IntakeDeployReversed(m_Intake);
 
   //-------------------
   // LED Commands
@@ -129,10 +136,10 @@ public class RobotContainer {
   //------------------
 
   //Adding "ShootCargoHigh"
-  private final ShootCargoHigh cmdShootCargoHigh = new ShootCargoHigh(m_Shooter, m_feedermotor, m_LEDsetting);
+  private final ShootCargoHigh cmdShootCargoHigh = new ShootCargoHigh(m_Shooter, m_Feeder, m_LEDsetting);
 
   //Adding "ShootCargoLow"
-  private final ShootCargoLow cmdShootCargoLow = new ShootCargoLow(m_Shooter, m_feedermotor, m_LEDsetting);
+  private final ShootCargoLow cmdShootCargoLow = new ShootCargoLow(m_Shooter, m_Feeder, m_LEDsetting);
 
   //Defining Shoot Commands
   private final ShootHigh cmdShootHigh = new ShootHigh(m_Shooter);
@@ -193,8 +200,6 @@ public class RobotContainer {
   public static final JoystickButton driverSecondarySwitchTwo = new JoystickButton(secondarycontroller, SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_2);
   public static final JoystickButton driverSecondarySwitchThree = new JoystickButton(secondarycontroller, SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_3);
 
-  private static final Command cmdIntakeDeployReverced = null;
-
   //------------------------------------------------------------------------------------------
 
   //Defining PCM
@@ -215,7 +220,7 @@ public class RobotContainer {
 
    //Testing feeder otor speed on the dashbord 
    SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
-   SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERCED);
+   SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED);
    SmartDashboard.putNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootHighPercentOutput", ShooterConstants.SHOOTHIGH_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);
@@ -223,7 +228,7 @@ public class RobotContainer {
    SmartDashboard.putNumber("doritoSpinner", ClimberConstants.DORITO_DEFAULT_SPEED);
    SmartDashboard.putNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
-   SmartDashboard.putBoolean("LimitSwitchTripped", m_feedermotor.LimitSwitchTripped());
+   SmartDashboard.putBoolean("LimitSwitchTripped", m_Feeder.LimitSwitchTripped());
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -240,7 +245,7 @@ public class RobotContainer {
     
    //Button Mappings
    driverMainButtonX.whenHeld(cmdIntakeDeploy, true);//.andThen(cmdLEDLightsIntake));
-   driverMainButtonB.toggleWhenPressed(cmdIntakeDeployReverced, true);
+   driverMainButtonB.whenHeld(cmdIntakeDeployReversed, true);
    driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
@@ -275,7 +280,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return null;
+    return cmdAutoTestOne;
   }
 
 

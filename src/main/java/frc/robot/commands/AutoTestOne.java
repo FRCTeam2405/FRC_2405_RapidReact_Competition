@@ -20,9 +20,9 @@ public class AutoTestOne extends SequentialCommandGroup {
     addCommands(
       new ShootLow(m_Shooter),
 
-      new FeedCargo(m_Feeder),
+      new FeedCargo(m_Feeder)//,
       
-      new DriveAuto(m_Drivetrain)
+    //  new DriveAuto(m_Drivetrain)
 
 
     );

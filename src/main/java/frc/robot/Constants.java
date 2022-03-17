@@ -198,7 +198,7 @@ public static final class IntakeConstants {
     public static final int INTAKE_MAIN_SPARKMAX = 22;  
     //Default Intake Speed
     public static final double INTAKE_DEFAULT_SPEED = .75;
-    public static final double INTAKE_DEFAULT_SPEED_REVERCED = -.75;
+    public static final double INTAKE_DEFAULT_SPEED_REVERSED = -.75;
     
     //Adding CAN Ports to Solenoid
     public static final int PORT_PCM_MAIN = 2;
