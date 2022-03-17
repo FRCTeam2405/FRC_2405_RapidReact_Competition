@@ -41,6 +41,9 @@ public class DoritoMotor extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (sysClimber.getMotorSpinValue() == SmartDashboard.getNumber("doritoSpinner", ClimberConstants.DORITO_DEFAULT_SPEED))
+      return true;
+    else
+      return false;
   }
 }

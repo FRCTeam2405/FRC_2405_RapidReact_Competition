@@ -40,6 +40,13 @@ public class Shooter extends SubsystemBase {
     shooterHoodTalonSRX.set(ControlMode.PercentOutput, outPutValue);
   }
 
+  public double getShootLowValue() {
+    return shooterMainTalonFX.get();
+  }
+  public double getShootHightValue() {
+    return shooterMainTalonFX.get();
+  }
+
   //public boolean LimitSwitchHigh(){
  //   return shooterLimitSwitchHigh.get();
 //}

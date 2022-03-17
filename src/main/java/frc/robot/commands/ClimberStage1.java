@@ -39,6 +39,8 @@ public class ClimberStage1 extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (sysClimber.getClimberStageOne() == false)
+     return true;
+   else return false;
   }
 }

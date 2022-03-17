@@ -40,6 +40,9 @@ public class IntakeDeploy extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (sysIntake.getIntakeMotorValue() == SmartDashboard.getNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED))
+      return true;
+    else
+      return false;
   }
 }

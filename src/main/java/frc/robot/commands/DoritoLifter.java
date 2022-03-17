@@ -40,6 +40,7 @@ public class DoritoLifter extends CommandBase {
   public boolean isFinished() {
     if (sysClimber.getDoritoLifterSolenoid() == true)
     return true; 
-  else return false;
+  else 
+  return false;
   }
 }

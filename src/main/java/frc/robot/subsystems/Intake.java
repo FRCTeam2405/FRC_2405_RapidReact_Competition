@@ -29,7 +29,6 @@ public class Intake extends SubsystemBase {
 
    //Intializing Solenoid
    intakeMainSolenoids = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM, IntakeConstants.INTAKE_SOLENOIDS_PORT);
-
   }
 
   public void ToggleIntake(double outPutValue, boolean intakeActive){
@@ -37,6 +36,10 @@ public class Intake extends SubsystemBase {
     
    //Turning Solenoid on/off
    intakeMainSolenoids.set(intakeActive); 
+  }
+
+  public double getIntakeMotorValue() {
+    return intakeMainSparkMax.get();
   }
 
   @Override

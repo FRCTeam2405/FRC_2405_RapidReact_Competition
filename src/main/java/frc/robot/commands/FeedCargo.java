@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import javax.lang.model.util.ElementScanner6;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.FeederConstants;
@@ -43,6 +45,9 @@ public class FeedCargo extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (sysFeeder.getFeedCargoValue() == SmartDashboard.getNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT))
+      return true;
+    else
+      return false;
   }
 }

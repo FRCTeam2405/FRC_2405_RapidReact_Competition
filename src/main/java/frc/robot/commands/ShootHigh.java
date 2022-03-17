@@ -56,6 +56,9 @@ public class ShootHigh extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (sysShooter.getShootHightValue() == SmartDashboard.getNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT))
+    return true; 
+  else
     return false;
   }
 }
