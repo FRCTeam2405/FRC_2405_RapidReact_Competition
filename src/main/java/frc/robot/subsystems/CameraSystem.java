@@ -12,14 +12,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class CameraSystem extends SubsystemBase {
   /** Creates a new CameraSystem. */
-  UsbCamera camera1 = null;
-  VideoSink cameraVideo = null;
+  //UsbCamera camera1 = null;
+  //VideoSink cameraVideo = null;
   public CameraSystem() {
-    camera1 = CameraServer.startAutomaticCapture(0);
-    camera1.setResolution(640, 480);
-    cameraVideo = CameraServer.getServer();
-    camera1.setConnectionStrategy(ConnectionStrategy.kKeepOpen);
-    cameraVideo.setSource(camera1);
+  CameraServer.startAutomaticCapture(0);
+  //  camera1.setResolution(640, 480);
+  //  cameraVideo = CameraServer.getServer();
+  //  camera1.setConnectionStrategy(ConnectionStrategy.kKeepOpen);
+  //  cameraVideo.setSource(camera1);
   }
 
   @Override

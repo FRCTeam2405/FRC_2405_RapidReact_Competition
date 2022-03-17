@@ -7,6 +7,8 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.FeederConstants;
 
@@ -14,10 +16,19 @@ public class Feeder extends SubsystemBase {
   /** Creates a new feederMotor. */
   CANSparkMax mainfeederMotor = null;
 
+  DigitalInput mainFeederLimit = null;
+
   public Feeder() {
 
 mainfeederMotor = new CANSparkMax(FeederConstants.MAIN_FEEDER_MOTOR, MotorType.kBrushless);
-  }
+
+mainFeederLimit = new DigitalInput(0);
+
+}
+
+public boolean LimitSwitchTripped() {
+  return mainFeederLimit.get();
+}
 
 public void feedCargo(double inputAmount) {
 mainfeederMotor.set(inputAmount);
@@ -26,5 +37,6 @@ mainfeederMotor.set(inputAmount);
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putBoolean("LimitSwitchTripped", this.LimitSwitchTripped());
   }
 }

@@ -32,6 +32,7 @@ public class FeedCargo extends CommandBase {
 
     double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);  
     sysFeeder.feedCargo(feederPercentCargo);
+
     }
 
   // Called once the command ends or is interrupted.
@@ -43,6 +44,6 @@ public class FeedCargo extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return sysFeeder.LimitSwitchTripped();
   }
 }

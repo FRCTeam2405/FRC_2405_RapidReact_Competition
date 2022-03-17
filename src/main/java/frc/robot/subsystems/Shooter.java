@@ -20,7 +20,7 @@ public class Shooter extends SubsystemBase {
  WPI_TalonSRX shooterHoodTalonSRX = null;
  //DigitalInput shooterLimitSwitchHigh = null;
  //DigitalInput shooterLimitSwitchLow = null;
- //DigitalInput test = new DigitalInput(1);
+ //
 
 
   public Shooter() {
@@ -29,6 +29,8 @@ public class Shooter extends SubsystemBase {
   shooterHoodTalonSRX = new WPI_TalonSRX(ShooterConstants.SHOOTER_HOOD_TALONSRX); 
   //shooterLimitSwitchHigh = new DigitalInput(ShooterConstants.SHOOT_HIGH_HOOD_LIMIT);
   //shooterLimitSwitchLow = new DigitalInput(ShooterConstants.SHOOT_LOW_HOOD_LIMIT);
+
+  
 }
   
   

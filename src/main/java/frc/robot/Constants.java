@@ -99,14 +99,14 @@ public static final class Drivetrain {
     public static final double DRIVETRAIN_ENCODER_BACK_RIGHT_VELOCITY_PERCENT = .5;
  
     //Encoder Channels
-    public static final int DRIVETRAIN_LEFTFRONT_ENCODER_01 = 0;
-    public static final int DRIVETRAIN_LEFTFRONT_ENCODER_02 = 1;
-    public static final int DRIVETRAIN_LEFTBACK_ENCODER_01 = 2;
-    public static final int DRIVETRAIN_LEFTBACK_ENCODER_02 = 3;
-    public static final int DRIVETRAIN_RIGHTFRONT_ENCODER_01 = 4;
-    public static final int DRIVETRAIN_RIGHTFRONT_ENCODER_02 = 5;
-    public static final int DRIVETRAIN_RIGHTBACK_ENCODER_01 = 6;
-    public static final int DRIVETRAIN_RIGHTBACK_ENCODER_02 = 7;
+    public static final int DRIVETRAIN_LEFTFRONT_ENCODER_01 = 10;
+    public static final int DRIVETRAIN_LEFTFRONT_ENCODER_02 = 11;
+    public static final int DRIVETRAIN_LEFTBACK_ENCODER_01 = 12;
+    public static final int DRIVETRAIN_LEFTBACK_ENCODER_02 = 13;
+    public static final int DRIVETRAIN_RIGHTFRONT_ENCODER_01 = 14;
+    public static final int DRIVETRAIN_RIGHTFRONT_ENCODER_02 = 15;
+    public static final int DRIVETRAIN_RIGHTBACK_ENCODER_01 = 16;
+    public static final int DRIVETRAIN_RIGHTBACK_ENCODER_02 = 17;
  
     public static final SimpleMotorFeedforward DRIVETRAIN_ENCODER_FEED_FORWARD =
     new SimpleMotorFeedforward(1, 0.8, 0.15); // NEED TO CHANGE
