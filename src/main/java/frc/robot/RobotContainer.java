@@ -4,19 +4,11 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
-import edu.wpi.first.wpilibj.PS4Controller.Axis;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.ControllerConstants;
@@ -40,6 +32,7 @@ import frc.robot.commands.AutoTestOne;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.FeedCargo;
+import frc.robot.commands.FeedShooter;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeDeployReversed;
 import frc.robot.commands.IntakeRetract;
@@ -50,6 +43,7 @@ import frc.robot.commands.ShootCargoHigh;
 import frc.robot.commands.ShootCargoLow;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
+import frc.robot.commands.TimeWait;
 import frc.robot.subsystems.CameraSystem;
 import frc.robot.subsystems.DoritoClimber;
 import frc.robot.subsystems.DoritoSpin;
@@ -103,13 +97,18 @@ public class RobotContainer {
   // Commands
   //----------
 
+  // Timer Commands (Wait)
+  private final TimeWait cmdTimeWait3Sec = new TimeWait(3);
+  private final TimeWait cmdTimeWait5Sec = new TimeWait(5);
+
   //Defining Intake Commands
   private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy(m_Intake);
   private final IntakeRetract cmdIntakeRetract = new IntakeRetract(m_Intake);
   
   
   //Defining Feeder Command
-  private final FeedCargo cmdFeedCargo = new FeedCargo(m_Feeder, m_Shooter);
+  private final FeedCargo cmdFeedCargo = new FeedCargo(m_Feeder);
+  private final FeedShooter cmdFeedShooter = new FeedShooter(m_Feeder); 
 
   //Autonomous Commands
   private final DriveAuto cmdDriveAuto = new DriveAuto(m_DriveTrain);
@@ -189,8 +188,8 @@ public class RobotContainer {
   private final JoystickButton driverMainBumperLeft = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUMPER_LEFT);
 
   //Defining Arcade Controller
-  public static final Joystick secondarycontroller = new Joystick(1);
-  public static final GenericHID driverSecondaryYAxis = new GenericHID(1);
+  public static final Joystick secondarycontroller = new Joystick(SecondaryDriver.SECONDARYDRIVER_CONTROLLER);
+  public static final GenericHID driverSecondaryYAxis = new GenericHID(SecondaryDriver.SECONDARYDRIVER_CONTROLLER_MOVE_AXISY);
   public static final JoystickButton driversecondarybuttonBlue = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_BLUE);
   public static final JoystickButton driversecondarybuttonGreen= new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_GREEN);
   public static final JoystickButton driversecondarybuttonRed = new JoystickButton(secondarycontroller, ControllerConstants.SecondaryDriver.SECONDARYDRIVER_CONTROLLER_BUTTON_RED);
@@ -204,14 +203,10 @@ public class RobotContainer {
 
   //Defining PCM
   private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM);
-  //private final UsbCamera camera1 = new UsbCamera("camera1", 0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
   // Configure the button bindings
-   // CameraServer.addCamera(camera1);
-    //camera1.setResolution(640, 480);
-
     configureButtonBindings();
    
    //Declaring commands in Robot Container
@@ -229,7 +224,6 @@ public class RobotContainer {
    SmartDashboard.putNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putBoolean("LimitSwitchTripped", m_Feeder.LimitSwitchTripped());
-   SmartDashboard.putNumber("ShooterPercentOutput", 0);
 
   }
   /**
@@ -250,8 +244,8 @@ public class RobotContainer {
    driverMainButtonB.whenHeld(cmdIntakeDeployReversed, true);
    driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
-   driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);
-   //driverMainBumperLeft.toggleWhenPressed(cmdFeedCargo, true);
+   driverMainBumperRight.toggleWhenPressed(cmdFeedShooter, true);
+   driverMainBumperLeft.toggleWhenPressed(cmdFeedCargo, true);
   
    //Secondary Button Mappings
    //driversecondarybuttonBlue.toggleWhenPressed(cmdAutoDoritoClimb);
@@ -282,7 +276,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return cmdAutoTestOne;
+    return cmdShootCargoLow;
   //return null;
   }
 

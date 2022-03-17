@@ -9,17 +9,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.FeederConstants;
 import frc.robot.subsystems.Feeder;
 
-public class FeedCargo extends CommandBase {
+public class FeedShooter extends CommandBase {
 
+  // Class Variable(s)
   private final Feeder sysFeeder;
-  
-  /** Creates a new feedCargo. */
-  public FeedCargo(Feeder inSysFeeder) {
+
+  /** Creates a new FeedShooter. */
+  public FeedShooter(Feeder inSysFeeder) {
     sysFeeder = inSysFeeder;
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysFeeder);
-
   }
 
   // Called when the command is initially scheduled.
@@ -29,27 +29,23 @@ public class FeedCargo extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    
+    // Get Percent Output value from Dashboard / if available on dashboard use default value from constants
     double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);  
     sysFeeder.feedCargo(feederPercentCargo);
-
-    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+
+    // Set Motor output to Zero on end of command
     sysFeeder.feedCargo(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (SmartDashboard.getNumber("ShooterPercentOutput", 0) == 0) {
-      return sysFeeder.LimitSwitchTripped();
-    }
-    else {
-      return false;
-    }
-    
+    return false;
   }
 }

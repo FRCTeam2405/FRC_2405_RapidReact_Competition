@@ -141,8 +141,10 @@ public static final class ControllerConstants {
     public static final double DRIVER_CONTROLLER_DEADBAND = .15;
 
     public static final class Driver {
-        //Axis values
+        // Port ID
         public static final int DRIVER_CONTROLLER = 0;
+
+        //Axis values
         public static final int DRIVER_CONTROLLER_MOVE_AXISX = 0;
         public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
         public static final int DRIVER_CONTROLLER_MOVE_AXISY = 1;
@@ -157,6 +159,14 @@ public static final class ControllerConstants {
     }
 
     public static final class SecondaryDriver {
+
+        // Port ID
+        public static final int SECONDARYDRIVER_CONTROLLER = 1;
+
+        //Axis values
+        public static final int SECONDARYDRIVER_CONTROLLER_MOVE_AXISX = 0;   
+        public static final int SECONDARYDRIVER_CONTROLLER_MOVE_AXISY = 1;   
+
         //Button Mapping
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_RED = 2;
         public static final int SECONDARYDRIVER_CONTROLLER_BUTTON_YELLOW = 4;
@@ -169,7 +179,6 @@ public static final class ControllerConstants {
         public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_1 = 6;
         public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_2 = 7;
         public static final int SECONDARYDRIVER_CONTROLLER_SWITCH_3 = 8;
-        public static final int SECONDARYDRIVER_CONTROLLER_MOVE_AXISY = 1;   
     }
    
 }

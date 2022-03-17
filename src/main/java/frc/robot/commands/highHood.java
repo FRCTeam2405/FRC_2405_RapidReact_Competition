@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
-public class highHood extends CommandBase {
+public class HighHood extends CommandBase {
   public final Shooter sysShooter;
   /** Creates a new hood. */
 
-  public highHood(Shooter inSysShooter) {
+  public HighHood(Shooter inSysShooter) {
     sysShooter = inSysShooter;
 
     // Use addRequirements() here to declare subsystem dependencies.

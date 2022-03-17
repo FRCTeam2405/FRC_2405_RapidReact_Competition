@@ -19,7 +19,7 @@ public class ShootCargoHigh extends ParallelCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
 //Fires both commands
-    new ShootHigh(inSysShooter), new FeedCargo(inSysFeeder, inSysShooter)
+    new ShootHigh(inSysShooter), new FeedCargo(inSysFeeder)
 
     );
   }
