@@ -6,42 +6,41 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.ClimberConstants;
-import frc.robot.subsystems.DoritoClimber;
-import frc.robot.subsystems.DoritoSpin;
+import frc.robot.Constants.IntakeConstants;
+import frc.robot.subsystems.Intake;
 
-public class DoritoMotor extends CommandBase {
+public class IntakeDeployReverced extends CommandBase {
 
-  private final DoritoSpin sysClimber;
-
-  /** Creates a new ClimberStage1. */
-  public DoritoMotor(DoritoSpin inSysClimber)  {
-    sysClimber = inSysClimber;
+  private final Intake sysIntake;
+  
+  /** Creates a new IntakeDeploy. */
+  public IntakeDeployReverced(Intake inSysIntake) {
+    sysIntake = inSysIntake;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(sysClimber);
-
+    addRequirements(sysIntake);
   }
 
   // Called when the command is initially scheduled.
-  @Override
+  @Override 
   public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.DoritoClimberMotor(SmartDashboard.getNumber("doritoSpinner", ClimberConstants.DORITO_DEFAULT_SPEED));  
+    sysIntake.ToggleIntake(SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERCED), true);
+  
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sysClimber.DoritoClimberMotor(0);
+    sysIntake.ToggleIntake(0, false);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysClimber.getMotorSpinValue() == SmartDashboard.getNumber("doritoSpinner", ClimberConstants.DORITO_DEFAULT_SPEED))
+    if (sysIntake.getIntakeMotorValue() == SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERCED))
       return true;
     else
       return false;

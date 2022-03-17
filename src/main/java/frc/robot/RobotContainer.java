@@ -193,6 +193,8 @@ public class RobotContainer {
   public static final JoystickButton driverSecondarySwitchTwo = new JoystickButton(secondarycontroller, SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_2);
   public static final JoystickButton driverSecondarySwitchThree = new JoystickButton(secondarycontroller, SecondaryDriver.SECONDARYDRIVER_CONTROLLER_SWITCH_3);
 
+  private static final Command cmdIntakeDeployReverced = null;
+
   //------------------------------------------------------------------------------------------
 
   //Defining PCM
@@ -213,6 +215,7 @@ public class RobotContainer {
 
    //Testing feeder otor speed on the dashbord 
    SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
+   SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERCED);
    SmartDashboard.putNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootHighPercentOutput", ShooterConstants.SHOOTHIGH_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);
@@ -237,7 +240,7 @@ public class RobotContainer {
     
    //Button Mappings
    driverMainButtonX.whenHeld(cmdIntakeDeploy, true);//.andThen(cmdLEDLightsIntake));
-   driverMainButtonB.whenPressed(cmdIntakeRetract);
+   driverMainButtonB.toggleWhenPressed(cmdIntakeDeployReverced, true);
    driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedCargo, true);

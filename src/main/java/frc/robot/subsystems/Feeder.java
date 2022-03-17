@@ -34,6 +34,10 @@ public void feedCargo(double inputAmount) {
 mainfeederMotor.set(inputAmount);
 }
 
+public double getFeedCargoValue() {
+  return mainfeederMotor.get();
+}
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

@@ -43,6 +43,9 @@ public class LEDDeclare extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (sysLEDLights.getLEDLights() == SmartDashboard.getNumber("LEDSet", LEDConstants.LED_SETTING_DEFAULT))
+    return true; 
+  else
     return false;
   }
 }

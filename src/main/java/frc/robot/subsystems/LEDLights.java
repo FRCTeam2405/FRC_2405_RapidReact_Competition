@@ -21,6 +21,10 @@ public class LEDLights extends SubsystemBase {
     LEDSetting.set(setColor);
 }
 
+public double getLEDLights() {
+  return LEDSetting.get();
+}
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

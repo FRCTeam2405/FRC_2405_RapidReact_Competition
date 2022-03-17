@@ -38,6 +38,10 @@ public class DoritoSpin extends SubsystemBase {
     mainDoritoSparkMax.set(inputAmount);
   }
 
+  public double getMotorSpinValue() {
+    return mainDoritoSparkMax.get();
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
