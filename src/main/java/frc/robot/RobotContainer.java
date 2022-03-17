@@ -109,7 +109,7 @@ public class RobotContainer {
   
   
   //Defining Feeder Command
-  private final FeedCargo cmdFeedCargo = new FeedCargo(m_Feeder);
+  private final FeedCargo cmdFeedCargo = new FeedCargo(m_Feeder, m_Shooter);
 
   //Autonomous Commands
   private final DriveAuto cmdDriveAuto = new DriveAuto(m_DriveTrain);
@@ -229,6 +229,8 @@ public class RobotContainer {
    SmartDashboard.putNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putBoolean("LimitSwitchTripped", m_Feeder.LimitSwitchTripped());
+   SmartDashboard.putNumber("ShooterPercentOutput", 0);
+
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -281,6 +283,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     return cmdAutoTestOne;
+  //return null;
   }
 
 

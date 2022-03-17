@@ -40,9 +40,9 @@ public class IntakeDeployReversed extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysIntake.getIntakeMotorValue() == SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED))
-      return true;
-    else
+    //if (sysIntake.getIntakeMotorValue() == SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED))
+    //  return true;
+    //else
       return false;
   }
 }

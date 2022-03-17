@@ -10,14 +10,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.FeederConstants;
 import frc.robot.subsystems.Feeder;
+import frc.robot.subsystems.Shooter;
 
 public class FeedCargo extends CommandBase {
 
   private final Feeder sysFeeder;
+  private final Shooter sysShooter;
   
   /** Creates a new feedCargo. */
-  public FeedCargo(Feeder inSysFeeder) {
+  public FeedCargo(Feeder inSysFeeder, Shooter inSysShooter) {
     sysFeeder = inSysFeeder;
+    sysShooter = inSysShooter;
+
     // Use addRequirements() here to declare subsystem dependencies.
 
     addRequirements(sysFeeder);
@@ -46,6 +50,12 @@ public class FeedCargo extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return sysFeeder.LimitSwitchTripped();
+    if (SmartDashboard.getNumber("ShooterPercentOutput", 0) == 0) {
+      return sysFeeder.LimitSwitchTripped();
+    }
+    else {
+      return false;
+    }
+    
   }
 }
