@@ -43,6 +43,15 @@ public class DriveMecanum extends CommandBase {
   rotateSpeedZ = 0;
 }  
 
+
+
+
+
+
+
+
+
+
  // Override moveSpeedX [strafe] - Left
  if (RobotContainer.driverController.getLeftTriggerAxis() != 0) {
   moveSpeedX = -1 * RobotContainer.driverController.getLeftTriggerAxis();
