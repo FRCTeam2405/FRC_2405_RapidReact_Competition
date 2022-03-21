@@ -9,15 +9,21 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.LEDConstants;
 import frc.robot.Constants.ShooterConstants;
+import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
 
 public class ShootLow extends CommandBase {
   
   private final Shooter sysShooter;
+  private final LEDLights sysLedLights;
+
   /** Creates a new ShootLow. */
-  public ShootLow(Shooter inSysShooter) {
+  public ShootLow(Shooter inSysShooter, LEDLights inSysLedLights) {
     sysShooter = inSysShooter;
+    sysLedLights = inSysLedLights;
+
     // Use addRequirements() here to declare subsystem dependencies.
   addRequirements(sysShooter);
   }
@@ -42,6 +48,7 @@ public class ShootLow extends CommandBase {
 
    double feederPercentCargo = SmartDashboard.getNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);  
     sysShooter.Shoot(ControlMode.PercentOutput, feederPercentCargo);
+    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_SHOOTER);
     
   }
 
@@ -49,6 +56,7 @@ public class ShootLow extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, 0);
+    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_DEFAULT);
   }
 
   // Returns true when the command should end.

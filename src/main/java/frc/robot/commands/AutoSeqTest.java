@@ -22,6 +22,7 @@ import frc.robot.Constants.EncoderConstants;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -29,7 +30,7 @@ import frc.robot.subsystems.Shooter;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class AutoSeqTest extends SequentialCommandGroup {
   /** Creates a new AutoSeqTest. */
-  public AutoSeqTest(DriveTrain m_DriveTrain, Intake m_Intake, Feeder m_feedermotor, Shooter m_Shooter)  {
+  public AutoSeqTest(DriveTrain m_DriveTrain, Intake m_Intake, Feeder m_feedermotor, Shooter m_Shooter, LEDLights inSysLedLights)  {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
 
@@ -86,7 +87,7 @@ public class AutoSeqTest extends SequentialCommandGroup {
       //Drive
 
       //ShootHigh
-      new ShootHigh(m_Shooter),
+      new ShootHigh(m_Shooter, inSysLedLights),
 
       //Intake Deploy
       new IntakeDeploy(m_Intake)

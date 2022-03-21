@@ -225,7 +225,11 @@ public static final class FeederConstants {
 
 public static final class LEDConstants {
     //LED Default Setting
-    public static final double LED_SETTING_DEFAULT = -0.69;
+    public static final double LED_SETTING_DEFAULT = -0.40;
+
+    // Settings
+    public static final double LED_SETTING_SHOOTER = -.69;
+
     //PWM Port: LED
     public static final int LED_PWM_PORT = 0;
 }
