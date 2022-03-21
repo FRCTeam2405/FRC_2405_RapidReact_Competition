@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.ControllerConstants;
@@ -114,7 +115,7 @@ public class RobotContainer {
   private final DriveAuto cmdDriveAuto = new DriveAuto(m_DriveTrain);
 
   //AutoTestOne Command
-  private final AutoTestOne cmdAutoTestOne = new AutoTestOne(m_Shooter, m_Feeder, m_DriveTrain);
+  private final AutoTestOne cmdAutoTestOne = new AutoTestOne(m_Shooter, m_Feeder, m_DriveTrain, m_LEDsetting);
 
   private final IntakeDeployReversed cmdIntakeDeployReversed = new IntakeDeployReversed(m_Intake);
 
@@ -141,8 +142,8 @@ public class RobotContainer {
   private final ShootCargoLow cmdShootCargoLow = new ShootCargoLow(m_Shooter, m_Feeder, m_LEDsetting);
 
   //Defining Shoot Commands
-  private final ShootHigh cmdShootHigh = new ShootHigh(m_Shooter);
-  private final ShootLow cmdShootLow = new ShootLow(m_Shooter);
+  private final ShootHigh cmdShootHigh = new ShootHigh(m_Shooter, m_LEDsetting);
+  private final ShootLow cmdShootLow = new ShootLow(m_Shooter, m_LEDsetting);
 
   //------------------------------------------------------------------------
 
@@ -204,6 +205,8 @@ public class RobotContainer {
   //Defining PCM
   private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM);
 
+  private SendableChooser<Command> dropdownCommandChooser = new SendableChooser<>();
+  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
   // Configure the button bindings
@@ -224,6 +227,11 @@ public class RobotContainer {
    SmartDashboard.putNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putBoolean("LimitSwitchTripped", m_Feeder.LimitSwitchTripped());
+
+   dropdownCommandChooser.setDefaultOption("Shoot High", cmdShootCargoHigh);
+   dropdownCommandChooser.addOption("Shoot Low", cmdShootCargoLow);
+
+   SmartDashboard.putData(dropdownCommandChooser);
 
   }
   /**
@@ -276,7 +284,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return cmdShootCargoLow;
+   // return cmdShootCargoHigh;
+    return dropdownCommandChooser.getSelected();
   //return null;
   }
 
