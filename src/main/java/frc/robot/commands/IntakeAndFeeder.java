@@ -17,8 +17,8 @@ public class IntakeAndFeeder extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new FeedCargo(inSysFeeder),
-      new IntakeDeploy(inSysIntake)
+      new IntakeDeploy(inSysIntake),
+      new FeedCargo(inSysFeeder)
     );
     }
 }
