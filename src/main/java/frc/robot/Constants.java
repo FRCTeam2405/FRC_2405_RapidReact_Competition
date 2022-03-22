@@ -221,6 +221,7 @@ public static final class FeederConstants {
     public static final int MAIN_FEEDER_MOTOR = 21;
     //Default Feeder Output
     public static final double FEEDER_DEFAULT_OUTPUT = .75;
+    public static final double FEEDER_DEFAULT_OUTPUT_REVERSED = -.75;
 }
 
 public static final class LEDConstants {

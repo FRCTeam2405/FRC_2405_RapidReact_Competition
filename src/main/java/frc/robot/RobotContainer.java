@@ -34,6 +34,8 @@ import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.FeedCargo;
 import frc.robot.commands.FeedShooter;
+import frc.robot.commands.IntakeAndFeeder;
+import frc.robot.commands.IntakeAndFeederReverced;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeDeployReversed;
 import frc.robot.commands.IntakeRetract;
@@ -105,7 +107,9 @@ public class RobotContainer {
   //Defining Intake Commands
   private final IntakeDeploy cmdIntakeDeploy = new IntakeDeploy(m_Intake);
   private final IntakeRetract cmdIntakeRetract = new IntakeRetract(m_Intake);
-  
+
+  private final IntakeAndFeeder cmdIntakeAndFeeder = new IntakeAndFeeder(m_Feeder, m_Intake);
+  private final IntakeAndFeederReverced cmdIntakeAndFeederReversed = new IntakeAndFeederReverced(m_Feeder, m_Intake);
   
   //Defining Feeder Command
   private final FeedCargo cmdFeedCargo = new FeedCargo(m_Feeder);
@@ -248,10 +252,10 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
    //Button Mappings
-   driverMainButtonX.whenHeld(cmdIntakeDeploy, true);//.andThen(cmdLEDLightsIntake));
-   driverMainButtonB.whenHeld(cmdIntakeDeployReversed, true);
-   driverMainButtonY.toggleWhenPressed(cmdShootHigh, true);//.andThen(cmdLEDLightsShootHigh));
-   driverMainButtonA.toggleWhenPressed(cmdShootLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
+   driverMainButtonX.whenHeld(cmdIntakeAndFeeder, true);//.andThen(cmdLEDLightsIntake));
+   driverMainButtonB.whenHeld(cmdIntakeAndFeederReversed, true);
+   driverMainButtonY.toggleWhenPressed(cmdShootCargoHigh, true);//.andThen(cmdLEDLightsShootHigh));
+   driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.toggleWhenPressed(cmdFeedShooter, true);
    driverMainBumperLeft.toggleWhenPressed(cmdFeedCargo, true);
   

@@ -4,59 +4,46 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.FeederConstants;
 import frc.robot.subsystems.Feeder;
-import frc.robot.commands.TimeWait;
 
-public class FeedShooter extends CommandBase {
+public class FeedCargoReversed extends CommandBase {
 
-  private double waitTimeStart = 0;
-  private double waitTimeSetting = 2;
-  private double waitTimeElapsed = 0;
-
-  // Class Variable(s)
   private final Feeder sysFeeder;
-
-  /** Creates a new FeedShooter. */
-  public FeedShooter(Feeder inSysFeeder) {
+  
+  /** Creates a new feedCargo. */
+  public FeedCargoReversed(Feeder inSysFeeder) {
     sysFeeder = inSysFeeder;
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysFeeder);
+
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    waitTimeStart = Timer.getFPGATimestamp();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    waitTimeElapsed = Timer.getFPGATimestamp() - waitTimeStart;
-    
-    if (waitTimeElapsed >= waitTimeSetting) {
-      double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);  
-      sysFeeder.feedCargo(feederPercentCargo);
+
+    double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutputReversed", FeederConstants.FEEDER_DEFAULT_OUTPUT_REVERSED);  
+    sysFeeder.feedCargo(feederPercentCargo);
+
     }
-    
-  }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
-    // Set Motor output to Zero on end of command
     sysFeeder.feedCargo(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+      return false;
+    }
   }
-}
