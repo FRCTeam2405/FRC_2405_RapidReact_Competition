@@ -5,15 +5,20 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.LEDConstants;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.LEDLights;
 
 public class ClimberStage2 extends CommandBase {
 
   private final DoritoClimber sysClimber;
-
+  private final LEDLights sysLedLights;
+  
   /** Creates a new ClimberStage1. */
-  public ClimberStage2(DoritoClimber inSysClimber)  {
+  public ClimberStage2(DoritoClimber inSysClimber, LEDLights inSysLedLights)  {
     sysClimber = inSysClimber;
+    sysLedLights = inSysLedLights;
+
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysClimber);
 
@@ -26,8 +31,8 @@ public class ClimberStage2 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
     sysClimber.toggleClimberTwo(false);
+    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_TWO);
   }
 
   // Called once the command ends or is interrupted.

@@ -6,21 +6,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.LEDLights;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class LiftClimber extends SequentialCommandGroup {
   /** Creates a new LiftClimber. */
-  public LiftClimber(DoritoClimber inSysDoritoClimber) {
+  public LiftClimber(DoritoClimber inSysDoritoClimber, LEDLights inSysLEDLights) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands (
-      new DoritoLifter(inSysDoritoClimber), 
-
-      new ClimberStageOneRelease(inSysDoritoClimber),
-      new ClimberStageTwoRelease(inSysDoritoClimber), 
-      new ClimberStageThreeRelease(inSysDoritoClimber)
+      new DoritoLifter(inSysDoritoClimber, inSysLEDLights), 
+      new ClimberStageOneRelease(inSysDoritoClimber, inSysLEDLights),
+      new ClimberStageTwoRelease(inSysDoritoClimber, inSysLEDLights), 
+      new ClimberStageThreeRelease(inSysDoritoClimber, inSysLEDLights)
     );
   }
 }

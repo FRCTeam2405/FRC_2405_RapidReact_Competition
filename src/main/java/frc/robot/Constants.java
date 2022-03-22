@@ -31,13 +31,84 @@ public static final class DrivetrainConstants{
     public static final int DRIVETRAIN_LEFTBACK_TALONFX = CAN_NETWORK_PORT_12;
     public static final int DRIVETRAIN_RIGHTBACK_TALONFX = CAN_NETWORK_PORT_13;
 
+    public static final class Autonomous {
+
+        public static final double DRIVETRAIN_MAX_SPEED_PER_SECOND_METERS = 3; // NEED TO CHANGE
+        public static final double DRIVETRAIN_MAX_ACCELERATION_PER_SECOND_SQUARED_METERS = 3; // NEED TO CHANGE
+        public static final double DRIVETRAIN_MAX_ANGULAR_SPEED_PER_SECOND_RADIANS = Math.PI;
+        public static final double DRIVETRAIN_MAX_ANGULAR_SPEED_PER_SECOND_SQUARED_RADIANS = Math.PI;
+
+        public static final double DRIVETRAIN_CONTROLLER_PX = 0.05; // NEED TO CHANGE
+        public static final double DRIVETRAIN_CONTROLLER_PY = 0.05; // NEED TO CHANGE
+        public static final double DRIVETRAIN_CONTROLLER_PTHETA = 0.05; // NEED TO CHANGE
+
+        public static final TrapezoidProfile.Constraints DRIVETRAIN_THETA_CONTROLLER_CONSTRAINTS = 
+            new TrapezoidProfile.Constraints(
+                DRIVETRAIN_MAX_ANGULAR_SPEED_PER_SECOND_RADIANS, 
+                DRIVETRAIN_MAX_ANGULAR_SPEED_PER_SECOND_SQUARED_RADIANS
+                );
+
+
+        public static final class TrajectoryPathWeaver {
+
+            public static final class BasicOne {
+
+                public static final class JsonPath {
+                    public static final String TRAJECTORY_PATH_JSON_BASIC_ONE_WP_01 = "paths/basic01wp01.json";
+                }
+            }
+
+            public static final class LeftOne {
+
+                public static final class JsonPath {
+                    public static final String TRAJECTORY_PATH_JSON_LEFT_ONE_WP_01 = "paths/left01wp01.json";
+                    public static final String TRAJECTORY_PATH_JSON_LEFT_ONE_WP_02 = "paths/left01wp02.json";
+                    public static final String TRAJECTORY_PATH_JSON_LEFT_ONE_WP_03 = "paths/left01wp03.json";
+                }
+            }
+
+            public static final class LeftTwo {
+
+                public static final class JsonPath {
+                    public static final String TRAJECTORY_PATH_JSON_LEFT_TWO_WP_01 = "paths/left02wp01.json";
+                    public static final String TRAJECTORY_PATH_JSON_LEFT_TWO_WP_02 = "paths/left02wp02.json";
+                    public static final String TRAJECTORY_PATH_JSON_LEFT_TWO_WP_03 = "paths/left02wp03.json";
+
+                }
+
+            }
+
+            public static final class RightOne {
+
+                public static final class JsonPath {
+                    public static final String TRAJECTORY_PATH_JSON_RIGHT_ONE_WP_01 = "paths/right01wp01.json";
+                    public static final String TRAJECTORY_PATH_JSON_RIGHT_ONE_WP_02 = "paths/right01wp02.json";
+                    public static final String TRAJECTORY_PATH_JSON_RIGHT_ONE_WP_03 = "paths/right01wp03.json";
+                }
+            }
+
+            public static final class RightTwo {
+
+                public static final class JsonPath {
+                    public static final String TRAJECTORY_PATH_JSON_RIGHT_TWO_WP_01 = "paths/right02wp01.json";
+                    public static final String TRAJECTORY_PATH_JSON_RIGHT_TWO_WP_02 = "paths/right02wp02.json";
+                    public static final String TRAJECTORY_PATH_JSON_RIGHT_TWO_WP_03 = "paths/right02wp03.json";
+
+                }
+
+            }
     
+        }
+        
+    }
 
 }
 
 public static final class DrivetrainAutonomousConstants {
     //Max Speed per Second in Meters
     public static final double DRIVETRAIN_MAX_SPEED_PER_SECOND_METERS = 3; //Need to Change
+    
+
     
     //Max Acceleration per Second
     public static final double DRIVETRAIN_MAX_ACCELERATION_PER_SECOND_SQUARED_METERS = 3; //Need to Change

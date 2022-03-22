@@ -6,14 +6,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.LEDLights;
 
 public class ClimberStageTwoRelease extends CommandBase {
 
   private final DoritoClimber sysClimber;
+  private final LEDLights sysLedLights;
 
   /** Creates a new ClimberStageTwoRelease. */
-  public ClimberStageTwoRelease(DoritoClimber inSysClimber)  {
+  public ClimberStageTwoRelease(DoritoClimber inSysClimber, LEDLights inSysLedLights)  {
     sysClimber = inSysClimber;
+    sysLedLights = inSysLedLights;
+    
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysClimber);
 

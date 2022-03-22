@@ -156,18 +156,18 @@ public class RobotContainer {
   //-----------------
 
   //Dorito Clamp commands
-  private final ClimberStage1 clampOne = new ClimberStage1(m_doritoclimber);
-  private final ClimberStage2 clampTwo = new ClimberStage2(m_doritoclimber);
-  private final ClimberStage3 clampThree = new ClimberStage3(m_doritoclimber);
+  private final ClimberStage1 clampOne = new ClimberStage1(m_doritoclimber, m_LEDsetting);
+  private final ClimberStage2 clampTwo = new ClimberStage2(m_doritoclimber, m_LEDsetting);
+  private final ClimberStage3 clampThree = new ClimberStage3(m_doritoclimber, m_LEDsetting);
   //Dorito Unclamp Commands
-  private final ClimberStageOneRelease cmdReleaseClampOne = new ClimberStageOneRelease(m_doritoclimber);
-  private final ClimberStageTwoRelease cmdReleaseClampTwo = new ClimberStageTwoRelease(m_doritoclimber);
-  private final ClimberStageThreeRelease cmdReleaseClampThree = new ClimberStageThreeRelease(m_doritoclimber);
+  private final ClimberStageOneRelease cmdReleaseClampOne = new ClimberStageOneRelease(m_doritoclimber, m_LEDsetting);
+  private final ClimberStageTwoRelease cmdReleaseClampTwo = new ClimberStageTwoRelease(m_doritoclimber, m_LEDsetting);
+  private final ClimberStageThreeRelease cmdReleaseClampThree = new ClimberStageThreeRelease(m_doritoclimber, m_LEDsetting);
   //Dorito Lifter Command
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber, m_LEDsetting);
-  private final LiftClimber cmdLiftClimber = new LiftClimber(m_doritoclimber);
+  private final LiftClimber cmdLiftClimber = new LiftClimber(m_doritoclimber, m_LEDsetting);
   //Dorito Lower Command
-  private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber);
+  private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber, m_LEDsetting);
   //Dorito Motor Command
   private final DoritoMotor cmdDoritoMotorEngage = new DoritoMotor(m_DoritoSpin);
 
@@ -175,7 +175,7 @@ public class RobotContainer {
   //AutoDoritoSpin Command
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
   //AutoDoritoClimb
-  private final AutoDoritoClimb cmdAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber);
+  private final AutoDoritoClimb cmdAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber, m_LEDsetting);
   
   //---------------------------------------------------------------------------------------
 

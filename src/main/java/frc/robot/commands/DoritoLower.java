@@ -5,18 +5,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.LEDConstants;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.LEDLights;
 
 public class DoritoLower extends CommandBase {
 
   private final DoritoClimber sysClimber;
+  private final LEDLights sysLedLights;
 
   /** Creates a new ClimberStage1. */
-  public DoritoLower(DoritoClimber inSysClimber)  {
+  public DoritoLower(DoritoClimber inSysClimber, LEDLights inSysLedLights)  {
     sysClimber = inSysClimber;
+    sysLedLights = inSysLedLights;
+
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(sysClimber);
-
   }
 
   // Called when the command is initially scheduled.
@@ -27,6 +31,7 @@ public class DoritoLower extends CommandBase {
   @Override
   public void execute() {
     sysClimber.toggleDoritoLifterSolenoid(false);
+    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_DEFAULT);
   }
 
   // Called once the command ends or is interrupted.
