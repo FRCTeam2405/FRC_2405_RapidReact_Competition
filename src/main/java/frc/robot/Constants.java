@@ -227,6 +227,11 @@ public static final class FeederConstants {
 public static final class LEDConstants {
     //LED Default Setting
     public static final double LED_SETTING_DEFAULT = -0.40;
+    public static final double LED_SETTING_CLIMBER_ARM = -0.07;
+    public static final double LED_SETTING_CLIMBER_CLAMP_ONE = 0.15;
+    public static final double LED_SETTING_CLIMBER_CLAMP_TWO = 0.35;
+    public static final double LED_SETTING_CLIMBER_CLAMP_THREE_RED = -0.11;
+    public static final double LED_SETTING_CLIMBER_CLAMP_THREE_BLUE = -0.09;
 
     // Settings
     public static final double LED_SETTING_SHOOTER = -.69;
