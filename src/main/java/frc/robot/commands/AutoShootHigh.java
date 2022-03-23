@@ -4,7 +4,8 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
@@ -12,15 +13,12 @@ import frc.robot.subsystems.Shooter;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class ShootCargoLow extends ParallelCommandGroup {
-  /** Creates a new ShootCargoLow. */
-  public ShootCargoLow(Shooter inSysShooter, Feeder inSysFeeder, LEDLights inSysLedLights) {
-    // Add your commands in the addCommands() call, e.g.
-    // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-//Fires both commands
-    new ShootLow(inSysShooter, inSysLedLights), new FeedDelay(inSysFeeder)
-
-    );
+public class AutoShootHigh extends ParallelDeadlineGroup {
+  /** Creates a new AutoShootHigh. */
+  public AutoShootHigh(Shooter inSysShooter, Feeder inSysFeeder, LEDLights inSysLEDLights) {
+    // Add the deadline command in the super() call. Add other commands using
+    // addCommands().
+    super(new TimeWait(5));
+     addCommands(new ShootCargoHigh(inSysShooter, inSysFeeder, inSysLEDLights));
   }
 }

@@ -13,10 +13,6 @@ import frc.robot.commands.TimeWait;
 
 public class FeedShooter extends CommandBase {
 
-  private double waitTimeStart = 0;
-  private double waitTimeSetting = 2;
-  private double waitTimeElapsed = 0;
-
   // Class Variable(s)
   private final Feeder sysFeeder;
 
@@ -31,20 +27,14 @@ public class FeedShooter extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    waitTimeStart = Timer.getFPGATimestamp();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    waitTimeElapsed = Timer.getFPGATimestamp() - waitTimeStart;
-    
-    if (waitTimeElapsed >= waitTimeSetting) {
       double feederPercentCargo = SmartDashboard.getNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);  
       sysFeeder.feedCargo(feederPercentCargo);
     }
-    
-  }
 
   // Called once the command ends or is interrupted.
   @Override
