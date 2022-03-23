@@ -6,14 +6,18 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.MecanumDriveMotorVoltages;
 import edu.wpi.first.math.kinematics.MecanumDriveOdometry;
 import edu.wpi.first.math.kinematics.MecanumDriveWheelSpeeds;
+import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DrivetrainAutonomousConstants;
 import frc.robot.Constants.DrivetrainConstants;
@@ -173,6 +177,37 @@ public class DriveTrain extends SubsystemBase {
       );
   }
 
+  public MecanumControllerCommand genAutoCommand(Trajectory inAutoTrajectory) {
+  MecanumControllerCommand outputCommand = new MecanumControllerCommand(
+    inAutoTrajectory, 
+    this::getPose, 
+    EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_FEED_FORWARD, 
+    DrivetrainAutonomousConstants.DRIVETRAIN_MECANUM_KINEMATICS, 
+    
+    // Position contollers
+    new PIDController(DrivetrainAutonomousConstants.DRIVETRAIN_CONTROLLER_PX, 0, 0), 
+    new PIDController(DrivetrainAutonomousConstants.DRIVETRAIN_CONTROLLER_PY, 0, 0), 
+    new ProfiledPIDController(DrivetrainAutonomousConstants.DRIVETRAIN_CONTROLLER_PTHETA, 0, 0, DrivetrainAutonomousConstants.DRIVETRAIN_THETA_CONTROLLER_CONSTRAINTS), 
+    
+    // Needed for normalizing wheel speeds
+    DrivetrainAutonomousConstants.DRIVETRAIN_MAX_SPEED_PER_SECOND_METERS, 
+    
+    // Velocity PID's
+    new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_FRONT_LEFT_VELOCITY_PERCENT, 0, 0),
+    new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_BACK_LEFT_VELOCITY_PERCENT, 0, 0),
+    new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_FRONT_RIGHT_VELOCITY_PERCENT, 0, 0),
+    new PIDController(EncoderConstants.Drivetrain.DRIVETRAIN_ENCODER_BACK_RIGHT_VELOCITY_PERCENT, 0, 0),
+
+    this::getCurrentDrivetrainWheelSpeeds, 
+    this::setDriveMotorControllersVolts, 
+    this
+
+  );
+
+  return outputCommand;
+
+  }
+
   public void setDrivetrainMaxOutput(double inMaxOutput) {
 
     mecanumDrive.setMaxOutput(inMaxOutput);
@@ -198,14 +233,15 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    drivetrainMecanumOdometry.update(
+   
+    /* drivetrainMecanumOdometry.update(
       drivetrainGyro.getRotation2d(), 
       new MecanumDriveWheelSpeeds(
         drivetrainLeftFrontEncoder.getRate(), 
         drivetrainRightFrontEncoder.getRate(), 
         drivetrainLeftBackEncoder.getRate(), 
         drivetrainRightBackEncoder.getRate())
-      );
-    
+        );
+    */
   }
 }
