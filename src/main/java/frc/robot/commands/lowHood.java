@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Shooter;
 
 public class LowHood extends CommandBase {
@@ -28,10 +29,8 @@ public class LowHood extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-   //if(!sysShooter.LimitSwitchLow()) {
-    // sysShooter.Hood(SmartDashboard.getNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT));
-   // }
+   
+    sysShooter.Hood(SmartDashboard.getNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT));
   }
 
   // Called once the command ends or is interrupted.

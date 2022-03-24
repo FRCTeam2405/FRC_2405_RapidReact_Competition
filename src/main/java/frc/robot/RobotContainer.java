@@ -34,6 +34,7 @@ import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.FeedCargo;
 import frc.robot.commands.FeedShooter;
+import frc.robot.commands.HighHood;
 import frc.robot.commands.IntakeAndFeeder;
 import frc.robot.commands.IntakeAndFeederReverced;
 import frc.robot.commands.IntakeDeploy;
@@ -42,6 +43,7 @@ import frc.robot.commands.IntakeRetract;
 import frc.robot.commands.JoystickDoritoSpinner;
 import frc.robot.commands.LEDDeclare;
 import frc.robot.commands.LiftClimber;
+import frc.robot.commands.LowHood;
 import frc.robot.commands.ShootCargoHigh;
 import frc.robot.commands.ShootCargoLow;
 import frc.robot.commands.ShootHigh;
@@ -122,6 +124,10 @@ public class RobotContainer {
   private final AutoTestOne cmdAutoTestOne = new AutoTestOne(m_Shooter, m_Feeder, m_DriveTrain, m_LEDsetting);
 
   private final IntakeDeployReversed cmdIntakeDeployReversed = new IntakeDeployReversed(m_Intake);
+
+  //Hood Commands
+  private final HighHood cmdHighHood = new HighHood(m_Shooter);
+  private final LowHood cmdLowHood = new LowHood(m_Shooter);
 
   //-------------------
   // LED Commands
@@ -262,8 +268,8 @@ public class RobotContainer {
    //Secondary Button Mappings
    //driversecondarybuttonBlue.toggleWhenPressed(cmdAutoDoritoClimb);
    driversecondarybuttonGreen.toggleWhenPressed(cmdDoritoMotorEngage);
-   //driversecondarybuttonRed.toggleWhenPressed(); //Button B Activated DoritoLifter
-   //driverSecondaryButtonYellow.toggleWhenPressed(); // Button Y Activated Clamp 2
+   driversecondarybuttonRed.whenHeld(cmdHighHood);
+   driverSecondaryButtonYellow.whenHeld(cmdLowHood); 
    driverSecondarySwitchZero.whenActive(cmdLiftClimber);
    driverSecondarySwitchZero.whenInactive(cmdDoritoLowerEngage);
    driverSecondarySwitchOne.whenActive(cmdReleaseClampOne);
