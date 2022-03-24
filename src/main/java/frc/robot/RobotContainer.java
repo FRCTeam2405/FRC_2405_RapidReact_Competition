@@ -235,7 +235,6 @@ public class RobotContainer {
    SmartDashboard.putNumber("LEDSet", LEDConstants.LED_SETTING_DEFAULT);
    SmartDashboard.putNumber("doritoSpinner", ClimberConstants.DORITO_DEFAULT_SPEED);
    SmartDashboard.putNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
-   SmartDashboard.putNumber("ShooterHoodLower", -1 * ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT);
    SmartDashboard.putBoolean("LimitSwitchTripped", m_Feeder.LimitSwitchTripped());
 
    dropdownCommandChooser.setDefaultOption("Shoot High", cmdShootCargoHigh);
