@@ -32,8 +32,10 @@ public class ClimberStage2 extends CommandBase {
   @Override
   public void execute() {
     sysClimber.toggleClimberTwo(false);
-    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_TWO);
-  }
+    if(sysClimber.getClampTwoStatus()) {
+      sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_TWO);
+      }
+    }
 
   // Called once the command ends or is interrupted.
   @Override

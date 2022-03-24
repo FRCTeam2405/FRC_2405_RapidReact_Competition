@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -22,6 +23,9 @@ public class DoritoClimber extends SubsystemBase {
   Solenoid doritoSolenoidThree = null;
   Solenoid doritoLifterSolenoid = null;
 
+  DigitalInput clampOneOn = null;
+  DigitalInput clampTwoOn = null;
+  DigitalInput clampThreeOn = null;
 
   public DoritoClimber() {
     //Defining Solenoids
@@ -30,7 +34,21 @@ public class DoritoClimber extends SubsystemBase {
     doritoSolenoidThree = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM, ClimberConstants.DORITO_SOLENOID_PORT_THREE);
     doritoLifterSolenoid = new Solenoid(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM, ClimberConstants.DORITO_LIFTER_SOLENOID_PORT);
 
+    clampOneOn = new DigitalInput(2);
+    clampTwoOn = new DigitalInput(3);
+    clampThreeOn = new DigitalInput(4);
+  }
 
+  public boolean getClampOneStatus() {
+    return clampOneOn.get();
+  }
+
+  public boolean getClampTwoStatus() {
+    return clampTwoOn.get();
+  }
+  
+  public boolean getClampThreeStatus() {
+    return clampThreeOn.get();
   }
 
   public void toggleClimberStageOne(boolean climberOneActive) {
