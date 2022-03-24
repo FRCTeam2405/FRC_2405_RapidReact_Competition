@@ -54,16 +54,16 @@ public static final class DrivetrainConstants{
             public static final class BasicOne {
 
                 public static final class JsonPath {
-                    public static final String TRAJECTORY_PATH_JSON_BASIC_ONE_WP_01 = "paths/basic01wp01.json";
+                    public static final String TRAJECTORY_PATH_JSON_BASIC_ONE_WP_01 = "paths/Basic1WP1.wpilib.json";
                 }
             }
 
-            public static final class LeftOne {
+            public static final class AutoCargo {
 
                 public static final class JsonPath {
-                    public static final String TRAJECTORY_PATH_JSON_LEFT_ONE_WP_01 = "paths/left01wp01.json";
-                    public static final String TRAJECTORY_PATH_JSON_LEFT_ONE_WP_02 = "paths/left01wp02.json";
-                    public static final String TRAJECTORY_PATH_JSON_LEFT_ONE_WP_03 = "paths/left01wp03.json";
+                    public static final String TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_01 = "paths/AutoCargoWP1.wpilib.json";
+                    public static final String TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_02 = "paths/AutoCargoWP2.wpilib.json";
+                    public static final String TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_03 = "paths/AutoCargoWP3.wpilib.json";
                 }
             }
 
