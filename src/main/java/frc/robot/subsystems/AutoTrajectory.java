@@ -32,9 +32,9 @@ public class AutoTrajectory extends SubsystemBase {
   public Trajectory trajectoryBasicOneWaypoint01 = new Trajectory();
 
   // -- Left One
-  public Trajectory trajectoryLeftOneWaypoint01 = new Trajectory();
-  public Trajectory trajectoryLeftOneWaypoint02 = new Trajectory();
-  public Trajectory trajectoryLeftOneWaypoint03 = new Trajectory();
+  public Trajectory trajectoryAutocCargoOneWaypoint01 = new Trajectory();
+  public Trajectory trajectoryAutocCargoOneWaypoint02 = new Trajectory();
+  public Trajectory trajectoryAutocCargoOneWaypoint03 = new Trajectory();
 
   // -- Left Two
   public Trajectory trajectoryLeftTwoWaypoint01 = new Trajectory();
@@ -86,8 +86,8 @@ public class AutoTrajectory extends SubsystemBase {
 
     // -- Left One -- Waypoint 01
     try {
-      Path autoPathLeftOneWaypoint01 = Filesystem.getDeployDirectory().toPath().resolve(Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_01);
-      trajectoryLeftOneWaypoint01 = TrajectoryUtil.fromPathweaverJson(autoPathLeftOneWaypoint01);
+      Path autoPathAutoCargoOneWaypoint01 = Filesystem.getDeployDirectory().toPath().resolve(Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_01);
+      trajectoryAutocCargoOneWaypoint01 = TrajectoryUtil.fromPathweaverJson(autoPathAutoCargoOneWaypoint01);
 
     } catch (IOException ex) {
       DriverStation.reportError("Unable to open trajectory: " + Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_01, ex.getStackTrace());
@@ -95,8 +95,8 @@ public class AutoTrajectory extends SubsystemBase {
 
     // -- Left One -- Waypoint 02
     try {
-      java.nio.file.Path autoPathLeftOneWaypoint02 = Filesystem.getDeployDirectory().toPath().resolve(Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_02);
-      trajectoryLeftOneWaypoint02 = TrajectoryUtil.fromPathweaverJson(autoPathLeftOneWaypoint02);
+      java.nio.file.Path autoPathAutoCargoOneWaypoint02 = Filesystem.getDeployDirectory().toPath().resolve(Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_02);
+      trajectoryAutocCargoOneWaypoint02 = TrajectoryUtil.fromPathweaverJson(autoPathAutoCargoOneWaypoint02);
 
     } catch (IOException ex) {
       DriverStation.reportError("Unable to open trajectory: " + Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_02, ex.getStackTrace());
@@ -104,8 +104,8 @@ public class AutoTrajectory extends SubsystemBase {
 
     // -- Left One -- Waypoint 03
     try {
-      java.nio.file.Path autoPathLeftOneWaypoint03 = Filesystem.getDeployDirectory().toPath().resolve(Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_03);
-      trajectoryLeftOneWaypoint03 = TrajectoryUtil.fromPathweaverJson(autoPathLeftOneWaypoint03);
+      java.nio.file.Path autoPathAutoCargoOneWaypoint03 = Filesystem.getDeployDirectory().toPath().resolve(Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_03);
+      trajectoryAutocCargoOneWaypoint03 = TrajectoryUtil.fromPathweaverJson(autoPathAutoCargoOneWaypoint03);
 
     } catch (IOException ex) {
       DriverStation.reportError("Unable to open trajectory: " + Autonomous.TrajectoryPathWeaver.AutoCargo.JsonPath.TRAJECTORY_PATH_JSON_AUTO_CARGO_WP_03, ex.getStackTrace());

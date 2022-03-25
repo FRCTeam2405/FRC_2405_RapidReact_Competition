@@ -18,6 +18,7 @@ import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.LEDConstants;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.ControllerConstants.SecondaryDriver;
+import frc.robot.Constants.DrivetrainConstants.Autonomous.TrajectoryPathWeaver.AutoCargo;
 import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
@@ -28,6 +29,7 @@ import frc.robot.commands.DoritoLifter;
 import frc.robot.commands.DoritoLower;
 import frc.robot.commands.DoritoMotor;
 import frc.robot.commands.AutoBasicOne;
+import frc.robot.commands.AutoCargoOne;
 import frc.robot.commands.AutoDoritoClimb;
 import frc.robot.commands.AutoDoritoSpin;
 import frc.robot.commands.AutoTestOne;
@@ -188,7 +190,8 @@ public class RobotContainer {
   private final AutoDoritoClimb cmdAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber, m_LEDsetting);
 //Auto Commands
   private final AutoBasicOne cmdAutoBasicOne = new AutoBasicOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
-  
+  private final AutoCargoOne cmdAutoCargoOne = new AutoCargoOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
+
   //---------------------------------------------------------------------------------------
 
   //-----------------
@@ -246,6 +249,8 @@ public class RobotContainer {
    dropdownCommandChooser.setDefaultOption("Shoot High", cmdShootCargoHigh);
    dropdownCommandChooser.addOption("Shoot Low", cmdShootCargoLow);
    dropdownCommandChooser.addOption("Basic One", cmdAutoBasicOne);
+   dropdownCommandChooser.addOption("Auto Cargo One", cmdAutoCargoOne);
+
 
    SmartDashboard.putData(dropdownCommandChooser);
 
