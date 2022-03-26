@@ -150,6 +150,9 @@ public class AutoTrajectory extends SubsystemBase {
     }
 
 
+//    Trajectory testBasic01 = genAutonomousTrajectory(inPoseStart, inWaypointList, inPoseEnd, inTrajectoryConfig)
+
+
   }
 
 
