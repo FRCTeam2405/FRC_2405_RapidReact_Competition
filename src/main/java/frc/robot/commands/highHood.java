@@ -30,7 +30,7 @@ public class HighHood extends CommandBase {
   @Override
   public void execute() {
     
- sysShooter.Hood(SmartDashboard.getNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT));
+ sysShooter.Hood(-1 * SmartDashboard.getNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT));
   }
 
   // Called once the command ends or is interrupted.

@@ -31,8 +31,9 @@ public class ClimberStage1 extends CommandBase {
   @Override
   public void execute() {
     sysClimber.toggleClimberStageOne(false);
-    if(sysClimber.getClampOneStatus()) {
-    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_ONE);
+    
+    if(!sysClimber.getClampOneStatus()) {
+      sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_ONE);
     }
   }
 

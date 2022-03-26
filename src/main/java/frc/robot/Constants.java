@@ -269,7 +269,7 @@ public static final class ShooterConstants {
     //ShootLow Default Output
     public static final double SHOOTLOW_DEFAULT_OUTPUT = 0.25;
     //Shooter Hood Default Output
-    public static final double SHOOTER_HOOD_DEFAULT_OUTPUT = 0.20;
+    public static final double SHOOTER_HOOD_DEFAULT_OUTPUT = 0.30;
    
 }
   
