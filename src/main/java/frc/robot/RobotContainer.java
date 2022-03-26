@@ -269,12 +269,12 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
    //Button Mappings
-   driverMainButtonX.whenHeld(cmdIntakeAndFeeder, true);//.andThen(cmdLEDLightsIntake));
-   driverMainButtonB.whenHeld(cmdIntakeAndFeederReversed, true);
+   //driverMainButtonX.whenHeld(cmdIntakeAndFeeder, true);//.andThen(cmdLEDLightsIntake));
+   //driverMainButtonB.whenHeld(cmdIntakeAndFeederReversed, true);
    driverMainButtonY.toggleWhenPressed(cmdShootCargoHigh, true);//.andThen(cmdLEDLightsShootHigh));
    driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
-   driverMainBumperRight.toggleWhenPressed(cmdFeedShooter, true);
-   driverMainBumperLeft.toggleWhenPressed(cmdFeedCargo, true);
+   driverMainBumperRight.whenHeld(cmdIntakeAndFeeder, true);
+   driverMainBumperLeft.whenHeld(cmdIntakeAndFeederReversed, true);
   
    //Secondary Button Mappings
    //driversecondarybuttonBlue.toggleWhenPressed(cmdAutoDoritoClimb);
