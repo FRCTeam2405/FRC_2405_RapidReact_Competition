@@ -16,18 +16,26 @@ public class Feeder extends SubsystemBase {
   /** Creates a new feederMotor. */
   CANSparkMax mainfeederMotor = null;
 
-  DigitalInput mainFeederLimit = null;
+  DigitalInput bottomFeederLimit = null;
+
+  DigitalInput topFeederLimit = null;
 
   public Feeder() {
 
 mainfeederMotor = new CANSparkMax(FeederConstants.MAIN_FEEDER_MOTOR, MotorType.kBrushless);
 
-mainFeederLimit = new DigitalInput(0);
+bottomFeederLimit = new DigitalInput(0);
+topFeederLimit = new DigitalInput(1);
 
 }
 
 public boolean LimitSwitchTripped() {
-  return mainFeederLimit.get();
+  if (bottomFeederLimit.get() == false && topFeederLimit.get() == false) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 public void feedCargo(double inputAmount) {

@@ -17,7 +17,7 @@ public class FeedDelay extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new TimeWait(2),
-      new FeedCargo(inSysFeeder)
+      new FeedShooter(inSysFeeder)
       );
   }
 }

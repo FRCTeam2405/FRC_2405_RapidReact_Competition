@@ -44,12 +44,7 @@ public class FeedCargo extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (SmartDashboard.getNumber("ShooterPercentOutput", 0) == 0) {
-      return sysFeeder.LimitSwitchTripped();
-    }
-    else {
-      return false;
-    }
+    return sysFeeder.LimitSwitchTripped();
     
   }
 }
