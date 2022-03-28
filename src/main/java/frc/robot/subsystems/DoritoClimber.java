@@ -40,15 +40,25 @@ public class DoritoClimber extends SubsystemBase {
   }
 
   public boolean getClampOneStatus() {
-    return clampOneOn.get();
+    if(clampOneOn.get() == true)
+        return false;
+    else
+        return true;
   }
+  
 
   public boolean getClampTwoStatus() {
-    return clampTwoOn.get();
+    if(clampTwoOn.get() == true)
+        return false;
+    else
+        return true;
   }
   
   public boolean getClampThreeStatus() {
-    return clampThreeOn.get();
+    if(clampThreeOn.get() == true)
+        return false;
+    else
+        return true;
   }
 
   public void toggleClimberStageOne(boolean climberOneActive) {
