@@ -31,6 +31,9 @@ public static final class DrivetrainConstants{
     public static final int DRIVETRAIN_LEFTBACK_TALONFX = CAN_NETWORK_PORT_12;
     public static final int DRIVETRAIN_RIGHTBACK_TALONFX = CAN_NETWORK_PORT_13;
 
+    public static final double TIME_DRIVING_IN_AUTON = 3;
+    public static final double VELOCITY_DRIVING_IN_AUTON = -0.20;
+
     public static final class Autonomous {
 
         public static final double DRIVETRAIN_MAX_SPEED_PER_SECOND_METERS = 3; // NEED TO CHANGE

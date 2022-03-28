@@ -4,8 +4,9 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.subsystems.AutoTrajectory;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.LEDLights;
@@ -14,14 +15,15 @@ import frc.robot.subsystems.Shooter;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class AutoBasicOne extends SequentialCommandGroup {
-  /** Creates a new AutoBasicOne. */
-  public AutoBasicOne(Shooter inSysShooter, Feeder inSysFeeder, LEDLights inSysLEDLights, DriveTrain inSysDriveTrain, AutoTrajectory inSysTrajectory) {
-    // Add your commands in the addCommands() call, e.g.
+public class DriveBackwards extends ParallelDeadlineGroup {
+  /** Creates a new DrivBackwards. */
+  public DriveBackwards(DriveTrain sysDrivetrain) {
+    // Add the deadline command in the super() call. Add other commands using
+    // addCommands().
+    super(new TimeWait(DrivetrainConstants.TIME_DRIVING_IN_AUTON));
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights), 
-      new DriveBackwards(inSysDriveTrain)
-    );
+      new CartesianDriveForAuton(sysDrivetrain)
+      );
   }
 }
