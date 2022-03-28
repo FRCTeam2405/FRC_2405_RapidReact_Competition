@@ -33,20 +33,7 @@ public class ClimberStage3 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Alliance roboAlliance = DriverStation.getAlliance();
-
     sysClimber.toggleClimberThree(false);
-
-    if(!sysClimber.getClampThreeStatus()) {
-
-      if (Alliance.Blue == roboAlliance) {
-        sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_THREE_BLUE);
-      }
-
-      if (Alliance.Red == roboAlliance) {
-        sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_THREE_RED);
-      }
-    }
   }
 
   // Called once the command ends or is interrupted.
@@ -59,8 +46,24 @@ public class ClimberStage3 extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysClimber.getClimberThree() == false)
-     return true;
-   else return false;
+    if (sysClimber.getClampThreeStatus() == true) {
+      Alliance roboAlliance = DriverStation.getAlliance();
+
+      sysClimber.toggleClimberThree(false);
+      
+      if(!sysClimber.getClampThreeStatus()) {
+      
+        if (Alliance.Blue == roboAlliance) {
+          sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_THREE_BLUE);
+        }
+      
+        if (Alliance.Red == roboAlliance) {
+          sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_THREE_RED);
+        }
+      }
+      
+        return true;
+    }
+    else return false;
   }
 }

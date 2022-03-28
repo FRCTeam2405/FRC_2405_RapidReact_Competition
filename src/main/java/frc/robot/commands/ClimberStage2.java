@@ -32,11 +32,7 @@ public class ClimberStage2 extends CommandBase {
   @Override
   public void execute() {
     sysClimber.toggleClimberTwo(false);
-    
-    if(!sysClimber.getClampTwoStatus()) {
-      sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_TWO);
-      }
-    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -47,8 +43,10 @@ public class ClimberStage2 extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysClimber.getClimberTwo() == false)
-     return true;
-   else return false;
+    if (sysClimber.getClampTwoStatus() == true) {
+        sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_TWO);
+        return true;
+    }
+    else return false;
   }
 }

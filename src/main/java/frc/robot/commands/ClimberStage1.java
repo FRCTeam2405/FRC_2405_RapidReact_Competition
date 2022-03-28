@@ -30,11 +30,7 @@ public class ClimberStage1 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.toggleClimberStageOne(false);
-    
-    if(!sysClimber.getClampOneStatus()) {
-      sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_ONE);
-    }
+    sysClimber.toggleClimberStageOne(false); 
   }
 
   // Called once the command ends or is interrupted.
@@ -47,8 +43,10 @@ public class ClimberStage1 extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (sysClimber.getClimberStageOne() == false)
-     return true;
-   else return false;
+    if (sysClimber.getClampOneStatus() == true) {
+        sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_ONE);
+        return true;
+    }
+    else return false;
   }
 }
