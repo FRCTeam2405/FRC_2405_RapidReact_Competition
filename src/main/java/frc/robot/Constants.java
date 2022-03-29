@@ -31,8 +31,8 @@ public static final class DrivetrainConstants{
     public static final int DRIVETRAIN_LEFTBACK_TALONFX = CAN_NETWORK_PORT_12;
     public static final int DRIVETRAIN_RIGHTBACK_TALONFX = CAN_NETWORK_PORT_13;
 
-    public static final double TIME_DRIVING_IN_AUTON = 3;
-    public static final double VELOCITY_DRIVING_IN_AUTON = -0.20;
+    public static final double TIME_DRIVING_IN_AUTON = 1;
+    public static final double VELOCITY_DRIVING_IN_AUTON = -0.10;
 
     public static final class Autonomous {
 
@@ -302,10 +302,10 @@ public static final class LEDConstants {
     //LED Default Setting
     public static final double LED_SETTING_DEFAULT = -0.40;
     public static final double LED_SETTING_CLIMBER_ARM = -0.07;
-    public static final double LED_SETTING_CLIMBER_CLAMP_ONE = 0.15;
-    public static final double LED_SETTING_CLIMBER_CLAMP_TWO = 0.35;
-    public static final double LED_SETTING_CLIMBER_CLAMP_THREE_RED = -0.11;
-    public static final double LED_SETTING_CLIMBER_CLAMP_THREE_BLUE = -0.09;
+    public static final double LED_SETTING_CLIMBER_CLAMP_ONE = -0.67;
+    public static final double LED_SETTING_CLIMBER_CLAMP_TWO = -0.61;
+    public static final double LED_SETTING_CLIMBER_CLAMP_THREE_RED = -0.63;
+    public static final double LED_SETTING_CLIMBER_CLAMP_THREE_BLUE = -0.65;
 
     // Settings
     public static final double LED_SETTING_SHOOTER = -.69;
