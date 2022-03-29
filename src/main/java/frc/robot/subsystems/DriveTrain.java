@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.MecanumControllerCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DrivetrainAutonomousConstants;
@@ -234,6 +236,11 @@ public class DriveTrain extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
    
+    SmartDashboard.putNumber("Left Front Temp.", leftFrontTalonFX.getTemperature());
+    SmartDashboard.putNumber("Right Front Temp.", rightFrontTalonFX.getTemperature());
+    SmartDashboard.putNumber("Left Back Temp.", leftBackTalonFX.getTemperature());
+    SmartDashboard.putNumber("Right Back Temp.", rightBackTalonFX.getTemperature());
+
     /* drivetrainMecanumOdometry.update(
       drivetrainGyro.getRotation2d(), 
       new MecanumDriveWheelSpeeds(
