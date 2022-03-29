@@ -48,10 +48,8 @@ public class ClimberStage3 extends CommandBase {
   public boolean isFinished() {
     if (sysClimber.getClampThreeStatus() == true) {
       Alliance roboAlliance = DriverStation.getAlliance();
-
-      sysClimber.toggleClimberThree(false);
       
-      if(!sysClimber.getClampThreeStatus()) {
+      if(sysClimber.getClampThreeStatus()) {
       
         if (Alliance.Blue == roboAlliance) {
           sysLedLights.setLEDValue(LEDConstants.LED_SETTING_CLIMBER_CLAMP_THREE_BLUE);

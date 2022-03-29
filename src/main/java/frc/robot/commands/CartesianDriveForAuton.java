@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.subsystems.DriveTrain;
@@ -26,7 +27,7 @@ public class CartesianDriveForAuton extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysDriveTrain.cartesianDrive(DrivetrainConstants.VELOCITY_DRIVING_IN_AUTON, 0, 0, false);
+    sysDriveTrain.cartesianDrive(SmartDashboard.getNumber("Auton Time", DrivetrainConstants.VELOCITY_DRIVING_IN_AUTON), 0, 0, false);
   }
 
   // Called once the command ends or is interrupted.

@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.Constants.DrivetrainConstants;
@@ -20,7 +21,7 @@ public class DriveBackwards extends ParallelDeadlineGroup {
   public DriveBackwards(DriveTrain sysDrivetrain) {
     // Add the deadline command in the super() call. Add other commands using
     // addCommands().
-    super(new TimeWait(DrivetrainConstants.TIME_DRIVING_IN_AUTON));
+    super(new TimeWait(SmartDashboard.getNumber("Auton Time", DrivetrainConstants.TIME_DRIVING_IN_AUTON)));
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new CartesianDriveForAuton(sysDrivetrain)

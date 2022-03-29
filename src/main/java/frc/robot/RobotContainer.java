@@ -250,10 +250,10 @@ public class RobotContainer {
    SmartDashboard.putNumber("AutonSpeed", DrivetrainConstants.VELOCITY_DRIVING_IN_AUTON);
 
 
-   dropdownCommandChooser.setDefaultOption("Shoot High", cmdShootCargoHigh);
+   dropdownCommandChooser.setDefaultOption("Basic One", cmdAutoBasicOne);
    dropdownCommandChooser.addOption("Shoot Low", cmdShootCargoLow);
-   dropdownCommandChooser.addOption("Basic One", cmdAutoBasicOne);
-   dropdownCommandChooser.addOption("Auto Cargo One", cmdAutoCargoOne);
+   dropdownCommandChooser.addOption("Shoot High", cmdShootCargoHigh);
+   //dropdownCommandChooser.addOption("Auto Cargo One", cmdAutoCargoOne);
 
 
    SmartDashboard.putData(dropdownCommandChooser);
