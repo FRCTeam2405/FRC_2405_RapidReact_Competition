@@ -17,12 +17,12 @@ import frc.robot.subsystems.Shooter;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class DriveBackwards extends ParallelDeadlineGroup {
-  private static double basicOneTime = SmartDashboard.getNumber("Auton Time", DrivetrainConstants.TIME_DRIVING_IN_AUTON);
+        //private static double basicOneTime = SmartDashboard.getNumber("Auton Time", DrivetrainConstants.TIME_DRIVING_IN_AUTON);
   /** Creates a new DrivBackwards. */
   public DriveBackwards(DriveTrain sysDrivetrain) {
     // Add the deadline command in the super() call. Add other commands using
     // addCommands().
-    super(new TimeWait(basicOneTime));
+    super(new TimeWait(2));
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new CartesianDriveForAuton(sysDrivetrain)
