@@ -28,7 +28,7 @@ public class CartesianDriveForAuton extends CommandBase {
   @Override
   public void execute() {
     //sysDriveTrain.cartesianDrive(SmartDashboard.getNumber("Auton Time", DrivetrainConstants.VELOCITY_DRIVING_IN_AUTON), 0, 0, false);
-    sysDriveTrain.cartesianDrive(-.25, 0, 0, false);
+    sysDriveTrain.cartesianDrive(.25, 0, 0, false);
   }
 
   // Called once the command ends or is interrupted.
