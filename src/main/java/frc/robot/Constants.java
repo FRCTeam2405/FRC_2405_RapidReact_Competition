@@ -323,7 +323,7 @@ public static final class ClimberConstants {
     public static final int DORITO_LIFTER_SOLENOID_PORT = 0;
 
     //Dorito Default Speed
-    public static final double DORITO_DEFAULT_SPEED = .5;
+    public static final double DORITO_DEFAULT_SPEED = .75;
     //Sparkmax CAN port
     public static final int MAIN_DORITO_SPARKMAX = 23;
 }
