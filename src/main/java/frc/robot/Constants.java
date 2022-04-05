@@ -268,7 +268,7 @@ public static final class ShooterConstants {
     //Shooter Default Output
     public static final double SHOOTER_DEFAULT_OUTPUT = 0;
     //ShootHigh Default Output
-    public static final double SHOOTHIGH_DEFAULT_OUTPUT = 0.45;
+    public static final double SHOOTHIGH_DEFAULT_OUTPUT = 0.50;
     //ShootLow Default Output
     public static final double SHOOTLOW_DEFAULT_OUTPUT = 0.25;
     //Shooter Hood Default Output
@@ -323,7 +323,7 @@ public static final class ClimberConstants {
     public static final int DORITO_LIFTER_SOLENOID_PORT = 0;
 
     //Dorito Default Speed
-    public static final double DORITO_DEFAULT_SPEED = .75;
+    public static final double DORITO_DEFAULT_SPEED = 0.75;
     //Sparkmax CAN port
     public static final int MAIN_DORITO_SPARKMAX = 23;
 }
