@@ -80,6 +80,10 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    
+    if (m_teleopCommand != null) {
+      m_teleopCommand.schedule();
+    }
   }
 
   /** This function is called periodically during operator control. */

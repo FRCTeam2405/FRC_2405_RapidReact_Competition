@@ -262,7 +262,7 @@ public class RobotContainer {
    dropdownCommandChooserTeleop.setDefaultOption("Shoot High", cmdShootHigh);
    dropdownCommandChooserTeleop.addOption("Shoot Low", cmdShootLow);
 
-   SmartDashboard.putData(dropdownCommandChooserAuton);
+   SmartDashboard.putData(dropdownCommandChooserTeleop);
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
