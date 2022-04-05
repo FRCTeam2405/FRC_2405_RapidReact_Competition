@@ -315,11 +315,11 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
    // return cmdShootCargoHigh;
-    return dropdownCommandChooser.getSelected();
+    return dropdownCommandChooserAuton.getSelected();
   //return null;
   }
   public Command getTeleopCommand() {
-     return dropdownCommandChooser.getSelected();
+     return dropdownCommandChooserTeleop.getSelected();
   }
 
 }
