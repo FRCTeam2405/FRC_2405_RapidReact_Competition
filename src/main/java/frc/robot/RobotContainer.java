@@ -259,8 +259,8 @@ public class RobotContainer {
    SmartDashboard.putData(dropdownCommandChooserAuton);
 
 
-   dropdownCommandChooserTeleop.setDefaultOption("Shoot High", cmdShootHigh);
-   dropdownCommandChooserTeleop.addOption("Shoot Low", cmdShootLow);
+   dropdownCommandChooserTeleop.setDefaultOption("Shoot Low", cmdShootLow);
+   dropdownCommandChooserTeleop.addOption("Shoot High", cmdShootHigh);
 
    SmartDashboard.putData(dropdownCommandChooserTeleop);
   }
