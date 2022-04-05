@@ -308,7 +308,7 @@ public static final class LEDConstants {
     public static final double LED_SETTING_CLIMBER_CLAMP_THREE_BLUE = -0.65;
 
     public static final double LED_SETTING_SHOOT_HIGH = 0.77;
-    // public static final double LED_SETTING_SHOOT_LOW = 0.85;
+    public static final double LED_SETTING_SHOOT_LOW = 0.85;
 
     // Settings
     public static final double LED_SETTING_SHOOTER = -.69;
