@@ -21,15 +21,25 @@ public class AutoPlusOne extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights),
+      new ParallelRaceGroup(
+        new LowHood(inSysShooter),
+        new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
+      ),
+     
       new CartesianDriveForAuton(inSysDriveTrain, 0, 0, .35, 1.15),
+      
       new ParallelRaceGroup(
         new IntakeAndFeeder(inSysFeeder, inSysIntake),
         new CartesianDriveForAuton(inSysDriveTrain, -.25, 0, 0, 2.5)
         ),
 
       new CartesianDriveForAuton(inSysDriveTrain, 0, 0, .35, 1.15),
-      new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
+
+      new ParallelRaceGroup(
+        new HighHood(inSysShooter),
+        new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
+      )
+     
     );
   }
 }
