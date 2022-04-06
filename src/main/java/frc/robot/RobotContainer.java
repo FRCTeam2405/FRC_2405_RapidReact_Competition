@@ -34,6 +34,7 @@ import frc.robot.commands.AutoDoritoClimb;
 import frc.robot.commands.AutoDoritoSpin;
 import frc.robot.commands.AutoPlusOne;
 import frc.robot.commands.AutoTestOne;
+import frc.robot.commands.ClimberDisablingShooter;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
 import frc.robot.commands.FeedCargo;
@@ -179,6 +180,8 @@ public class RobotContainer {
   //Dorito Lifter Command
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber, m_LEDsetting);
   private final LiftClimber cmdLiftClimber = new LiftClimber(m_doritoclimber, m_LEDsetting);
+
+  private final ClimberDisablingShooter cmdClimberDisablingShooter = new ClimberDisablingShooter(m_doritoclimber, m_LEDsetting, m_Shooter);
   //Dorito Lower Command
   private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber, m_LEDsetting);
   //Dorito Motor Command
@@ -296,7 +299,7 @@ public class RobotContainer {
    driversecondarybuttonGreen.whenPressed(cmdShootHigh);
    driversecondarybuttonRed.whenHeld(cmdHighHood);
    driverSecondaryButtonYellow.whenHeld(cmdLowHood); 
-   driverSecondarySwitchZero.whenActive(cmdLiftClimber);
+   driverSecondarySwitchZero.whenActive(cmdClimberDisablingShooter);
    driverSecondarySwitchZero.whenInactive(cmdDoritoLowerEngage);
    driverSecondarySwitchOne.whenActive(cmdReleaseClampOne);
    driverSecondarySwitchOne.whenInactive(clampOne);

@@ -4,26 +4,22 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.subsystems.AutoTrajectory;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Feeder;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import frc.robot.subsystems.DoritoClimber;
 import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class AutoBasicOne extends SequentialCommandGroup {
-  /** Creates a new AutoBasicOne. */
-  public AutoBasicOne(Shooter inSysShooter, Feeder inSysFeeder, LEDLights inSysLEDLights, DriveTrain inSysDriveTrain, AutoTrajectory inSysTrajectory) {
+public class ClimberDisablingShooter extends ParallelCommandGroup {
+  /** Creates a new ClimberDisablingShooter. */
+  public ClimberDisablingShooter(DoritoClimber inSysDoritoClimber, LEDLights inSysLEDLights, Shooter inSysShooter) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-        
-      new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights),
-     
-      new CartesianDriveForAuton(inSysDriveTrain, .25, 0, 0, 2)
+      new ShooterOff(inSysShooter, inSysLEDLights), 
+      new LiftClimber(inSysDoritoClimber, inSysLEDLights)
     );
   }
 }

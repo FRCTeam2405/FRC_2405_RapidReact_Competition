@@ -6,12 +6,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ClimberConstants;
-import frc.robot.Constants.ControllerConstants.SecondaryDriver;
-import frc.robot.subsystems.DoritoClimber;
 import frc.robot.subsystems.DoritoSpin;
 
 public class JoystickDoritoSpinner extends CommandBase {

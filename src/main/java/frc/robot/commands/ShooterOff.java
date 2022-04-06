@@ -4,23 +4,24 @@
 
 package frc.robot.commands;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DoritoClimber;
+import frc.robot.Constants.LEDConstants;
 import frc.robot.subsystems.LEDLights;
+import frc.robot.subsystems.Shooter;
 
-public class ClimberStageOneRelease extends CommandBase {
+public class ShooterOff extends CommandBase {
+  /** Creates a new ShooterOff. */
 
-  private final DoritoClimber sysClimber;
+  private final Shooter sysShooter;
   private final LEDLights sysLedLights;
-
-  /** Creates a new ClimberStageOneRelease. */
-  public ClimberStageOneRelease(DoritoClimber inSysClimber, LEDLights inSysLedLights)  {
-    sysClimber = inSysClimber;
-    sysLedLights = inSysLedLights;
-
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(sysClimber);
-
+  
+  public ShooterOff(Shooter inSysShooter, LEDLights inSyLedLights) {
+    sysShooter = inSysShooter;
+    sysLedLights = inSyLedLights;
+ 
+    addRequirements(sysShooter);
   }
 
   // Called when the command is initially scheduled.
@@ -30,21 +31,17 @@ public class ClimberStageOneRelease extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sysClimber.toggleClimberStageOne(true);
+    sysShooter.Shoot(ControlMode.PercentOutput, 0);
+    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_DEFAULT);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  //  sysClimber.toggleClimberStageOne(false);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   if (sysClimber.getClimberStageOne() == true)
-     return true;
-   else return false;
-    
+    return false;
   }
 }
