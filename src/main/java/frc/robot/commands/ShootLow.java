@@ -48,7 +48,7 @@ public class ShootLow extends CommandBase {
 
    double feederPercentCargo = SmartDashboard.getNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);  
     sysShooter.Shoot(ControlMode.PercentOutput, feederPercentCargo);
-    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_SHOOTER);
+    sysLedLights.setLEDValue(LEDConstants.LED_SETTING_SHOOT_LOW);
     
   }
 

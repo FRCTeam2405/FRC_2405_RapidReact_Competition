@@ -19,7 +19,6 @@ import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.LEDConstants;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.ControllerConstants.SecondaryDriver;
-import frc.robot.Constants.DrivetrainConstants.Autonomous.TrajectoryPathWeaver.AutoCargo;
 import frc.robot.commands.ClimberStage1;
 import frc.robot.commands.ClimberStage2;
 import frc.robot.commands.ClimberStage3;
@@ -41,7 +40,7 @@ import frc.robot.commands.FeedCargo;
 import frc.robot.commands.FeedShooter;
 import frc.robot.commands.HighHood;
 import frc.robot.commands.IntakeAndFeeder;
-import frc.robot.commands.IntakeAndFeederReverced;
+import frc.robot.commands.IntakeAndFeederReversed;
 import frc.robot.commands.IntakeDeploy;
 import frc.robot.commands.IntakeDeployReversed;
 import frc.robot.commands.IntakeRetract;
@@ -119,7 +118,7 @@ public class RobotContainer {
   private final IntakeRetract cmdIntakeRetract = new IntakeRetract(m_Intake);
 
   private final IntakeAndFeeder cmdIntakeAndFeeder = new IntakeAndFeeder(m_Feeder, m_Intake);
-  private final IntakeAndFeederReverced cmdIntakeAndFeederReversed = new IntakeAndFeederReverced(m_Feeder, m_Intake);
+  private final IntakeAndFeederReversed cmdIntakeAndFeederReversed = new IntakeAndFeederReversed(m_Feeder, m_Intake);
   
   //Defining Feeder Command
   private final FeedCargo cmdFeedCargo = new FeedCargo(m_Feeder);
@@ -228,7 +227,8 @@ public class RobotContainer {
   //Defining PCM
   private final Compressor PCMCompressor = new Compressor(IntakeConstants.PORT_PCM_MAIN, PneumaticsModuleType.CTREPCM);
 
-  private SendableChooser<Command> dropdownCommandChooser = new SendableChooser<>();
+  private SendableChooser<Command> dropdownCommandChooserAuton = new SendableChooser<>();
+  private SendableChooser<Command> dropdownCommandChooserTeleop = new SendableChooser<>();
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -253,14 +253,21 @@ public class RobotContainer {
    SmartDashboard.putNumber("AutonSpeed", DrivetrainConstants.VELOCITY_DRIVING_IN_AUTON);
 
 
-   dropdownCommandChooser.setDefaultOption("Basic One", cmdAutoBasicOne);
-   dropdownCommandChooser.addOption("Auto 2 Ball", cmdAutoPlusOne);
+   dropdownCommandChooserAuton.setDefaultOption("Basic One", cmdAutoBasicOne);
+   dropdownCommandChooserAuton.addOption("Auto 2 Ball", cmdAutoPlusOne);
   // dropdownCommandChooser.addOption("Shoot High", cmdShootCargoHigh);
+   //dropdownCommandChooserAuton.setDefaultOption("Basic One", cmdAutoBasicOne);
+   //dropdownCommandChooserAuton.addOption("Shoot Low", cmdShootCargoLow);
+   //dropdownCommandChooser.addOption("Shoot High", cmdShootCargoHigh);
    //dropdownCommandChooser.addOption("Auto Cargo One", cmdAutoCargoOne);
+  
+   SmartDashboard.putData(dropdownCommandChooserAuton);
 
 
-   SmartDashboard.putData(dropdownCommandChooser);
+   dropdownCommandChooserTeleop.setDefaultOption("Shoot Low", cmdShootLow);
+   dropdownCommandChooserTeleop.addOption("Shoot High", cmdShootHigh);
 
+   SmartDashboard.putData(dropdownCommandChooserTeleop);
   }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -278,14 +285,14 @@ public class RobotContainer {
    //Button Mappings
    //driverMainButtonX.whenHeld(cmdIntakeAndFeeder, true);//.andThen(cmdLEDLightsIntake));
    //driverMainButtonB.whenHeld(cmdIntakeAndFeederReversed, true);
-   driverMainButtonY.toggleWhenPressed(cmdShootCargoHigh, true);//.andThen(cmdLEDLightsShootHigh));
-   driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
+   driverMainButtonY.toggleWhenPressed(cmdFeedShooter, true);//.andThen(cmdLEDLightsShootHigh));
+   //driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.whenHeld(cmdIntakeAndFeeder, true);
    driverMainBumperLeft.whenHeld(cmdIntakeAndFeederReversed, true);
   
    //Secondary Button Mappings
-   //driversecondarybuttonBlue.toggleWhenPressed(cmdAutoDoritoClimb);
-   driversecondarybuttonGreen.toggleWhenPressed(cmdDoritoMotorEngage);
+   driversecondarybuttonBlue.whenPressed(cmdShootLow);
+   driversecondarybuttonGreen.whenPressed(cmdShootHigh);
    driversecondarybuttonRed.whenHeld(cmdHighHood);
    driverSecondaryButtonYellow.whenHeld(cmdLowHood); 
    driverSecondarySwitchZero.whenActive(cmdLiftClimber);
@@ -313,8 +320,11 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
    // return cmdShootCargoHigh;
-    return dropdownCommandChooser.getSelected();
+    return dropdownCommandChooserAuton.getSelected();
   //return null;
+  }
+  public Command getTeleopCommand() {
+     return dropdownCommandChooserTeleop.getSelected();
   }
 
 }
