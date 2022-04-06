@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.AutoTrajectory;
 import frc.robot.subsystems.DriveTrain;
@@ -20,7 +21,11 @@ public class AutoBasicOne extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights), 
+      new ParallelRaceGroup(
+        new LowHood(inSysShooter),
+        new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
+      ),
+     
       new CartesianDriveForAuton(inSysDriveTrain, -.25, 0, 0, 2)
     );
   }
