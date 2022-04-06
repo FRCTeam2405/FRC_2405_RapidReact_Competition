@@ -21,10 +21,8 @@ public class AutoBasicOne extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ParallelRaceGroup(
-        new LowHood(inSysShooter),
-        new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
-      ),
+        
+      new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights),
      
       new CartesianDriveForAuton(inSysDriveTrain, -.25, 0, 0, 2)
     );
