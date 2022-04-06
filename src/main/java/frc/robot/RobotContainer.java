@@ -251,7 +251,8 @@ public class RobotContainer {
    SmartDashboard.putBoolean("LimitSwitchTripped", m_Feeder.LimitSwitchTripped());
    SmartDashboard.putNumber("Auton Time", DrivetrainConstants.TIME_DRIVING_IN_AUTON);
    SmartDashboard.putNumber("AutonSpeed", DrivetrainConstants.VELOCITY_DRIVING_IN_AUTON);
-
+   SmartDashboard.putString("Shooter State", "_");
+   SmartDashboard.putString("Hood State", "_");
 
    dropdownCommandChooserAuton.setDefaultOption("Basic One", cmdAutoBasicOne);
    dropdownCommandChooserAuton.addOption("Auto 2 Ball", cmdAutoPlusOne);
@@ -285,7 +286,7 @@ public class RobotContainer {
    //Button Mappings
    //driverMainButtonX.whenHeld(cmdIntakeAndFeeder, true);//.andThen(cmdLEDLightsIntake));
    //driverMainButtonB.whenHeld(cmdIntakeAndFeederReversed, true);
-   driverMainButtonY.toggleWhenPressed(cmdFeedShooter, true);//.andThen(cmdLEDLightsShootHigh));
+   driverMainButtonY.whenHeld(cmdFeedShooter, true);//.andThen(cmdLEDLightsShootHigh));
    //driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.whenHeld(cmdIntakeAndFeeder, true);
    driverMainBumperLeft.whenHeld(cmdIntakeAndFeederReversed, true);

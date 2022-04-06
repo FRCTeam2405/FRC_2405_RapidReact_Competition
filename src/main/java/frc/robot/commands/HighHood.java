@@ -31,7 +31,9 @@ public class HighHood extends CommandBase {
   public void execute() {
     
  sysShooter.Hood(-1 * SmartDashboard.getNumber("ShooterHood", ShooterConstants.SHOOTER_HOOD_DEFAULT_OUTPUT));
-  }
+  
+ SmartDashboard.putString("Hood State", "High");
+}
 
   // Called once the command ends or is interrupted.
   @Override

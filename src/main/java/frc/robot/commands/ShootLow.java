@@ -36,20 +36,12 @@ public class ShootLow extends CommandBase {
   @Override
   public void execute() {
      //Defining shootLow 
-   //boolean shootLow = RobotContainer.driverController.getAButton();
-  
-   //if (shootLow){
-    //Setting percent output if A pressed 
-   // sysShooter.Shoot(ControlMode.PercentOutput, .20);
-       
-    // } else{
-    //  sysShooter.Shoot(ControlMode.PercentOutput, 0);
-   //  }
-
+ 
    double feederPercentCargo = SmartDashboard.getNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);  
     sysShooter.Shoot(ControlMode.PercentOutput, feederPercentCargo);
     sysLedLights.setLEDValue(LEDConstants.LED_SETTING_SHOOT_LOW);
     
+    SmartDashboard.putString("Shooter State", "Low");
   }
 
   // Called once the command ends or is interrupted.
