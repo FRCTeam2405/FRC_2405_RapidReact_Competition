@@ -33,6 +33,7 @@ import frc.robot.commands.AutoBasicOne;
 import frc.robot.commands.AutoCargoOne;
 import frc.robot.commands.AutoDoritoClimb;
 import frc.robot.commands.AutoDoritoSpin;
+import frc.robot.commands.AutoPlusOne;
 import frc.robot.commands.AutoTestOne;
 import frc.robot.commands.DriveAuto;
 import frc.robot.commands.DriveMecanum;
@@ -192,6 +193,8 @@ public class RobotContainer {
 //Auto Commands
   private final AutoBasicOne cmdAutoBasicOne = new AutoBasicOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
   private final AutoCargoOne cmdAutoCargoOne = new AutoCargoOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
+//Auton command for spinning
+  private final AutoPlusOne cmdAutoPlusOne = new AutoPlusOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_Intake);
 
   //---------------------------------------------------------------------------------------
 
@@ -251,8 +254,8 @@ public class RobotContainer {
 
 
    dropdownCommandChooser.setDefaultOption("Basic One", cmdAutoBasicOne);
-   dropdownCommandChooser.addOption("Shoot Low", cmdShootCargoLow);
-   dropdownCommandChooser.addOption("Shoot High", cmdShootCargoHigh);
+   dropdownCommandChooser.addOption("Auto 2 Ball", cmdAutoPlusOne);
+  // dropdownCommandChooser.addOption("Shoot High", cmdShootCargoHigh);
    //dropdownCommandChooser.addOption("Auto Cargo One", cmdAutoCargoOne);
 
 
