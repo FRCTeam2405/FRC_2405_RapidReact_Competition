@@ -37,22 +37,12 @@ public class ShootHigh extends CommandBase {
   public void execute() {
      //Defining shootHigh 
 
-     
-   // if (shootHigh){
-    //Setting percent output if Y pressed 
-   // RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, .25);
-      // .35 for high-shoot up close
-      // .25 for low shot from one robot behind
-       
-    // } else{
-     // RobotContainer.m_Shooter.Shoot(ControlMode.PercentOutput, 0);
-    // }
-    
     double feederPercentCargo = SmartDashboard.getNumber("ShootHighPercentOutput", ShooterConstants.SHOOTHIGH_DEFAULT_OUTPUT);  
     sysShooter.Shoot(ControlMode.PercentOutput, feederPercentCargo);
 
     sysLedLights.setLEDValue(LEDConstants.LED_SETTING_SHOOT_HIGH);
     
+    SmartDashboard.putString("Shooter State", "High");
   }
 
   // Called once the command ends or is interrupted.
