@@ -246,7 +246,8 @@ public class RobotContainer {
    m_DriveTrain.setDefaultCommand(new DriveMecanum(m_DriveTrain));
    m_DoritoSpin.setDefaultCommand(new JoystickDoritoSpinner(m_DoritoSpin, secondarycontroller));
 
-   //Testing feeder motor speed on the dashbord 
+   //Testing feeder motor speed on the dashbord \
+   SmartDashboard.putNumber("Dorito Encoder Position", m_DoritoSpin.getDoritoEncoderPos());
    SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
    SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED);
    SmartDashboard.putNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);

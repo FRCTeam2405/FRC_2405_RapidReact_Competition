@@ -201,8 +201,8 @@ public static final class Dorito {
     public static final double DORITOMOTOR_ENCODER_VELOCITY_PERCENT = .5; //NEED TO CHANGE
 
     //Dorito Encoder Channels
-    public static final int DORITOMOTOR_ENCODER_CHANNEL_01 = 0;
-    public static final int DORITOMOTOR_ENCODER_CHANNEL_02 = 0;
+    public static final int DORITOMOTOR_ENCODER_CHANNEL_01 = 18;
+    public static final int DORITOMOTOR_ENCODER_CHANNEL_02 = 19;
 }
   
   

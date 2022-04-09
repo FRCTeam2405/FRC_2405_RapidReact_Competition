@@ -41,6 +41,11 @@ public class DoritoSpin extends SubsystemBase {
     return mainDoritoSparkMax.get();
   }
 
+  public double getDoritoEncoderPos() {
+    return doritoSpinnerEncoder.get();
+  }
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

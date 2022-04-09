@@ -4,12 +4,13 @@
 
 package frc.robot.commands;
 
-import org.opencv.core.TickMeter;
-
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DoritoSpin;
 
 public class CorrectDoritoPosition extends CommandBase {
+  private double encoderHomePos;
+  private double encoderCurrentPos;
 
   private final DoritoSpin sysDoritoSpin;
   /** Creates a new CorrectDoritoPosition. */
@@ -22,7 +23,9 @@ public class CorrectDoritoPosition extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  encoderHomePos = sysDoritoSpin.getDoritoEncoderPos();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -35,6 +38,12 @@ public class CorrectDoritoPosition extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    encoderCurrentPos = sysDoritoSpin.getDoritoEncoderPos();
+   if (encoderHomePos <= encoderCurrentPos) {
+return true;
+   }
+   else {
+return false;
+   }
   }
 }
