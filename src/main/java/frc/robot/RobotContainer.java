@@ -53,6 +53,7 @@ import frc.robot.commands.ShootCargoHigh;
 import frc.robot.commands.ShootCargoLow;
 import frc.robot.commands.ShootHigh;
 import frc.robot.commands.ShootLow;
+import frc.robot.commands.ShooterOff;
 import frc.robot.commands.TimeWait;
 import frc.robot.subsystems.AutoTrajectory;
 import frc.robot.subsystems.CameraSystem;
@@ -163,6 +164,9 @@ public class RobotContainer {
   private final ShootHigh cmdShootHigh = new ShootHigh(m_Shooter, m_LEDsetting);
   private final ShootLow cmdShootLow = new ShootLow(m_Shooter, m_LEDsetting);
 
+  //ShooterOff
+  private final ShooterOff cmdShooterOff = new ShooterOff(m_Shooter, m_LEDsetting);
+
   //------------------------------------------------------------------------
 
   //-----------------
@@ -179,9 +183,9 @@ public class RobotContainer {
   private final ClimberStageThreeRelease cmdReleaseClampThree = new ClimberStageThreeRelease(m_doritoclimber, m_LEDsetting);
   //Dorito Lifter Command
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber, m_LEDsetting);
-  private final LiftClimber cmdLiftClimber = new LiftClimber(m_doritoclimber, m_LEDsetting);
+  private final LiftClimber cmdLiftClimber = new LiftClimber(m_doritoclimber, m_LEDsetting, m_DoritoSpin);
 
-  private final ClimberDisablingShooter cmdClimberDisablingShooter = new ClimberDisablingShooter(m_doritoclimber, m_LEDsetting, m_Shooter);
+  private final ClimberDisablingShooter cmdClimberDisablingShooter = new ClimberDisablingShooter(m_doritoclimber, m_LEDsetting, m_Shooter, m_DoritoSpin);
   //Dorito Lower Command
   private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber, m_LEDsetting);
   //Dorito Motor Command
@@ -268,7 +272,8 @@ public class RobotContainer {
    SmartDashboard.putData(dropdownCommandChooserAuton);
 
 
-   dropdownCommandChooserTeleop.setDefaultOption("Shoot Low", cmdShootLow);
+   dropdownCommandChooserTeleop.setDefaultOption("Shoot No", cmdShooterOff);
+   dropdownCommandChooserTeleop.addOption("Shoot High", cmdShootLow);
    dropdownCommandChooserTeleop.addOption("Shoot High", cmdShootHigh);
 
    SmartDashboard.putData(dropdownCommandChooserTeleop);
@@ -290,7 +295,7 @@ public class RobotContainer {
    //driverMainButtonX.whenHeld(cmdIntakeAndFeeder, true);//.andThen(cmdLEDLightsIntake));
    //driverMainButtonB.whenHeld(cmdIntakeAndFeederReversed, true);
    driverMainButtonY.whenHeld(cmdFeedShooter, true);//.andThen(cmdLEDLightsShootHigh));
-   //driverMainButtonA.toggleWhenPressed(cmdShootCargoLow, true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
+   //driverMainButtonA.whenHeld(new LEDDeclare(m_LEDsetting, SmartDashboard.getNumber("LEDSet", -.69)), true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.whenHeld(cmdIntakeAndFeeder, true);
    driverMainBumperLeft.whenHeld(cmdIntakeAndFeederReversed, true);
   
