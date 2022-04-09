@@ -30,12 +30,11 @@ public class AutoPlusOne extends SequentialCommandGroup {
         new CartesianDriveForAuton(inSysDriveTrain, -.25, 0, 0, 2.5)
         ),
 
-      new CartesianDriveForAuton(inSysDriveTrain, 0, 0, .32, 1.00),
+      new CartesianDriveForAuton(inSysDriveTrain, 0, 0, .38, 1.00),
 
-      new ParallelRaceGroup(
- //       new HighHood(inSysShooter),
-        new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
-      )
+      new CartesianDriveForAuton(inSysDriveTrain, -.25, 0, 0, 1.6),
+
+      new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
      
     );
   }
