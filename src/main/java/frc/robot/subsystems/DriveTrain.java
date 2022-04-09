@@ -49,7 +49,7 @@ public class DriveTrain extends SubsystemBase {
 
   public DriveTrain() {
     
-    //Initalizing Moters
+    //Initalizing Motors
     leftFrontTalonFX = new WPI_TalonFX(DrivetrainConstants.DRIVETRAIN_LEFTFRONT_TALONFX);
     leftBackTalonFX = new WPI_TalonFX(DrivetrainConstants.DRIVETRAIN_LEFTBACK_TALONFX);
     rightBackTalonFX = new WPI_TalonFX(DrivetrainConstants.DRIVETRAIN_RIGHTBACK_TALONFX);

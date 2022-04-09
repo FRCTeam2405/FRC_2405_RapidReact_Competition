@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -22,6 +23,9 @@ public class DoritoClimber extends SubsystemBase {
   DigitalInput clampOneOn = null;
   DigitalInput clampTwoOn = null;
   DigitalInput clampThreeOn = null;
+
+  //Defining Encoders
+  Encoder doritoClimberEncoder = null; 
 
   public DoritoClimber() {
     //Defining Solenoids

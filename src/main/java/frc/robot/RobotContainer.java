@@ -183,9 +183,9 @@ public class RobotContainer {
   private final ClimberStageThreeRelease cmdReleaseClampThree = new ClimberStageThreeRelease(m_doritoclimber, m_LEDsetting);
   //Dorito Lifter Command
   private final DoritoLifter cmdDoritoLifterEngage = new DoritoLifter(m_doritoclimber, m_LEDsetting);
-  private final LiftClimber cmdLiftClimber = new LiftClimber(m_doritoclimber, m_LEDsetting);
+  private final LiftClimber cmdLiftClimber = new LiftClimber(m_doritoclimber, m_LEDsetting, m_DoritoSpin);
 
-  private final ClimberDisablingShooter cmdClimberDisablingShooter = new ClimberDisablingShooter(m_doritoclimber, m_LEDsetting, m_Shooter);
+  private final ClimberDisablingShooter cmdClimberDisablingShooter = new ClimberDisablingShooter(m_doritoclimber, m_LEDsetting, m_Shooter, m_DoritoSpin);
   //Dorito Lower Command
   private final DoritoLower cmdDoritoLowerEngage = new DoritoLower(m_doritoclimber, m_LEDsetting);
   //Dorito Motor Command

@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.subsystems.DoritoClimber;
+import frc.robot.subsystems.DoritoSpin;
 import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
 
@@ -14,12 +15,12 @@ import frc.robot.subsystems.Shooter;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ClimberDisablingShooter extends ParallelCommandGroup {
   /** Creates a new ClimberDisablingShooter. */
-  public ClimberDisablingShooter(DoritoClimber inSysDoritoClimber, LEDLights inSysLEDLights, Shooter inSysShooter) {
+  public ClimberDisablingShooter(DoritoClimber inSysDoritoClimber, LEDLights inSysLEDLights, Shooter inSysShooter, DoritoSpin inSysDoritoSpin) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new ShooterOff(inSysShooter, inSysLEDLights), 
-      new LiftClimber(inSysDoritoClimber, inSysLEDLights)
+      new LiftClimber(inSysDoritoClimber, inSysLEDLights, inSysDoritoSpin)
     );
   }
 }
