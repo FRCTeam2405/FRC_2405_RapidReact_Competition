@@ -6,10 +6,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.DoritoSpin;
 
 public class CorrectDoritoPosition extends CommandBase {
-  private double encoderHomePos;
   private double encoderCurrentPos;
 
   private final DoritoSpin sysDoritoSpin;
@@ -24,7 +24,6 @@ public class CorrectDoritoPosition extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-  encoderHomePos = sysDoritoSpin.getDoritoEncoderPos();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,11 +38,13 @@ public class CorrectDoritoPosition extends CommandBase {
   @Override
   public boolean isFinished() {
     encoderCurrentPos = sysDoritoSpin.getDoritoEncoderPos();
-   if (encoderHomePos <= encoderCurrentPos) {
-return true;
+   if (sysDoritoSpin.encoderHomePos <= encoderCurrentPos) {
+    sysDoritoSpin.DoritoClimberMotor(.25);
+    return false;
    }
    else {
-return false;
+    sysDoritoSpin.DoritoClimberMotor(0);
+    return true;
    }
   }
 }

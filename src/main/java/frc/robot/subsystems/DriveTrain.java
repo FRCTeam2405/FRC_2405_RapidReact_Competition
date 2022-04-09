@@ -69,6 +69,10 @@ public class DriveTrain extends SubsystemBase {
     //Initalizing mecanum drive
   mecanumDrive = new MecanumDrive(leftFrontTalonFX, leftBackTalonFX, rightFrontTalonFX, rightBackTalonFX);
 
+  // ----------------------------------------------------------------------------------
+  // Note: Pathweaver may have broken due to the encoders being incorrectly referenced
+  // ----------------------------------------------------------------------------------
+  
     //Initalizing Drivetrain Encoders
     drivetrainLeftFrontEncoder = new Encoder(
       EncoderConstants.Drivetrain.DRIVETRAIN_LEFTFRONT_ENCODER_01,

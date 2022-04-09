@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -14,22 +15,30 @@ import frc.robot.Constants.EncoderConstants.Dorito;
 
 public class DoritoSpin extends SubsystemBase {
   //defining encoder
-  Encoder doritoSpinnerEncoder = null;
+  RelativeEncoder doritoSpinnerEncoder = null;
 
   //Defining SparkMax
   CANSparkMax mainDoritoSparkMax = null; 
+
+  public double encoderHomePos;
   
   /** Creates a new DoritoSpin. */
   public DoritoSpin() {
     //Defining SparkMax
     mainDoritoSparkMax = new CANSparkMax(ClimberConstants.MAIN_DORITO_SPARKMAX, MotorType.kBrushless);
 
+    doritoSpinnerEncoder = mainDoritoSparkMax.getEncoder();
+
+    encoderHomePos = this.getDoritoEncoderPos();
+
     //Initalizing Dorito Spinner Encoders
-    doritoSpinnerEncoder = new Encoder(
-    Dorito.DORITOMOTOR_ENCODER_CHANNEL_01,
-    Dorito.DORITOMOTOR_ENCODER_CHANNEL_02,
-    Dorito.DORITO_MOTOR_ENCODER_ISREVERSED
-);
+    // doritoSpinnerEncoder = new Encoder(
+    // Dorito.DORITOMOTOR_ENCODER_CHANNEL_01,
+    // Dorito.DORITOMOTOR_ENCODER_CHANNEL_02,
+    // Dorito.DORITO_MOTOR_ENCODER_ISREVERSED
+    // );
+
+    
 
   }
 
@@ -42,7 +51,7 @@ public class DoritoSpin extends SubsystemBase {
   }
 
   public double getDoritoEncoderPos() {
-    return doritoSpinnerEncoder.get();
+    return doritoSpinnerEncoder.getPosition();
   }
 
 
