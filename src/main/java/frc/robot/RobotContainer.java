@@ -249,7 +249,7 @@ public class RobotContainer {
    //Testing feeder motor speed on the dashbord \
    SmartDashboard.putNumber("Dorito Encoder Position", m_DoritoSpin.getDoritoEncoderPos());
    SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
-   SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED);
+   SmartDashboard.getNumber("IntakePercentOutputReversed", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED);
    SmartDashboard.putNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootHighPercentOutput", ShooterConstants.SHOOTHIGH_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);
