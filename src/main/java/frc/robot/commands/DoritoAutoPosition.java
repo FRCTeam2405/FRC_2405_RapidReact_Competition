@@ -40,7 +40,7 @@ public class DoritoAutoPosition extends CommandBase {
     targetPos = Dorito.DORITO_TARGET_POS;
 
    if (targetPos <= encoderCurrentPos) {
-    sysDoritoSpin.DoritoClimberMotor(.25);
+    sysDoritoSpin.DoritoClimberMotor(-.25);
     return false;
    }
    else {

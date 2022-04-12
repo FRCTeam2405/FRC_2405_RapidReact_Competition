@@ -205,7 +205,7 @@ public static final class Dorito {
     public static final int DORITOMOTOR_ENCODER_CHANNEL_02 = 19;
 
     //Dorito Target Position
-    public static final double DORITO_TARGET_POS = -20;
+    public static final double DORITO_TARGET_POS = -40;
 }
   
   
