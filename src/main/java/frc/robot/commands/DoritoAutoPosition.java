@@ -4,17 +4,17 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+import frc.robot.Constants.EncoderConstants.Dorito;
 import frc.robot.subsystems.DoritoSpin;
 
-public class CorrectDoritoPosition extends CommandBase {
+public class DoritoAutoPosition extends CommandBase {
   private double encoderCurrentPos;
+  private double targetPos;
 
   private final DoritoSpin sysDoritoSpin;
   /** Creates a new CorrectDoritoPosition. */
-  public CorrectDoritoPosition(DoritoSpin inSysDoritoSpin)  {
+  public DoritoAutoPosition(DoritoSpin inSysDoritoSpin)  {
     sysDoritoSpin = inSysDoritoSpin;
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -23,8 +23,7 @@ public class CorrectDoritoPosition extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -38,7 +37,9 @@ public class CorrectDoritoPosition extends CommandBase {
   @Override
   public boolean isFinished() {
     encoderCurrentPos = sysDoritoSpin.getDoritoEncoderPos();
-   if (sysDoritoSpin.encoderHomePos >= encoderCurrentPos) {
+    targetPos = Dorito.DORITO_TARGET_POS;
+
+   if (targetPos <= encoderCurrentPos) {
     sysDoritoSpin.DoritoClimberMotor(.25);
     return false;
    }

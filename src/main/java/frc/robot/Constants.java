@@ -203,6 +203,9 @@ public static final class Dorito {
     //Dorito Encoder Channels
     public static final int DORITOMOTOR_ENCODER_CHANNEL_01 = 18;
     public static final int DORITOMOTOR_ENCODER_CHANNEL_02 = 19;
+
+    //Dorito Target Position
+    public static final double DORITO_TARGET_POS = -20;
 }
   
   
@@ -230,6 +233,7 @@ public static final class ControllerConstants {
         public static final int DRIVER_CONTROLLER_BUTTON_A = 1;
         public static final int DRIVER_CONTROLLER_BUMPER_RIGHT = 6;
         public static final int DRIVER_CONTROLLER_BUMPER_LEFT = 5;
+        public static final int DRIVER_CONTROLLER_START_BUTTON = 8;
     }
 
     public static final class SecondaryDriver {
