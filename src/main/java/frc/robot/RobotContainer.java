@@ -25,6 +25,7 @@ import frc.robot.commands.ClimberStage3;
 import frc.robot.commands.ClimberStageOneRelease;
 import frc.robot.commands.ClimberStageThreeRelease;
 import frc.robot.commands.ClimberStageTwoRelease;
+import frc.robot.commands.DoritoAutoPosition;
 import frc.robot.commands.DoritoLifter;
 import frc.robot.commands.DoritoLower;
 import frc.robot.commands.DoritoMotor;
@@ -196,11 +197,15 @@ public class RobotContainer {
   private final AutoDoritoSpin cmdAutoDoritoSpin = new AutoDoritoSpin(m_doritoclimber);
   //AutoDoritoClimb
   private final AutoDoritoClimb cmdAutoDoritoClimb = new AutoDoritoClimb(m_doritoclimber, m_LEDsetting);
-//Auto Commands
+  //Auto Commands
   private final AutoBasicOne cmdAutoBasicOne = new AutoBasicOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
   private final AutoCargoOne cmdAutoCargoOne = new AutoCargoOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
 //Auton command for spinning
   private final AutoTwoBallHangar cmdAutoPlusOne = new AutoTwoBallHangar(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_Intake);
+  //Auton command for spinning
+  //private final AutoPlusOne cmdAutoPlusOne = new AutoPlusOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_Intake);
+  //DoritoAutoPosition command
+  private final DoritoAutoPosition cmdDoritoAutoPosition = new DoritoAutoPosition(m_DoritoSpin);
 
   //---------------------------------------------------------------------------------------
 
@@ -216,6 +221,7 @@ public class RobotContainer {
   private final JoystickButton driverMainButtonA = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUTTON_A);
   private final JoystickButton driverMainBumperRight = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUMPER_RIGHT);
   private final JoystickButton driverMainBumperLeft = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_BUMPER_LEFT);
+  private final JoystickButton driverMainStartButton = new JoystickButton(driverController, ControllerConstants.Driver.DRIVER_CONTROLLER_START_BUTTON);
 
   //Defining Arcade Controller
   public static final Joystick secondarycontroller = new Joystick(SecondaryDriver.SECONDARYDRIVER_CONTROLLER);
@@ -249,7 +255,7 @@ public class RobotContainer {
    //Testing feeder motor speed on the dashbord \
    SmartDashboard.putNumber("Dorito Encoder Position", m_DoritoSpin.getDoritoEncoderPos());
    SmartDashboard.putNumber("IntakePercentOutput", IntakeConstants.INTAKE_DEFAULT_SPEED);
-   SmartDashboard.getNumber("IntakePercentOutputReverced", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED);
+   SmartDashboard.getNumber("IntakePercentOutputReversed", IntakeConstants.INTAKE_DEFAULT_SPEED_REVERSED);
    SmartDashboard.putNumber("FeederPercentOutput", FeederConstants.FEEDER_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootHighPercentOutput", ShooterConstants.SHOOTHIGH_DEFAULT_OUTPUT);
    SmartDashboard.putNumber("ShootLowPercentOutput", ShooterConstants.SHOOTLOW_DEFAULT_OUTPUT);
@@ -299,6 +305,7 @@ public class RobotContainer {
    //driverMainButtonA.whenHeld(new LEDDeclare(m_LEDsetting, SmartDashboard.getNumber("LEDSet", -.69)), true); //.andThen(cmdFeedCargo).andThen(cmdLEDLightsShootLow), true);
    driverMainBumperRight.whenHeld(cmdIntakeAndFeeder, true);
    driverMainBumperLeft.whenHeld(cmdIntakeAndFeederReversed, true);
+   driverMainStartButton.whenPressed(cmdDoritoAutoPosition);
   
    //Secondary Button Mappings
    driversecondarybuttonBlue.whenPressed(cmdShootLow);
