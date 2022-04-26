@@ -8,16 +8,16 @@ import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDLights;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Intake;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class AutoPlusOne extends SequentialCommandGroup {
-  /** Creates a new AutonPlusOne. */
-  public AutoPlusOne(Shooter inSysShooter, Feeder inSysFeeder, LEDLights inSysLEDLights, DriveTrain inSysDriveTrain, Intake inSysIntake) {
+public class AutoTwoBallTerminal extends SequentialCommandGroup {
+  /** Creates a new AutoTwoBall. */
+  public AutoTwoBallTerminal(Shooter inSysShooter, Feeder inSysFeeder, LEDLights inSysLEDLights, DriveTrain inSysDriveTrain, Intake inSysIntake) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
@@ -35,7 +35,6 @@ public class AutoPlusOne extends SequentialCommandGroup {
       new CartesianDriveForAuton(inSysDriveTrain, -.25, 0, 0, 1.6),
 
       new AutoShootHigh(inSysShooter, inSysFeeder, inSysLEDLights)
-     
     );
   }
 }

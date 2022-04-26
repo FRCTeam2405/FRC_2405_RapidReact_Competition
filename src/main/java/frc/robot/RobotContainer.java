@@ -32,7 +32,7 @@ import frc.robot.commands.AutoBasicOne;
 import frc.robot.commands.AutoCargoOne;
 import frc.robot.commands.AutoDoritoClimb;
 import frc.robot.commands.AutoDoritoSpin;
-import frc.robot.commands.AutoPlusOne;
+import frc.robot.commands.AutoTwoBallHangar;
 import frc.robot.commands.AutoTestOne;
 import frc.robot.commands.ClimberDisablingShooter;
 import frc.robot.commands.DriveAuto;
@@ -200,7 +200,7 @@ public class RobotContainer {
   private final AutoBasicOne cmdAutoBasicOne = new AutoBasicOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
   private final AutoCargoOne cmdAutoCargoOne = new AutoCargoOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_autotrajectory);
 //Auton command for spinning
-  private final AutoPlusOne cmdAutoPlusOne = new AutoPlusOne(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_Intake);
+  private final AutoTwoBallHangar cmdAutoPlusOne = new AutoTwoBallHangar(m_Shooter, m_Feeder, m_LEDsetting, m_DriveTrain, m_Intake);
 
   //---------------------------------------------------------------------------------------
 
